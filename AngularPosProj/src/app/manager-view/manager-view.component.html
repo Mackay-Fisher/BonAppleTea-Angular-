@@ -1,0 +1,42 @@
+<div class="center">
+    <p><strong>Manager View</strong></p>
+    <app-manager-popup *ngIf="showPopup" (edit)="editRow($event)" (delete)="deleteRow($event)" (quick)="quickAdd('Quick Add')" [title]="popupTitle" [content]="popupContent" [tableConfig]="tableConfig" (close)="showPopup = false"></app-manager-popup>
+    <app-edit-item-popup *ngIf="showEditPopup" [item]="selectedItem" [editType]="editType" (save)="onItemSave($event)" (close)="onEditCancel()"></app-edit-item-popup>
+    <app-confirmation-popup *ngIf="showConfirmationPopup" [currentAction]="currentAction" [item]="selectedItem" (confirm)="onItemConfirm($event)" (decline)="onItemDecline()"></app-confirmation-popup>
+    <app-quick-add-popup *ngIf="showQuickAddPopup" [editType]="editType" (add)="onItemAdd($event)" (cancel)="onQuickAddCancel()"></app-quick-add-popup>
+    <app-seasonal-item-popup *ngIf="showSeasonalItemPopup" (add)="seasonalItemAdd($event)" (cancel)="onSeasonalItemCancel()"></app-seasonal-item-popup>
+    <app-restock-report-popup *ngIf="showRestockReportPopup" [title]="popupTitle" [content]="popupContent" [tableConfig]="tableConfig" (close)="showRestockReportPopup = false"></app-restock-report-popup>
+</div>
+
+<!-- make buttons pos like buttons (large and easy to click) -->
+<div class="buttons">
+    <div class="buttonHeader">
+        <p>General Management</p>
+    </div>
+    <div class="tableButtons"> 
+        <button class="editTables" (click)="openPopup('menu')">Edit Menu</button>
+        <button class="editTables" (click)="openPopup('ingredients')">Edit Ingredients</button>
+        <button class="editTables" (click)="openPopup('inventory')">Edit Inventory</button>
+        <button class="editTables" (click)="seasonalItem('Add Seasonal Item')">Add Seasonal Item</button>
+    </div>
+    <div class="buttonHeader">
+        <p>Reports</p>
+    </div>
+    <p>Date Range for Sales and Excess Reports</p>
+    <div class="datePickers">
+        <label for="startDate">Start Date: </label>
+        <input type="date" id="startDate" [(ngModel)]="start">
+
+        <label for="endDate">End Date: </label>
+        <input type="date" id="endDate" [(ngModel)]="end">
+    </div>
+    <br>
+    <div class="reportButtons">
+        <button class="showReport" (click)="reportPopup('sales', start, end)">Sales Report</button>
+        <button class="showReport" (click)="reportPopup('excess', start, end)">Excess Report</button>
+        <button class="showReport" (click)="reportPopup('restock')">Restock Report</button>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,39 @@
+.center{
+    padding-top: 90px;
+    padding-bottom: 90px;
+    width: 100%;
+    text-align: center;
+}
+//   .magnifier-lens {
+//     width: 150px;  /* Diameter of the lens */
+//     height: 150px;
+//     border-radius: 50%;
+
+//     position: absolute;
+//     overflow: hidden;
+//     pointer-events: none; /* Allows clicking through the lens */
+//   }
+  .magnifier-lens {
+    z-index: 2;
+    border-radius: 50%;
+    border: 2px solid black;
+    position: absolute;
+    overflow: hidden;
+    pointer-events: none;
+    background-repeat: no-repeat;
+  }
+  
+  
+
+// #magnifierLens {
+//     border-radius: 50%;
+//     overflow: hidden;
+//     position: absolute;
+//     pointer-events: none;
+//   }
+  
+  
+  .magnified-content {
+    transform: scale(2); /* Adjust the scale for the level of magnification */
+    transform-origin: center;
+  }

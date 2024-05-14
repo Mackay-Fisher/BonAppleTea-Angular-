@@ -1,0 +1,23 @@
+<div class="cart-modal">
+    <h2>Ready to Order</h2>
+    <div class=menu-items *ngFor="let item of menuItems; index as i">
+        <div class=top-row>
+            <a class="router-menu" class=link [routerLink]="['/Menu',  item.menu_item_type, item.menu_item_name, i]">
+                {{item.menu_item_name |
+                replaceUnderscores | titlecase}}</a>
+
+            <p class=price>{{item.menu_item_price | currency:'USD':'symbol':'1.2-2' }}</p>
+            <button type="button" class="small" (click)="removeItem(i)">
+                Remove
+            </button>
+        </div>
+
+    </div>
+    <div class="total">
+        <p>Total: {{ calculateTotal() | currency:'USD':'symbol':'1.2-2' }}</p>
+    </div>
+    <div class="buttons">
+        <button class="cancel" (click)="onCancelClick()">Cancel Order</button>
+        <button class="continue" (click)="onContinueClick()">Checkout</button>
+    </div>
+</div>

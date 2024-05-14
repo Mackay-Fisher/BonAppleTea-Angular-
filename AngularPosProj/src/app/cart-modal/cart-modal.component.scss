@@ -1,0 +1,142 @@
+// cart-modal.component.scss
+.cart-modal {
+    position: fixed;
+    top: 20px;
+    left: 0;
+    width: 20%;
+    height: 100%;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    //justify-content: space-between;
+
+    .content {
+        flex: 1;
+    }
+
+    p {
+        text-align: left;
+        font-size: 15px;
+        // position: relative;
+        // display: inline-block;
+        // /* Allow horizontal resize */
+        margin-bottom: 20px;
+
+    }
+
+    .router-menu {
+        color: #007bff;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    h2 {
+        margin-top: 20%;
+        text-align: center;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    li {
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .total {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background: #f9fbf9;
+        color: #030303;
+        border: none;
+        position: absolute;
+        bottom: 100px;
+        width: 90%;
+
+        p {
+            font-size: 28px;
+            text-align: center;
+        }
+    }
+
+
+
+
+    button.continue {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        background: rgb(6, 198, 6);
+        color: #fff;
+        border: none;
+        position: absolute;
+        bottom: 75px;
+        width: 85%;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+
+        &:active {
+            background-color: rgb(8, 240, 8);
+        }
+    }
+
+    button.cancel {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        background-color: rgb(250, 4, 4);
+        color: #fff;
+        border: none;
+        position: absolute;
+        bottom: 25px;
+        width: 85%;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+
+        &:active {
+            background-color: rgb(243, 81, 81);
+        }
+    }
+
+
+    button.small {
+        justify-content: right;
+        margin-bottom: 20px;
+        font-size: 15px;
+        color: #fff;
+        border: none;
+        background-color: #fa0202;
+        border-radius: 10%;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+
+        &:active {
+            background-color: rgb(243, 81, 81);
+        }
+    }
+
+    .top-row {
+        display: flex;
+        justify-content: space-between;
+        // position: absolute;
+        padding: 0px;
+        align-items: flex-start;
+
+    }
+}

@@ -1,0 +1,11 @@
+<div class="backdrop" *ngIf="declineAction">
+    <div class="popup">
+        <div class="popup-content">
+            <h2>Are you sure you want to {{ currentAction }} {{ item?.menu_item_name }} {{ item?.ingredient_name }} {{ item?.item_name }}</h2>
+            <div class="buttons">
+                <button class="yes" (click)="confirmAction()"><strong>Yes</strong></button>
+                <button class="no" (click)="declineAction()"><strong>No</strong></button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,2067 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>my-new-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">my-new-app documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  AppComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/app.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Root component of the Angular application.
+Manages the main view and interacts with services to control specific features like magnification.</p>
+
+    </p>
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-root</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./app.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./app.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#applyContainerClass" >applyContainerClass</a>
+                            </li>
+                            <li>
+                                <a href="#canvasheight" >canvasheight</a>
+                            </li>
+                            <li>
+                                <a href="#canvasImage" >canvasImage</a>
+                            </li>
+                            <li>
+                                <a href="#canvaswidth" >canvaswidth</a>
+                            </li>
+                            <li>
+                                <a href="#lastMouseX" >lastMouseX</a>
+                            </li>
+                            <li>
+                                <a href="#lastMouseY" >lastMouseY</a>
+                            </li>
+                            <li>
+                                <a href="#magnifierEnabled" >magnifierEnabled</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#magnifierSub" >magnifierSub</a>
+                            </li>
+                            <li>
+                                <a href="#originalIframeSrc" >originalIframeSrc</a>
+                            </li>
+                            <li>
+                                <a href="#pageReady" >pageReady</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#routerSub" >routerSub</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#captureCanvasWithCorsHandling" >captureCanvasWithCorsHandling</a>
+                            </li>
+                            <li>
+                                <a href="#handleMouseMove" >handleMouseMove</a>
+                            </li>
+                            <li>
+                                <a href="#handleScroll" >handleScroll</a>
+                            </li>
+                            <li>
+                                <a href="#ngAfterViewInit" >ngAfterViewInit</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#toggleMagnifier" >toggleMagnifier</a>
+                            </li>
+                            <li>
+                                <a href="#updateLens" >updateLens</a>
+                            </li>
+                            <li>
+                                <a href="#updateLensContent" >updateLensContent</a>
+                            </li>
+                            <li>
+                                <a href="#updateLensContentOnScroll" >updateLensContentOnScroll</a>
+                            </li>
+                            <li>
+                                <a href="#updateLensPosition" >updateLensPosition</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(activeComponentService: <a href="../injectables/ActiveComponentService.html" target="_self">ActiveComponentService</a>, magnifierService: <a href="../injectables/MagnifierService.html" target="_self">MagnifierService</a>, router: Router)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/app.component.ts:61</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor of the AppComponent.
+Initializes services and sets up subscription to activeComponentService.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>activeComponentService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ActiveComponentService.html" target="_self" >ActiveComponentService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Service to get the active component in the application.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>magnifierService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/MagnifierService.html" target="_self" >MagnifierService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Service to control the magnifier feature.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Angular Router for managing navigation.</p>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="captureCanvasWithCorsHandling"></a>
+                    <span class="name">
+                        <span ><b>captureCanvasWithCorsHandling</b></span>
+                        <a href="#captureCanvasWithCorsHandling"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>captureCanvasWithCorsHandling()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="222"
+                                    class="link-to-prism">src/app/app.component.ts:222</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Captures the current state of the application&#39;s view into a canvas.
+Handles CORS related issues during the capture process.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleMouseMove"></a>
+                    <span class="name">
+                        <span ><b>handleMouseMove</b></span>
+                        <a href="#handleMouseMove"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleMouseMove(e: MouseEvent)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="125"
+                                    class="link-to-prism">src/app/app.component.ts:125</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Handles mouse movement events.
+Updates the magnifying lens position based on the mouse position.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>e</td>
+                                            <td>
+                                                        <code>MouseEvent</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>MouseEvent object</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleScroll"></a>
+                    <span class="name">
+                        <span ><b>handleScroll</b></span>
+                        <a href="#handleScroll"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleScroll()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="133"
+                                    class="link-to-prism">src/app/app.component.ts:133</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Handles scroll events to update the lens position.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                        <span ><b>ngAfterViewInit</b></span>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="211"
+                                    class="link-to-prism">src/app/app.component.ts:211</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Angular&#39;s ngAfterViewInit lifecycle hook.
+Performs additional initialization tasks after the view is initially rendered.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="196"
+                                    class="link-to-prism">src/app/app.component.ts:196</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Angular&#39;s ngOnDestroy lifecycle hook.
+Cleans up subscriptions and event listeners when the component is destroyed.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="80"
+                                    class="link-to-prism">src/app/app.component.ts:80</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Angular&#39;s ngOnInit lifecycle hook.
+Sets up subscriptions and event handlers for the component.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleMagnifier"></a>
+                    <span class="name">
+                        <span ><b>toggleMagnifier</b></span>
+                        <a href="#toggleMagnifier"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleMagnifier()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="257"
+                                    class="link-to-prism">src/app/app.component.ts:257</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Toggles the state of the magnifier feature.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateLens"></a>
+                    <span class="name">
+                        <span ><b>updateLens</b></span>
+                        <a href="#updateLens"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateLens()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="141"
+                                    class="link-to-prism">src/app/app.component.ts:141</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Updates the lens position and content based on current mouse position.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateLensContent"></a>
+                    <span class="name">
+                        <span ><b>updateLensContent</b></span>
+                        <a href="#updateLensContent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateLensContent(e: MouseEvent)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="177"
+                                    class="link-to-prism">src/app/app.component.ts:177</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Updates the content of the magnifying lens based on the mouse event.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>e</td>
+                                            <td>
+                                                        <code>MouseEvent</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>MouseEvent object</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateLensContentOnScroll"></a>
+                    <span class="name">
+                        <span ><b>updateLensContentOnScroll</b></span>
+                        <a href="#updateLensContentOnScroll"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateLensContentOnScroll()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="102"
+                                    class="link-to-prism">src/app/app.component.ts:102</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Updates the content of the magnifying lens when the page is scrolled.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateLensPosition"></a>
+                    <span class="name">
+                        <span ><b>updateLensPosition</b></span>
+                        <a href="#updateLensPosition"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateLensPosition(e: MouseEvent)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="163"
+                                    class="link-to-prism">src/app/app.component.ts:163</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Updates the position of the magnifying lens based on the mouse event.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>e</td>
+                                            <td>
+                                                        <code>MouseEvent</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>MouseEvent object</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="applyContainerClass"></a>
+                    <span class="name">
+                        <span ><b>applyContainerClass</b></span>
+                        <a href="#applyContainerClass"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/app.component.ts:23</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Whether to apply the container class to the main view.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="canvasheight"></a>
+                    <span class="name">
+                        <span ><b>canvasheight</b></span>
+                        <a href="#canvasheight"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/app.component.ts:55</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The size of the magnifier lens.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="canvasImage"></a>
+                    <span class="name">
+                        <span ><b>canvasImage</b></span>
+                        <a href="#canvasImage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/app.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The size of the magnifier lens.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="canvaswidth"></a>
+                    <span class="name">
+                        <span ><b>canvaswidth</b></span>
+                        <a href="#canvaswidth"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/app.component.ts:51</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The size of the magnifier lens.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="lastMouseX"></a>
+                    <span class="name">
+                        <span ><b>lastMouseX</b></span>
+                        <a href="#lastMouseX"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/app.component.ts:43</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The size of the magnifier lens.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="lastMouseY"></a>
+                    <span class="name">
+                        <span ><b>lastMouseY</b></span>
+                        <a href="#lastMouseY"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/app.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The size of the magnifier lens.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="magnifierEnabled"></a>
+                    <span class="name">
+                        <span ><b>magnifierEnabled</b></span>
+                        <a href="#magnifierEnabled"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/app.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Whether the magnifier feature is enabled.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="magnifierSub"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>magnifierSub</b></span>
+                        <a href="#magnifierSub"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription | undefined</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/app.component.ts:60</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The size of the magnifier lens.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="originalIframeSrc"></a>
+                    <span class="name">
+                        <span ><b>originalIframeSrc</b></span>
+                        <a href="#originalIframeSrc"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/app.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The size of the magnifier lens.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pageReady"></a>
+                    <span class="name">
+                        <span ><b>pageReady</b></span>
+                        <a href="#pageReady"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/app.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The size of the magnifier lens.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="routerSub"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>routerSub</b></span>
+                        <a href="#routerSub"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription | undefined</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/app.component.ts:61</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { Router, NavigationEnd } from &#x27;@angular/router&#x27;;
+import { filter, Subscription } from &#x27;rxjs&#x27;;
+import { ActiveComponentService } from &#x27;./services/currentcomp.service&#x27;;
+import { MagnifierService } from &#x27;./services/Magnifier.service&#x27;;
+import html2canvas from &#x27;html2canvas&#x27;;
+/**
+ * Root component of the Angular application.
+ * Manages the main view and interacts with services to control specific features like magnification.
+ *
+ * @Component Decorator that marks a class as an Angular component and provides configuration metadata
+ */
+@Component({
+  selector: &#x27;app-root&#x27;,
+  templateUrl: &#x27;./app.component.html&#x27;,
+  styleUrls: [&#x27;./app.component.scss&#x27;]
+})
+export class AppComponent {
+  // Component properties
+  /**
+   * Whether to apply the container class to the main view.
+   */
+  applyContainerClass &#x3D; true;
+  /**
+   * Whether the magnifier feature is enabled.
+   */
+  magnifierEnabled &#x3D; false;
+  /**
+   * The size of the magnifier lens.
+   */
+  canvasImage: string | null &#x3D; null;
+  /**
+   * The size of the magnifier lens.
+   */
+  pageReady &#x3D; false;
+  /**
+   * The size of the magnifier lens.
+   */
+  originalIframeSrc: string | null &#x3D; null;
+  /**
+   * The size of the magnifier lens. 
+   * */ 
+  lastMouseX &#x3D; 0;
+  /**
+   * The size of the magnifier lens.
+   */
+  lastMouseY&#x3D;0;
+  /**
+   * The size of the magnifier lens.
+   */
+  canvaswidth &#x3D; 0;
+  /**
+   * The size of the magnifier lens.
+   */
+  canvasheight&#x3D;0;
+  /**
+   * The size of the magnifier lens.
+   */
+  // Private subscriptions to manage observable subscriptions
+  private magnifierSub: Subscription | undefined;
+  private routerSub: Subscription | undefined;
+    /**
+   * Constructor of the AppComponent.
+   * Initializes services and sets up subscription to activeComponentService.
+   *
+   * @param activeComponentService Service to get the active component in the application.
+   * @param magnifierService Service to control the magnifier feature.
+   * @param router Angular Router for managing navigation.
+   */
+  constructor(private activeComponentService: ActiveComponentService, private magnifierService: MagnifierService, private router: Router) {
+    this.activeComponentService.activeComponent.subscribe(componentName &#x3D;&gt; {
+      // Adjust the logic based on your component names
+      this.applyContainerClass &#x3D; componentName !&#x3D;&#x3D; &#x27;MenuItemComponent&#x27;;
+    });
+  }
+    /**
+   * Angular&#x27;s ngOnInit lifecycle hook.
+   * Sets up subscriptions and event handlers for the component.
+   */
+  ngOnInit() {
+    this.magnifierSub &#x3D; this.magnifierService.getMagnifierState().subscribe(
+      (state: boolean) &#x3D;&gt; {
+        this.magnifierEnabled &#x3D; state.valueOf();
+        console.log(this.magnifierEnabled); // Log inside the subscription
+      }
+    );
+    this.routerSub &#x3D; this.router.events.pipe(
+      filter(event &#x3D;&gt; event instanceof NavigationEnd)
+    ).subscribe(() &#x3D;&gt; {
+      // Wait for a short time to allow the new page to render
+      if(this.magnifierEnabled){
+        this.toggleMagnifier()
+      }
+      setTimeout(() &#x3D;&gt; {
+        this.captureCanvasWithCorsHandling();
+      }, 1000); // Adjust the delay as needed
+    });
+  }
+   /**
+   * Updates the content of the magnifying lens when the page is scrolled.
+   */
+  updateLensContentOnScroll(): void {
+    const lens &#x3D; document.getElementById(&#x27;magnifierLens&#x27;) as HTMLElement;
+    if (!lens || !this.canvasImage) return;
+  
+    const magnificationFactor &#x3D; 1.5; // Adjust as needed
+    const lensSize &#x3D; 150; // The size of your lens
+  
+    // Calculate the correct background position considering the scroll
+    this.lastMouseX &#x3D; (this.lastMouseX - window.scrollX)
+    this.lastMouseY &#x3D; (this.lastMouseY + window.scrollY)
+    const backgroundPosX &#x3D; this.lastMouseX * magnificationFactor - lensSize / 2;
+    const backgroundPosY &#x3D; this.lastMouseY * magnificationFactor - lensSize / 2;
+  
+    lens.style.background &#x3D; &#x60;url(${this.canvasImage})&#x60;;
+    lens.style.backgroundPosition &#x3D; &#x60;-${backgroundPosX}px -${backgroundPosY}px&#x60;;
+  }
+  
+    /**
+   * Handles mouse movement events.
+   * Updates the magnifying lens position based on the mouse position.
+   *
+   * @param e MouseEvent object
+   */
+  handleMouseMove(e: MouseEvent) {
+    this.lastMouseX &#x3D; e.clientX + window.scrollX;
+    this.lastMouseY &#x3D; e.clientY + window.scrollY;
+    this.updateLens();
+  }
+  /**
+   * Handles scroll events to update the lens position.
+   */
+  handleScroll() {
+    // Call the updateLens method to adjust the position during scrolling
+    this.updateLens();
+  }
+  /**
+   * Updates the lens position and content based on current mouse position.
+   */
+
+  updateLens() {
+    const lens &#x3D; document.getElementById(&#x27;magnifierLens&#x27;) as HTMLElement;
+    const magnificationFactor &#x3D; 1.5;
+    const lensSize &#x3D; 150;
+  
+    if (lens &amp;&amp; this.canvasImage) {
+      // Adjust position
+      lens.style.left &#x3D; &#x60;${this.lastMouseX - lensSize / 2}px&#x60;;
+      lens.style.top &#x3D; &#x60;${this.lastMouseY - lensSize / 2}px&#x60;;
+  
+      // Adjust background
+      const backgroundPosX &#x3D; this.lastMouseX * magnificationFactor - lensSize / 2;
+      const backgroundPosY &#x3D; this.lastMouseY * magnificationFactor - lensSize / 2;
+      lens.style.background &#x3D; &#x60;url(${this.canvasImage}) no-repeat&#x60;;
+      lens.style.backgroundPosition &#x3D; &#x60;-${backgroundPosX}px -${backgroundPosY}px&#x60;;
+    }
+  }
+  /**
+   * Updates the position of the magnifying lens based on the mouse event.
+   *
+   * @param e MouseEvent object
+   */
+  updateLensPosition(e:MouseEvent): void {
+    const lens &#x3D; document.getElementById(&#x27;magnifierLens&#x27;) as HTMLElement;
+    if (!lens || !this.magnifierEnabled) return;
+    const lensSize &#x3D; 150; // The size of your lens, adjust as needed
+  
+    // Position the lens around the cursor
+    lens.style.left &#x3D; &#x60;${e.clientX- lensSize / 2}px&#x60;;
+    lens.style.top &#x3D; &#x60;${e.clientY - lensSize / 2}px&#x60;;
+  }
+  /**
+   * Updates the content of the magnifying lens based on the mouse event.
+   *
+   * @param e MouseEvent object
+   */
+  updateLensContent(e:MouseEvent): void {
+    const lens &#x3D; document.getElementById(&#x27;magnifierLens&#x27;) as HTMLElement;
+    if (!lens || !this.canvasImage) return;
+  
+    const magnificationFactor &#x3D; 1.5; // Adjust as needed
+    const lensSize &#x3D; 150; // The size of your lens
+  
+    // Calculate the correct background position
+    const backgroundPosX &#x3D; (e.clientX - window.scrollX) * magnificationFactor - lensSize /2;
+    const backgroundPosY &#x3D; (e.clientY - window.scrollY) * magnificationFactor - lensSize/2;
+    lens.style.background &#x3D; &#x60;url(${this.canvasImage})&#x60;;
+    // lens.style.backgroundSize &#x3D; &#x60;${window.innerWidth * magnificationFactor}px ${window.innerHeight * magnificationFactor}px&#x60;;
+    lens.style.backgroundPosition &#x3D; &#x60;-${backgroundPosX}px -${backgroundPosY}px&#x60;;
+  }
+    /**
+   * Angular&#x27;s ngOnDestroy lifecycle hook.
+   * Cleans up subscriptions and event listeners when the component is destroyed.
+   */
+
+  ngOnDestroy() {
+    if (this.magnifierSub) {
+      this.magnifierSub.unsubscribe();
+    }
+    if (this.routerSub) {
+      this.routerSub.unsubscribe();
+    }
+    // Remove the event listener to prevent memory leaks
+    document.removeEventListener(&#x27;mousemove&#x27;, this.handleMouseMove.bind(this));
+    window.removeEventListener(&#x27;scroll&#x27;, this.handleScroll.bind(this));
+  }
+  /**
+   * Angular&#x27;s ngAfterViewInit lifecycle hook.
+   * Performs additional initialization tasks after the view is initially rendered.
+   */
+  ngAfterViewInit() {
+
+    this.captureCanvasWithCorsHandling(); // Initial capture
+    // Set up router event subscription here as well
+    document.addEventListener(&#x27;mousemove&#x27;, this.handleMouseMove.bind(this));
+    window.addEventListener(&#x27;scroll&#x27;, this.handleScroll.bind(this));
+  }
+  /**
+   * Captures the current state of the application&#x27;s view into a canvas.
+   * Handles CORS related issues during the capture process.
+   */
+  captureCanvasWithCorsHandling() {
+    const templateDiv &#x3D; document.getElementById(&#x27;template&#x27;) as HTMLDivElement;
+    const googleMapsIframe &#x3D; document.getElementById(&#x27;google-map-iframe&#x27;) as HTMLIFrameElement;
+  
+    // Display the template div and hide the iframe
+    if (templateDiv &amp;&amp; googleMapsIframe) {
+      templateDiv.style.display &#x3D; &#x27;block&#x27;;
+      googleMapsIframe.style.display &#x3D; &#x27;none&#x27;;
+    }
+    
+    /**
+     * creates a timeout to help showcase the background image capture of the page
+     */
+    setTimeout(() &#x3D;&gt; {
+      console.log(&#x27;Scroll Height:&#x27;, document.body.scrollHeight);
+      console.log(&#x27;Scroll Width:&#x27;, document.body.scrollWidth);
+      html2canvas(document.body, {
+        proxy: &quot;http://localhost:3000/proxy&quot;,
+        scale: 1.5,
+        useCORS: true,  
+        windowHeight: document.body.scrollHeight,
+        windowWidth: document.body.scrollWidth
+      }).then(canvas &#x3D;&gt; {
+        // Convert the canvas to a data URL and store it
+        this.canvasImage &#x3D; canvas.toDataURL(&#x27;image/png&#x27;);
+        console.log(&#x27;Canvas Height:&#x27;, canvas.height);
+        console.log(&#x27;Canvas Width:&#x27;, canvas.width);
+      }).catch(error &#x3D;&gt; {
+        console.error(&#x27;Error capturing canvas:&#x27;, error);
+      });
+    }, 4000); // Adjust delay as necessary
+  }
+    /**
+   * Toggles the state of the magnifier feature.
+   */
+  toggleMagnifier(): void {
+    this.magnifierService.toggleMagnifier();
+  }
+  
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * --&gt;
+&lt;!-- * * * * * * * * * * * The content below * * * * * * * * * * * --&gt;
+&lt;!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * --&gt;
+&lt;!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * --&gt;
+&lt;!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * --&gt;
+&lt;!-- * * * * * * * * * Delete the template below * * * * * * * * * * --&gt;
+&lt;!-- * * * * * * * to get started with your project! * * * * * * * * --&gt;
+&lt;!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * --&gt;
+
+&lt;style&gt;
+  :host {
+    font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;;
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body{
+    background: radial-gradient(circle at 18.7% 37.8%, rgb(250, 250, 250) 0%, rgb(225, 234, 238) 90%);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 8px 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .spacer {
+    flex: 1;
+  }
+
+  .toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #1976d2;
+    color: white;
+    font-weight: 600;
+  }
+
+  .toolbar img {
+    margin: 0 16px;
+  }
+
+  .toolbar #twitter-logo {
+    height: 40px;
+    margin: 0 8px;
+  }
+
+  .toolbar #youtube-logo {
+    height: 40px;
+    margin: 0 16px;
+  }
+
+  .toolbar #twitter-logo:hover,
+  .toolbar #youtube-logo:hover {
+    opacity: 0.8;
+  }
+
+  .content {
+    display: flex;
+    margin: 82px auto 32px;
+    padding: 0 16px;
+    max-width: 960px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  svg.material-icons {
+    height: 24px;
+    width: auto;
+  }
+
+  svg.material-icons:not(:last-child) {
+    margin-right: 8px;
+  }
+
+  .card svg.material-icons path {
+    fill: #888;
+  }
+
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 16px;
+  }
+
+  .card {
+    all: unset;
+    border-radius: 4px;
+    border: 1px solid #eee;
+    background-color: #fafafa;
+    height: 40px;
+    width: 200px;
+    margin: 0 8px 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    line-height: 24px;
+  }
+
+  .card-container .card:not(:last-child) {
+    margin-right: 0;
+  }
+
+  .card.card-small {
+    height: 16px;
+    width: 168px;
+  }
+
+  .card-container .card:not(.highlight-card) {
+    cursor: pointer;
+  }
+
+  .card-container .card:not(.highlight-card):hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+  }
+
+  .card-container .card:not(.highlight-card):hover .material-icons path {
+    fill: rgb(105, 103, 103);
+  }
+
+  .card.highlight-card {
+    background-color: #1976d2;
+    color: white;
+    font-weight: 600;
+    border: none;
+    width: auto;
+    min-width: 30%;
+    position: relative;
+  }
+
+  .card.card.highlight-card span {
+    margin-left: 60px;
+  }
+
+  svg#rocket {
+    width: 80px;
+    position: absolute;
+    left: -10px;
+    top: -24px;
+  }
+
+  svg#rocket-smoke {
+    height: calc(100vh - 95px);
+    position: absolute;
+    top: 10px;
+    right: 180px;
+    z-index: -10;
+  }
+
+  a,
+  a:visited,
+  a:hover {
+    color: #1976d2;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: #125699;
+  }
+
+  .terminal {
+    position: relative;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 6px;
+    padding-top: 45px;
+    margin-top: 8px;
+    overflow: hidden;
+    background-color: rgb(15, 15, 16);
+  }
+
+  .terminal::before {
+    content: &quot;\2022 \2022 \2022&quot;;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: rgb(58, 58, 58);
+    color: #c2c3c4;
+    width: 100%;
+    font-size: 2rem;
+    line-height: 0;
+    padding: 14px 0;
+    text-indent: 4px;
+  }
+
+  .terminal pre {
+    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+    color: white;
+    padding: 0 1rem 1rem;
+    margin: 0;
+  }
+
+  .circle-link {
+    height: 40px;
+    width: 40px;
+    border-radius: 40px;
+    margin: 8px;
+    background-color: white;
+    border: 1px solid #eeeeee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: 1s ease-out;
+  }
+
+  .circle-link:hover {
+    transform: translateY(-0.25rem);
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  footer {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    line-height: 20px;
+  }
+
+  footer a {
+    display: flex;
+    align-items: center;
+  }
+
+  .github-star-badge {
+    color: #24292e;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    padding: 3px 10px;
+    border: 1px solid rgba(27,31,35,.2);
+    border-radius: 3px;
+    background-image: linear-gradient(-180deg,#fafbfc,#eff3f6 90%);
+    margin-left: 4px;
+    font-weight: 600;
+  }
+
+  .github-star-badge:hover {
+    background-image: linear-gradient(-180deg,#f0f3f6,#e6ebf1 90%);
+    border-color: rgba(27,31,35,.35);
+    background-position: -.5em;
+  }
+
+  .github-star-badge .material-icons {
+    height: 16px;
+    width: 16px;
+    margin-right: 4px;
+  }
+
+  #yookiButton {
+    background-image: url(&#x27;https://gachax.com/anime/wp-content/uploads/sites/29/2023/06/cute-anime-girl-pfp-profile-pictures-chibi.png&#x27;);
+    background-size: cover;   /* To make sure the image covers the entire button */
+    background-position: center; /* To center the background image */
+}
+
+
+  svg#clouds {
+    position: fixed;
+    bottom: -160px;
+    left: -230px;
+    z-index: -10;
+    width: 1920px;
+  }
+
+  /* Responsive Styles */
+  @media screen and (max-width: 767px) {
+    .card-container &gt; *:not(.circle-link) ,
+    .terminal {
+      width: 100%;
+    }
+
+    .card:not(.highlight-card) {
+      height: 16px;
+      margin: 8px 0;
+    }
+
+    .card.highlight-card span {
+      margin-left: 72px;
+    }
+
+    svg#rocket-smoke {
+      right: 120px;
+      transform: rotate(-5deg);
+    }
+  }
+
+  @media screen and (max-width: 575px) {
+    svg#rocket-smoke {
+      display: none;
+      visibility: hidden;
+    }
+  }
+
+&lt;/style&gt;
+
+&lt;!-- Toolbar --&gt;
+&lt;body&gt;
+  &lt;app-nav-menu&gt;&lt;/app-nav-menu&gt;
+&lt;!-- Magnifier lens --&gt;
+&lt;div id&#x3D;&quot;magnifierLens&quot; *ngIf&#x3D;&quot;magnifierEnabled&quot; class&#x3D;&quot;magnifier-lens&quot;&gt;&lt;/div&gt;
+
+  &lt;main [class.container-lg]&#x3D;&quot;applyContainerClass&quot; class&#x3D;&quot;greyback&quot;&gt;
+    &lt;router-outlet&gt;&lt;/router-outlet&gt;
+  &lt;/main&gt;
+&lt;/body&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./app.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.center{
+    padding-top: 90px;
+    padding-bottom: 90px;
+    width: 100%;
+    text-align: center;
+}
+//   .magnifier-lens {
+//     width: 150px;  /* Diameter of the lens */
+//     height: 150px;
+//     border-radius: 50%;
+
+//     position: absolute;
+//     overflow: hidden;
+//     pointer-events: none; /* Allows clicking through the lens */
+//   }
+  .magnifier-lens {
+    z-index: 2;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 2px solid black;
+    position: absolute;
+    overflow: hidden;
+    pointer-events: none;
+    background-repeat: no-repeat;
+  }
+  
+  
+
+// #magnifierLens {
+//     border-radius: 50%;
+//     overflow: hidden;
+//     position: absolute;
+//     pointer-events: none;
+//   }
+  
+  
+  .magnified-content {
+    transform: scale(2); /* Adjust the scale for the level of magnification */
+    transform-origin: center;
+  }</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * --><!-- * * * * * * * * * * * The content below * * * * * * * * * * * --><!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * --><!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * --><!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * --><!-- * * * * * * * * * Delete the template below * * * * * * * * * * --><!-- * * * * * * * to get started with your project! * * * * * * * * --><!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * --><style>  :host {    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";    font-size: 14px;    color: #333;    box-sizing: border-box;    -webkit-font-smoothing: antialiased;    -moz-osx-font-smoothing: grayscale;  }  body{    background: radial-gradient(circle at 18.7% 37.8%, rgb(250, 250, 250) 0%, rgb(225, 234, 238) 90%);  }  h1,  h2,  h3,  h4,  h5,  h6 {    margin: 8px 0;  }  p {    margin: 0;  }  .spacer {    flex: 1;  }  .toolbar {    position: absolute;    top: 0;    left: 0;    right: 0;    height: 60px;    display: flex;    align-items: center;    background-color: #1976d2;    color: white;    font-weight: 600;  }  .toolbar img {    margin: 0 16px;  }  .toolbar #twitter-logo {    height: 40px;    margin: 0 8px;  }  .toolbar #youtube-logo {    height: 40px;    margin: 0 16px;  }  .toolbar #twitter-logo:hover,  .toolbar #youtube-logo:hover {    opacity: 0.8;  }  .content {    display: flex;    margin: 82px auto 32px;    padding: 0 16px;    max-width: 960px;    flex-direction: column;    align-items: center;  }  svg.material-icons {    height: 24px;    width: auto;  }  svg.material-icons:not(:last-child) {    margin-right: 8px;  }  .card svg.material-icons path {    fill: #888;  }  .card-container {    display: flex;    flex-wrap: wrap;    justify-content: center;    margin-top: 16px;  }  .card {    all: unset;    border-radius: 4px;    border: 1px solid #eee;    background-color: #fafafa;    height: 40px;    width: 200px;    margin: 0 8px 16px;    padding: 16px;    display: flex;    flex-direction: row;    justify-content: center;    align-items: center;    transition: all 0.2s ease-in-out;    line-height: 24px;  }  .card-container .card:not(:last-child) {    margin-right: 0;  }  .card.card-small {    height: 16px;    width: 168px;  }  .card-container .card:not(.highlight-card) {    cursor: pointer;  }  .card-container .card:not(.highlight-card):hover {    transform: translateY(-3px);    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);  }  .card-container .card:not(.highlight-card):hover .material-icons path {    fill: rgb(105, 103, 103);  }  .card.highlight-card {    background-color: #1976d2;    color: white;    font-weight: 600;    border: none;    width: auto;    min-width: 30%;    position: relative;  }  .card.card.highlight-card span {    margin-left: 60px;  }  svg#rocket {    width: 80px;    position: absolute;    left: -10px;    top: -24px;  }  svg#rocket-smoke {    height: calc(100vh - 95px);    position: absolute;    top: 10px;    right: 180px;    z-index: -10;  }  a,  a:visited,  a:hover {    color: #1976d2;    text-decoration: none;  }  a:hover {    color: #125699;  }  .terminal {    position: relative;    width: 80%;    max-width: 600px;    border-radius: 6px;    padding-top: 45px;    margin-top: 8px;    overflow: hidden;    background-color: rgb(15, 15, 16);  }  .terminal::before {    content: "\2022 \2022 \2022";    position: absolute;    top: 0;    left: 0;    height: 4px;    background: rgb(58, 58, 58);    color: #c2c3c4;    width: 100%;    font-size: 2rem;    line-height: 0;    padding: 14px 0;    text-indent: 4px;  }  .terminal pre {    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;    color: white;    padding: 0 1rem 1rem;    margin: 0;  }  .circle-link {    height: 40px;    width: 40px;    border-radius: 40px;    margin: 8px;    background-color: white;    border: 1px solid #eeeeee;    display: flex;    justify-content: center;    align-items: center;    cursor: pointer;    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);    transition: 1s ease-out;  }  .circle-link:hover {    transform: translateY(-0.25rem);    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);  }  footer {    margin-top: 8px;    display: flex;    align-items: center;    line-height: 20px;  }  footer a {    display: flex;    align-items: center;  }  .github-star-badge {    color: #24292e;    display: flex;    align-items: center;    font-size: 12px;    padding: 3px 10px;    border: 1px solid rgba(27,31,35,.2);    border-radius: 3px;    background-image: linear-gradient(-180deg,#fafbfc,#eff3f6 90%);    margin-left: 4px;    font-weight: 600;  }  .github-star-badge:hover {    background-image: linear-gradient(-180deg,#f0f3f6,#e6ebf1 90%);    border-color: rgba(27,31,35,.35);    background-position: -.5em;  }  .github-star-badge .material-icons {    height: 16px;    width: 16px;    margin-right: 4px;  }  #yookiButton {    background-image: url(\'https://gachax.com/anime/wp-content/uploads/sites/29/2023/06/cute-anime-girl-pfp-profile-pictures-chibi.png\');    background-size: cover;   /* To make sure the image covers the entire button */    background-position: center; /* To center the background image */}  svg#clouds {    position: fixed;    bottom: -160px;    left: -230px;    z-index: -10;    width: 1920px;  }  /* Responsive Styles */  @media screen and (max-width: 767px) {    .card-container > *:not(.circle-link) ,    .terminal {      width: 100%;    }    .card:not(.highlight-card) {      height: 16px;      margin: 8px 0;    }    .card.highlight-card span {      margin-left: 72px;    }    svg#rocket-smoke {      right: 120px;      transform: rotate(-5deg);    }  }  @media screen and (max-width: 575px) {    svg#rocket-smoke {      display: none;      visibility: hidden;    }  }</style><!-- Toolbar --><body>  <app-nav-menu></app-nav-menu><!-- Magnifier lens --><div id="magnifierLens" *ngIf="magnifierEnabled" class="magnifier-lens"></div>  <main [class.container-lg]="applyContainerClass" class="greyback">    <router-outlet></router-outlet>  </main></body></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthenticationButtonComponent', 'selector': 'app-authentication-button'},{'name': 'CartModalComponent', 'selector': 'app-cart-modal'},{'name': 'CashierViewComponent', 'selector': 'app-cashier-view'},{'name': 'CheckoutPopupComponent', 'selector': 'app-checkout-popup'},{'name': 'ConfirmationPopupComponent', 'selector': 'app-confirmation-popup'},{'name': 'ContactUsComponent', 'selector': 'app-contact-us'},{'name': 'CustomerViewComponent', 'selector': 'app-customer-view'},{'name': 'EditItemPopupComponent', 'selector': 'app-edit-item-popup'},{'name': 'EmployeeCreationsMenuComponent', 'selector': 'app-employee-creations-menu'},{'name': 'GetRoleComponent', 'selector': 'app-get-role'},{'name': 'LearnMoreComponent', 'selector': 'app-learn-more'},{'name': 'LoginButtonComponent', 'selector': 'app-login-button'},{'name': 'LogoutButtonComponent', 'selector': 'app-logout-button'},{'name': 'ManagerPopupComponent', 'selector': 'app-manager-popup'},{'name': 'ManagerViewComponent', 'selector': 'app-manager-view'},{'name': 'MenuItemComponent', 'selector': 'app-menu-item'},{'name': 'MenuViewComponent', 'selector': 'app-menu-view'},{'name': 'MilkTeaMenuComponent', 'selector': 'app-milk-tea-menu'},{'name': 'NavMenuComponent', 'selector': 'app-nav-menu'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'QuickAddPopupComponent', 'selector': 'app-quick-add-popup'},{'name': 'RestockReportPopupComponent', 'selector': 'app-restock-report-popup'},{'name': 'SeasonalItemPopupComponent', 'selector': 'app-seasonal-item-popup'},{'name': 'ShoppingCartComponent', 'selector': 'app-shopping-cart'},{'name': 'SignatureMilkTeaMenuComponent', 'selector': 'app-signature-milk-tea-menu'},{'name': 'SignupButtonComponent', 'selector': 'app-signup-button'},{'name': 'SlushMenuComponent', 'selector': 'app-slush-menu'},{'name': 'SmoothieMenuComponent', 'selector': 'app-smoothie-menu'},{'name': 'WeatherComponent', 'selector': 'app-weather'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'AppComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'AppComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

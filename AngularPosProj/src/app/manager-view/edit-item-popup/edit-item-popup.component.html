@@ -1,0 +1,75 @@
+<div class="backdrop" *ngIf="closePopup">
+  <div class="buttons">
+    <button class="save" (click)="saveEdit()"><strong>Save</strong></button>
+    <button class="cancel" (click)="closePopup()"><strong>Cancel</strong></button>
+  </div>
+  <div class="popup">
+    <div class="popup-content">
+        <div *ngIf="editType === 'menu'">
+          <div class="popupHeader">
+            <h2><strong>Edit Menu Item: {{ item?.menu_item_name }}</strong></h2>
+          </div>
+          <div class="menu">
+            <div class="menu-left">
+              <div class="menu-text">
+                <p>Current Name: {{ item?.menu_item_name }}</p>
+                <p><input type="text" [(ngModel)]="editedMenuItemName" placeholder="New Name"></p>
+      
+                <p>Current Price: ${{ item?.menu_item_price }}</p>
+                <p>$ <input type="text" [(ngModel)]="editedMenuItemPrice" placeholder="New Price"></p>
+              </div>
+      
+              <p>Current Type: {{ item?.menu_item_type }}</p>
+              <div class="menu-types">
+                <div *ngFor="let type of itemTypes">
+                  <input type="radio" id="type_{{type}}" [value]="type" [(ngModel)]="selectedType" name="menuItemType" hidden>
+                  <label for="type_{{type}}">{{ type }}</label>
+                </div>
+              </div>
+            </div>
+    
+            <div class="menu-right">
+              <p>Current Ingredients: {{ item?.ingredients }}</p>
+              <div class="menu-ingredients">
+                <div *ngFor="let ingredient of ingredientNames">
+                  <input type="checkbox" id="ingredient_{{ingredient}}" [(ngModel)]="selectedIngredients[ingredient]" hidden>
+                  <label for="ingredient_{{ingredient}}">{{ ingredient }}</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="not-menu">
+          <div *ngIf="editType === 'ingredients'">
+            <div class="popupHeader">
+              <h2><strong>Edit Ingredient: {{ item?.ingredient_name }}</strong></h2>
+            </div>
+            <div class="input-container">
+              <p>Current Name: {{ item?.ingredient_name }}</p>
+              <input type="text" [(ngModel)]="editedIngredientName" placeholder="New Name">
+            </div>
+            <div class="input-container">
+              <p>Current Quantity: {{ item?.ingredient_quantity }}</p>
+              <input type="text" [(ngModel)]="editedIngredientQuantity" placeholder="New Quantity">
+            </div>
+          </div>
+
+          <div *ngIf="editType === 'inventory'">
+            <div class="popupHeader">
+              <h2><strong>Edit Inventory Item: {{ item?.item_name }}</strong></h2>
+            </div>
+            <div class="input-container">
+              <p>Current Name: {{ item?.item_name }}</p>
+              <input type="text" [(ngModel)]="editedInventoryItemName" placeholder="New Name">
+            </div>
+            <div class="input-container">
+              <p>Current Quantity: {{ item?.item_quantity }}</p>
+              <input type="text" [(ngModel)]="editedInventoryItemQuantity" placeholder="New Quantity">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

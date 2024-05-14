@@ -1,0 +1,656 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>my-new-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">my-new-app documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Interfaces</li>
+  <li class="breadcrumb-item"
+  >
+  TableConfig</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/cashier-view/cashier-view.component.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Represents a configuration object for table columns in the cashier&#39;s view.</p>
+
+            </p>
+
+
+        <section data-compodoc="block-index">
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                        <a href="#columns" 
+>
+                                            columns
+                                        </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section data-compodoc="block-properties">
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="columns"></a>
+                                        <span class="name "><b>columns</b>
+                                            <a href="#columns">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>columns:     <code>TableColumn[]</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>TableColumn[]</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The columns of the table.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { MenuService } from &#x27;../services/menu.service&#x27;;
+import { response } from &#x27;express&#x27;;
+import { MenuItem } from &#x27;../menu-view/menu-item.model&#x27;;
+import { CartService } from &#x27;../cart-modal/cart-modal.service&#x27;;
+import { ActiveComponentService } from &#x27;../services/currentcomp.service&#x27;;
+import { Router } from &#x27;@angular/router&#x27;
+import { Subscription } from &#x27;rxjs&#x27;;
+import { HttpClient } from &#x27;@angular/common/http&#x27;;
+import { OrdersService } from &#x27;../services/orders.service&#x27;;
+// Additional interfaces can be documented here
+
+/**
+ * Represents a configuration object for table columns in the cashier&#x27;s view.
+ */
+interface TableConfig {
+  /**
+   * The columns of the table.
+   */
+  columns: TableColumn[];
+}
+
+/**
+ * Represents the structure of a single column in the table.
+ */
+interface TableColumn {
+  /**
+   * The key of the column.
+   */
+  key: string;
+  /**
+   * The header of the column.
+   */
+  header: string;
+}
+/**
+ * The &#x60;CashierViewComponent&#x60; serves as the interactive interface for the cashier role.
+ * It provides functionalities related to menu item selection, order customization, and order processing.
+ * This component works closely with various services to handle the business logic associated with the cashier&#x27;s operations.
+ *
+ * @Component Marks the class as an Angular component and provides metadata about the component.
+ */
+
+@Component({
+  selector: &#x27;app-cashier-view&#x27;,
+  templateUrl: &#x27;./cashier-view.component.html&#x27;,
+  styleUrls: [&#x27;./cashier-view.component.scss&#x27;]
+})
+export class CashierViewComponent implements OnInit {
+  //Document Properties here
+  /**
+   * The configuration for the table, including the columns to display.
+   */
+  menuItems: MenuItem[] &#x3D; [];
+  /**
+   * The configuration for the table, including the columns to display.
+   */
+  flavoredTeaItems: MenuItem[] &#x3D; [];
+  /**
+   * The configuration for the table, including the columns to display.
+   */
+  milkTeaItems: MenuItem[] &#x3D; [];
+  /**
+   * The configuration for the table, including the columns to display.
+   */
+  signatureMilkTeaItems: MenuItem[] &#x3D; [];
+  /**
+   * The configuration for the table, including the columns to display.
+   */
+  slushItems: MenuItem[] &#x3D; [];
+  /**
+   * The configuration for the table, including the columns to display.
+   */
+  coffeeItems: MenuItem[] &#x3D; [];
+  /**
+   * The configuration for the table, including the columns to display.
+   */
+  smoothiesItems: MenuItem[] &#x3D; [];
+  /**
+   * The configuration for the table, including the columns to display.
+   */
+  employeeCreationsItems: MenuItem[] &#x3D; [];
+  /**
+   * The configuration for the table, including the columns to display.
+   */
+  toppingItems: MenuItem[] &#x3D; [];
+  /**
+   * The configuration for the table, including the columns to display.
+   */
+  selectedToppings: Set&lt;number&gt; &#x3D; new Set();
+  /**
+   * The configuration for the table, including the columns to display.
+   */
+  private cartSub: Subscription | undefined;
+  /**
+   * The configuration for the table, including the columns to display.
+   */
+  showPopup: boolean &#x3D; false;
+  /**
+   * The configuration for the table, including the columns to display.
+   */
+  popupTitle: string &#x3D; &#x27;&#x27;;
+  /**
+   * The configuration for the table, including the columns to display.
+   */
+  popupContent: any;
+  /**
+   * The configuration for the table, including the columns to display.
+   */
+  cartTotal: string &#x3D; &quot;0&quot;;
+/**
+ * The configuration for the table, including the columns to display.
+ */
+  tableConfig?: TableConfig;
+
+  tableData: any[] &#x3D; [
+    { name: &#x27;Flavored Tea&#x27;, items: [] },
+    { name: &#x27;Milk Tea&#x27;, items: [] },
+    { name: &#x27;Signature Milk Tea&#x27;, items: [] },
+    { name: &#x27;Slush&#x27;, items: [] },
+    { name: &#x27;Coffee&#x27;, items: [] },
+    { name: &#x27;Smoothies&#x27;, items: [] },
+    { name: &#x27;Employee Creations&#x27;, items: [] }
+  ];
+    /**
+   * Constructor for the &#x60;CashierViewComponent&#x60;.
+   * @param activeComponentService Service to manage the current active component.
+   * @param cartService Service to manage the cart operations.
+   * @param menuService Service to fetch menu items.
+   * @param router Angular Router for navigation.
+   * @param http HttpClient to perform HTTP requests.
+   * @param orderService Service to manage order-related operations.
+   */
+  constructor(private activeComponentService: ActiveComponentService,
+    private cartService: CartService, private menuService: MenuService, private router: Router, private http: HttpClient, private orderService: OrdersService) {
+    this.cartSub &#x3D; this.cartService.cartItems$.subscribe(
+      items &#x3D;&gt; this.menuItems &#x3D; items
+    );
+  }
+    /**
+   * OnInit lifecycle hook to initialize component properties and fetch menu items.
+   */
+  ngOnInit() {
+    /**
+     * Sets the current active component to &#x60;CashierViewComponent&#x60;.
+     */
+    this.activeComponentService.setActiveComponent(&#x27;CashierViewComponent&#x27;);
+    /**
+     * Fetches menu items by type.
+     */
+    this.fetchMenuItemsByType(&#x27;flavored_tea&#x27;);
+    /**
+     * Fetches menu items by type.
+     */
+    this.fetchMenuItemsByType(&#x27;milk_tea&#x27;);
+    /**
+     * Fetches menu items by type.
+     */
+    this.fetchMenuItemsByType(&#x27;toppings&#x27;);
+    /**
+     * Fetches menu items by type.
+     */
+    this.fetchMenuItemsByType(&#x27;signature_milk_tea&#x27;);
+    /**
+     * Fetches menu items by type.
+     */
+    this.fetchMenuItemsByType(&#x27;slush&#x27;);
+    /**
+     * Fetches menu items by type.
+     */
+    this.fetchMenuItemsByType(&#x27;coffee&#x27;);
+    /**
+     * Fetches menu items by type.
+     */
+    this.fetchMenuItemsByType(&#x27;smoothies&#x27;);
+    /**
+     * Fetches menu items by type.
+     */
+    this.fetchMenuItemsByType(&#x27;employee_creations&#x27;);
+  }
+  /**
+   * Fetches menu items by a given type.
+   */
+  public menuVisibility: { [key: string]: boolean } &#x3D; {
+    &#x27;flavoredTea&#x27;: false,
+    &#x27;milkTea&#x27;: false,
+    &#x27;signatureMilkTea&#x27;: false,
+    &#x27;slush&#x27;: false,
+    &#x27;coffee&#x27;: false,
+    &#x27;smoothies&#x27;: false,
+    &#x27;employeeCreations&#x27;: false
+  };
+
+  // Function to toggle the visibility of a menu section
+  toggleMenu(section: string) {
+    this.menuVisibility[section] &#x3D; !this.menuVisibility[section];
+  }
+    /**
+   * Fetches menu items by a given type.
+   * @param type The type of menu items to fetch, e.g., &#x27;flavored_tea&#x27;, &#x27;milk_tea&#x27;.
+   */
+  fetchMenuItemsByType(type: string) {
+
+    if (type &#x3D;&#x3D;&#x3D; &#x27;flavored_tea&#x27;) {
+      this.menuService.getMenuByType(type).subscribe(data &#x3D;&gt; {
+        this.flavoredTeaItems &#x3D; [...this.flavoredTeaItems, ...data];
+      });
+    } else if (type &#x3D;&#x3D;&#x3D; &#x27;milk_tea&#x27;) {
+      this.menuService.getMenuByType(type).subscribe(data &#x3D;&gt; {
+        this.milkTeaItems &#x3D; [...this.milkTeaItems, ...data];
+      });
+    } else if (type &#x3D;&#x3D;&#x3D; &#x27;signature_milk_tea&#x27;) {
+      this.menuService.getMenuByType(type).subscribe(data &#x3D;&gt; {
+        this.signatureMilkTeaItems &#x3D; [...this.signatureMilkTeaItems, ...data];
+      });
+    } else if (type &#x3D;&#x3D;&#x3D; &#x27;slush&#x27;) {
+      this.menuService.getMenuByType(type).subscribe(data &#x3D;&gt; {
+        this.slushItems &#x3D; [...this.slushItems, ...data];
+      });
+    } else if (type &#x3D;&#x3D;&#x3D; &#x27;coffee&#x27;) {
+      this.menuService.getMenuByType(type).subscribe(data &#x3D;&gt; {
+        this.coffeeItems &#x3D; [...this.coffeeItems, ...data];
+      });
+    } else if (type &#x3D;&#x3D;&#x3D; &#x27;smoothies&#x27;) {
+      this.menuService.getMenuByType(type).subscribe(data &#x3D;&gt; {
+        this.smoothiesItems &#x3D; [...this.smoothiesItems, ...data];
+      });
+    } else if (type &#x3D;&#x3D;&#x3D; &#x27;employee_creations&#x27;) {
+      this.menuService.getMenuByType(type).subscribe(data &#x3D;&gt; {
+        this.employeeCreationsItems &#x3D; [...this.employeeCreationsItems, ...data];
+      });
+    } else if (type &#x3D;&#x3D;&#x3D; &#x27;toppings&#x27;) {
+      this.menuService.getMenuByType(type).subscribe(data &#x3D;&gt; {
+        this.toppingItems &#x3D; [...this.toppingItems, ...data];
+      });
+    }
+
+  }
+
+  /**
+   * Event handler for checkbox changes to toggle the selection of toppings.
+   * Delegates to the &#x60;onToppingChange&#x60; method to handle the state change.
+   *
+   * @param event The DOM event triggered when a topping checkbox changes.
+   * @param menuItem The menu item to which the topping belongs.
+   * @param topping The topping associated with the checkbox.
+   */
+   onToppingCheckboxChange(event: Event, menuItem: MenuItem, topping: MenuItem): void {
+    const checkbox &#x3D; event.target as HTMLInputElement;
+    this.onToppingChange(topping.menu_item_id, checkbox.checked, menuItem, topping);
+  }
+
+  /**
+   * Handles the change of topping selection, adding or removing toppings from the menu item.
+   *
+   * @param toppingId The unique identifier of the topping.
+   * @param isChecked The boolean state of the checkbox, true if checked.
+   * @param menuItem The menu item to which the topping is added or removed.
+   * @param topping The topping object that is being added or removed.
+   */
+  onToppingChange(toppingId: number, isChecked: boolean, menuItem: MenuItem, topping: MenuItem): void {
+    if (isChecked) {
+      this.toppingAdd(menuItem, topping);
+      this.selectedToppings.add(toppingId);
+    } else {
+      this.toppingRemove(menuItem, topping);
+      this.selectedToppings.delete(toppingId);
+    }
+  }
+
+  /**
+   * Adds a topping to a menu item and updates the price accordingly.
+   *
+   * @param item The menu item to which the topping is being added.
+   * @param topping The topping that is being added to the menu item.
+   */
+  toppingAdd(item: MenuItem, topping: MenuItem): void {
+    if (!item.added_toppings) {
+      item.added_toppings &#x3D; [];
+    }
+    item.added_toppings.push(topping.menu_item_name);
+    const toppingPrice &#x3D; parseFloat(topping.menu_item_price);
+    item.menu_item_price &#x3D; (parseFloat(item.menu_item_price) + toppingPrice).toFixed(2);
+  }
+
+  /**
+   * Removes the last added topping from a menu item and updates the price accordingly.
+   *
+   * @param item The menu item from which the topping is being removed.
+   * @param topping The topping that is being removed from the menu item.
+   */
+  toppingRemove(item: MenuItem, topping: MenuItem): void {
+    if (!item.added_toppings) {
+      item.added_toppings &#x3D; [];
+    }
+    item.added_toppings.pop();
+    const toppingPrice &#x3D; parseFloat(topping.menu_item_price);
+    item.menu_item_price &#x3D; (parseFloat(item.menu_item_price) - toppingPrice).toFixed(2);
+  }
+
+  /**
+   * Adds an item to the cart through the CartService.
+   *
+   * @param item The menu item being added to the cart.
+   */
+  onAdd(item: MenuItem): void {
+    this.cartService.addItem(item);
+  }
+
+  /**
+   * Prepares the component state for checkout, displaying a popup if necessary.
+   */
+  onContinue(): void {
+    this.showPopup &#x3D; true;
+    this.popupTitle &#x3D; &#x27;Checkout&#x27;;
+    this.popupContent &#x3D; this.menuItems;
+    this.cartTotal &#x3D; this.calculateTotal().toString();
+    if (this.menuItems.length &gt; 0) {
+      this.onCheckout();
+    }
+  }
+
+  /**
+   * Finalizes the checkout process, updating the order history and clearing the current cart.
+   */
+  onCheckout(): void {
+    const employeeId &#x3D; 1; // This should be dynamically determined or passed in.
+    const customerId &#x3D; 1; // This should be dynamically determined or passed in.
+    this.orderService.updateOrderHistory(this.menuItems, this.calculateTotal(), employeeId, customerId)
+      .subscribe(response &#x3D;&gt; {
+        console.log(&#x27;Order history updated successfully:&#x27;, response);
+      }, error &#x3D;&gt; {
+        console.error(&#x27;Error updating order history:&#x27;, error);
+      });
+    this.cartService.clearCart();
+    this.menuItems &#x3D; [];
+  }
+
+  /**
+   * Cancels the current order, clearing the cart and resetting related component state.
+   */
+  onCancel(): void {
+    this.cartService.clearCart();
+    this.menuItems &#x3D; [];
+  }
+
+  /**
+   * Unsubscribes from any subscriptions to prevent memory leaks when the component is destroyed.
+   */
+  ngOnDestroy(): void {
+    if (this.cartSub) {
+      this.cartSub.unsubscribe();
+    }
+  }
+
+  /**
+   * Calculates the total price of all items in the cart.
+   *
+   * @returns The total price of all items as a number.
+   */
+  calculateTotal(): number {
+    if (this.menuItems) {
+      return this.menuItems.reduce((total, item) &#x3D;&gt; total + parseFloat(item.menu_item_price), 0);
+    } else {
+      return 0;
+    }
+  }
+
+
+}</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'TableConfig.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,1388 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>my-new-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">my-new-app documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  CustomerViewComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/customer-view/customer-view.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p><code>CustomerViewComponent</code> is responsible for displaying weather-related information and managing the magnifier feature for customers.
+It includes functionality to display different weather conditions and interact with the magnifier service.</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-customer-view</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./customer-view.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./customer-view.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#cloudyImageUrl" >cloudyImageUrl</a>
+                            </li>
+                            <li>
+                                <a href="#magnifierEnabled" >magnifierEnabled</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#magnifierSub" >magnifierSub</a>
+                            </li>
+                            <li>
+                                <a href="#rainyImageUrl" >rainyImageUrl</a>
+                            </li>
+                            <li>
+                                <a href="#sunnyImageUrl" >sunnyImageUrl</a>
+                            </li>
+                            <li>
+                                <a href="#weatherData" >weatherData</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#convertToFahrenheit" >convertToFahrenheit</a>
+                            </li>
+                            <li>
+                                <a href="#getWeatherIcon" >getWeatherIcon</a>
+                            </li>
+                            <li>
+                                <a href="#getWeatherImage" >getWeatherImage</a>
+                            </li>
+                            <li>
+                                <a href="#handleWeatherLoaded" >handleWeatherLoaded</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(magnifierService: <a href="../injectables/MagnifierService.html" target="_self">MagnifierService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/customer-view/customer-view.component.ts:40</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor for <code>CustomerViewComponent</code>.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>magnifierService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/MagnifierService.html" target="_self" >MagnifierService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>The service to control the magnifier feature.</p>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="convertToFahrenheit"></a>
+                    <span class="name">
+                        <span ><b>convertToFahrenheit</b></span>
+                        <a href="#convertToFahrenheit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>convertToFahrenheit(kelvinTemp: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="92"
+                                    class="link-to-prism">src/app/customer-view/customer-view.component.ts:92</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Converts a temperature from Kelvin to Fahrenheit.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>kelvinTemp</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>The temperature in Kelvin.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>The temperature converted to Fahrenheit.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getWeatherIcon"></a>
+                    <span class="name">
+                        <span ><b>getWeatherIcon</b></span>
+                        <a href="#getWeatherIcon"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getWeatherIcon(iconCode: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="102"
+                                    class="link-to-prism">src/app/customer-view/customer-view.component.ts:102</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Gets the full URL for a weather icon based on its code.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>iconCode</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>The icon code from the weather data.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>The full URL to the weather icon.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getWeatherImage"></a>
+                    <span class="name">
+                        <span ><b>getWeatherImage</b></span>
+                        <a href="#getWeatherImage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getWeatherImage(humidity: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="67"
+                                    class="link-to-prism">src/app/customer-view/customer-view.component.ts:67</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Determines the appropriate weather image URL based on humidity.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>humidity</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>The humidity percentage to determine the weather image.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>The URL of the corresponding weather image.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleWeatherLoaded"></a>
+                    <span class="name">
+                        <span ><b>handleWeatherLoaded</b></span>
+                        <a href="#handleWeatherLoaded"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleWeatherLoaded(data: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="82"
+                                    class="link-to-prism">src/app/customer-view/customer-view.component.ts:82</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Handles the loaded weather data and assigns it to the weatherData property.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>data</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>The weather data object received.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="52"
+                                    class="link-to-prism">src/app/customer-view/customer-view.component.ts:52</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>OnInit lifecycle hook to subscribe to the magnifier service state.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cloudyImageUrl"></a>
+                    <span class="name">
+                        <span ><b>cloudyImageUrl</b></span>
+                        <a href="#cloudyImageUrl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;https://i.ibb.co/0FchgTR/360-F-267839295-j-Vbzp-Vskp-Rpn-Paq3x-LFjj-X9g-Yj-NRocx-N.jpg&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/customer-view/customer-view.component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The URL to the image to be displayed.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="magnifierEnabled"></a>
+                    <span class="name">
+                        <span ><b>magnifierEnabled</b></span>
+                        <a href="#magnifierEnabled"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/customer-view/customer-view.component.ts:24</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The current weather condition.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="magnifierSub"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>magnifierSub</b></span>
+                        <a href="#magnifierSub"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription | undefined</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/customer-view/customer-view.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The subscription to the magnifier service.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="rainyImageUrl"></a>
+                    <span class="name">
+                        <span ><b>rainyImageUrl</b></span>
+                        <a href="#rainyImageUrl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;https://i.ibb.co/DCQH1cN/download.jpg&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/customer-view/customer-view.component.ts:32</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p> The URL to the image to be displayed.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sunnyImageUrl"></a>
+                    <span class="name">
+                        <span ><b>sunnyImageUrl</b></span>
+                        <a href="#sunnyImageUrl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;https://i.ibb.co/c8QSfJZ/360-F-114186982-28d-EWbci-TYahk-AI0zne-K0-OEvd-HDAAaw2.jpg&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/customer-view/customer-view.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The URL to the image to be displayed.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="weatherData"></a>
+                    <span class="name">
+                        <span ><b>weatherData</b></span>
+                        <a href="#weatherData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/customer-view/customer-view.component.ts:20</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The weather data to be displayed.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { Subscription } from &#x27;rxjs&#x27;;
+import { MagnifierService } from &#x27;../services/Magnifier.service&#x27;;
+
+/**
+ * &#x60;CustomerViewComponent&#x60; is responsible for displaying weather-related information and managing the magnifier feature for customers.
+ * It includes functionality to display different weather conditions and interact with the magnifier service.
+ *
+ * @Component Decorator that marks the class as an Angular component, specifying the selector, template, and styles.
+ */
+@Component({
+  selector: &#x27;app-customer-view&#x27;,
+  templateUrl: &#x27;./customer-view.component.html&#x27;,
+  styleUrls: [&#x27;./customer-view.component.scss&#x27;]
+})
+export class CustomerViewComponent implements OnInit {
+  /**
+   * The weather data to be displayed.
+   */
+  weatherData: any;
+  /**
+   * The current weather condition.
+   */
+  magnifierEnabled &#x3D; false;
+  /**
+   * The subscription to the magnifier service.
+   */
+  private magnifierSub: Subscription | undefined;
+  /**
+   *  The URL to the image to be displayed.
+   */
+  rainyImageUrl: string &#x3D; &#x27;https://i.ibb.co/DCQH1cN/download.jpg&#x27;; // URL to the rainy image
+  /**
+   * The URL to the image to be displayed.
+   */
+  cloudyImageUrl: string &#x3D; &#x27;https://i.ibb.co/0FchgTR/360-F-267839295-j-Vbzp-Vskp-Rpn-Paq3x-LFjj-X9g-Yj-NRocx-N.jpg&#x27;; // URL to the cloudy image
+  /**
+   * The URL to the image to be displayed.
+   */
+  sunnyImageUrl: string &#x3D; &#x27;https://i.ibb.co/c8QSfJZ/360-F-114186982-28d-EWbci-TYahk-AI0zne-K0-OEvd-HDAAaw2.jpg&#x27;; // URL to the sunny image
+
+  /**
+   * Constructor for &#x60;CustomerViewComponent&#x60;.
+   * 
+   * @param magnifierService The service to control the magnifier feature.
+   */
+  constructor(private magnifierService: MagnifierService) {}
+
+  /**
+   * OnInit lifecycle hook to subscribe to the magnifier service state.
+   */
+  ngOnInit(): void {
+    this.magnifierSub &#x3D; this.magnifierService.getMagnifierState().subscribe(
+      (state: boolean) &#x3D;&gt; {
+        this.magnifierEnabled &#x3D; state.valueOf();
+        console.log(this.magnifierEnabled); // Log the state inside the subscription
+      }
+    );
+  }
+
+  /**
+   * Determines the appropriate weather image URL based on humidity.
+   *
+   * @param humidity The humidity percentage to determine the weather image.
+   * @returns The URL of the corresponding weather image.
+   */
+  getWeatherImage(humidity: number): string {
+    if (humidity &gt;&#x3D; 60) {
+      return this.rainyImageUrl;
+    } else if (humidity &gt;&#x3D; 30) {
+      return this.cloudyImageUrl;
+    } else {
+      return this.sunnyImageUrl;
+    }
+  }
+
+  /**
+   * Handles the loaded weather data and assigns it to the weatherData property.
+   *
+   * @param data The weather data object received.
+   */
+  handleWeatherLoaded(data: any): void {
+    this.weatherData &#x3D; data;  // Assign the data to the property
+  }
+
+  /**
+   * Converts a temperature from Kelvin to Fahrenheit.
+   *
+   * @param kelvinTemp The temperature in Kelvin.
+   * @returns The temperature converted to Fahrenheit.
+   */
+  convertToFahrenheit(kelvinTemp: number): string {
+    return ((kelvinTemp - 273.15) * 9 / 5 + 32).toFixed(2);
+  }
+  
+  /**
+   * Gets the full URL for a weather icon based on its code.
+   *
+   * @param iconCode The icon code from the weather data.
+   * @returns The full URL to the weather icon.
+   */
+  getWeatherIcon(iconCode: string): string {
+    return &#x60;http://openweathermap.org/img/wn/${iconCode}.png&#x60;; // URL for weather icons
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;center&quot;&gt;
+  
+    &lt;div class&#x3D;&quot;middle&quot;&gt;
+      &lt;div if&#x3D;&quot;template&quot; *ngIf&#x3D;&quot;magnifierEnabled&quot; class&#x3D;&quot;google-map-placeholder&quot;&gt;
+        &lt;img src&#x3D;&quot;https://i.ibb.co/zFqtxC0/googlemapsimage.png&quot;/&gt;
+      &lt;/div&gt;
+    &lt;iframe *ngIf&#x3D;&quot;!magnifierEnabled&quot; 
+    id&#x3D;&quot;google-map-iframe&quot;
+            src&#x3D;&quot;https://www.google.com/maps/embed?pb&#x3D;!1m18!1m12!1m3!1d3433.4701616185407!2d-96.34631932431823!3d30.620704591038137!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86468395ffd5c00b%3A0x220eae6c7a342bb9!2sBonAppeTea!5e0!3m2!1sen!2sus!4v1701626355278!5m2!1sen!2sus&quot;
+            width&#x3D;&quot;100%&quot; 
+            height&#x3D;&quot;250px&quot; 
+            style&#x3D;&quot;border:0;&quot; 
+            allowfullscreen&#x3D;&quot;&quot; 
+            loading&#x3D;&quot;lazy&quot; 
+            referrerpolicy&#x3D;&quot;no-referrer-when-downgrade&quot;&gt;
+    &lt;/iframe&gt;
+      &lt;div class&#x3D;&quot;intoholder&quot;&gt;
+        &lt;img class&#x3D;&quot;inroimage&quot;src&#x3D;&quot;https://static.wixstatic.com/media/3100fb_d4d546250e3d43a0b63972cf61d5a34b~mv2.png/v1/crop/x_110,y_8,w_901,h_743/fill/w_901,h_738,al_c,q_90,enc_auto/Bon%20App%2004-04-20%20(1%20of%2057).png&quot;/&gt;
+        &lt;div class&#x3D;&quot;texthold&quot;&gt;
+          &lt;h1&gt;​Bubble Tea,
+            Milk Teas,
+            and Banh Mi&lt;/h1&gt;
+            &lt;p class&#x3D;&quot;textleft&quot;&gt;Checkout our amazing recipes and learn about the people behind the drinks&lt;/p&gt;
+            &lt;div class&#x3D;&quot;buttonhold&quot;&gt;
+              &lt;button class&#x3D;&quot;btn btn-light&quot; routerLink&#x3D;&quot;more-info&quot;&gt;Learn More&lt;/button&gt;
+              &lt;button class&#x3D;&quot;btn btn-light&quot; routerLink&#x3D;&quot;Menu&quot;&gt;Order Now&lt;/button&gt;
+              &lt;button class&#x3D;&quot;btn btn-light&quot; routerLink&#x3D;&quot;contact&quot;&gt;Contact Us&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;fleximagehold&quot;&gt;
+      &lt;div class&#x3D;&quot;imagecard&quot;&gt;
+        
+        &lt;div class&#x3D;&quot;innertext&quot;&gt;
+          &lt;h3&gt;Milk Tea&#x27;s&lt;/h3&gt;
+          &lt;p&gt;Indulge in the creamy bliss of our milk teas, where traditional flavors meet modern sophistication. Each sip promises a luxurious blend of rich, aromatic tea leaves and velvety milk, creating a perfect symphony for your taste buds.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;img class&#x3D;&#x27;menuimage&#x27; src&#x3D;&quot;https://i.ibb.co/YWpSR9v/drinks.png&quot; alt&#x3D;&quot;drinks&quot; border&#x3D;&quot;0&quot;/&gt;
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;imagecard&quot;&gt;
+        &lt;img class&#x3D;&#x27;menuimage&#x27; src&#x3D;&quot;https://i.ibb.co/nw2FPcx/oreo.png&quot; alt&#x3D;&quot;oreo&quot; border&#x3D;&quot;0&quot;/&gt;
+        &lt;div class&#x3D;&quot;innertext&quot;&gt;
+          &lt;h3&gt;Smoothies&lt;/h3&gt;
+          &lt;p&gt;Energize your day with our vibrant smoothie selection, bursting with fresh, hand-picked fruits and natural ingredients. These refreshing delights offer a healthful escape, blending sweet, tangy, and exotic flavors into a deliciously invigorating experience&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;imagecard&quot;&gt;
+        &lt;div class&#x3D;&quot;innertext&quot;&gt;
+          &lt;h3&gt;Boba Tea&#x27;s&lt;/h3&gt;
+          &lt;p&gt;Experience the playful joy of our boba teas, a delightful fusion of classic tea infused with chewy, sweet tapioca pearls. A true adventure in every glass, our boba teas are an irresistible treat that tantalize the senses and bring a smile with every sip.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;img class&#x3D;&#x27;menuimage&#x27; src&#x3D;&quot;https://i.ibb.co/YhycTfg/smoothie.png&quot; alt&#x3D;&quot;smoothie&quot; border&#x3D;&quot;0&quot;/&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;footer&quot;&gt;
+      &lt;app-weather (weatherLoaded)&#x3D;&quot;handleWeatherLoaded($event)&quot;&gt;&lt;/app-weather&gt;
+      &lt;div class&#x3D;&quot;weather-container&quot;&gt;
+        &lt;div *ngIf&#x3D;&quot;weatherData&quot; class&#x3D;&quot;background-image&quot;&gt;
+          &lt;img class&#x3D;&quot;Bi&quot; src &#x3D;
+          {{getWeatherImage(weatherData.main.humidity)}}/&gt;
+        &lt;/div&gt;
+        
+        &lt;div *ngIf&#x3D;&quot;weatherData&quot; class&#x3D;&quot;weather-data-container&quot;&gt;
+          &lt;div class&#x3D;&quot;weather-data&quot;&gt;
+            &lt;p class&#x3D;&quot;weather-info-box location&quot;&gt;Location: College Station&lt;/p&gt;
+            &lt;div class&#x3D;&quot;weather-info-box temperature&quot;&gt;
+              &lt;span&gt;Temperature: {{ convertToFahrenheit(weatherData.main.temp) }}°F&lt;/span&gt;
+              &lt;img src&#x3D;&quot;{{ getWeatherIcon(weatherData.weather[0].icon) }}&quot; alt&#x3D;&quot;Weather Icon&quot;&gt;
+            &lt;/div&gt;
+            &lt;p class&#x3D;&quot;weather-info-box humidity&quot;&gt;Humidity: {{ weatherData.main.humidity }}%&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./customer-view.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.center{
+    padding-top: 90px;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 60px;
+}
+
+.weather-container {
+    display: flex;
+    flex-direction: left;
+    height: 200px;
+}
+
+.weather-data-container {
+    z-index: 1;
+    display: flex;
+    /* additional styling */
+  }
+
+  .background-image{
+    z-index: 0;
+    position: absolute;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .Bi{
+    width: 100%;
+  }
+
+// .weather-data-container {
+//     width: fit-content;
+//     padding: 4.5rem 4.5rem;
+//     background-size: cover;
+//     background-position: center center;
+//     background-repeat: no-repeat;
+//     flex-direction: column;
+//     justify-content: center;
+//     margin-left: 5rem;
+//     margin-top: 2rem;
+// }
+
+.weather-info-box {
+    /* additional styling */
+  }
+//https://i.ibb.co/DCQH1cN/download.jpg rainy
+//https://i.ibb.co/0FchgTR/360-F-267839295-j-Vbzp-Vskp-Rpn-Paq3x-LFjj-X9g-Yj-NRocx-N.jpg cloudy
+//https://i.ibb.co/c8QSfJZ/360-F-114186982-28d-EWbci-TYahk-AI0zne-K0-OEvd-HDAAaw2.jpg sunny
+.weather-data {
+    // background-color: #242323;
+    // padding-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+    margin:0px;
+}
+
+.location {
+position: relative;
+left: -18px;
+margin-bottom: 0px;
+margin-top: 20px;
+}
+  
+  .temperature {
+    display: flex;
+    align-items: center;
+    /* additional styling */
+  }
+  
+  .temperature img {
+    width: 50px;
+    margin-right: 10px;
+  }
+  
+  .humidity {
+    position: relative;
+    left: -50px;
+  }
+
+
+
+
+.google-map-placeholder{
+    width:100%;
+    height: 250px;
+    margin-bottom: 10px;
+}
+
+.weather-info-box {
+    margin-left: 1rem;
+}
+.menuimage{
+    width: 100%;
+    height: auto;
+}
+.topholder{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    height: fit-content;
+    width: 100%;
+    height: 250px;
+}
+
+.intoholder{
+    display: flex;
+    width:100%;
+    height: 450px;
+    background-color: #242323;
+    padding: 20px;
+}
+
+.inroimage{
+    width: 50%;
+    margin-left: 6%;
+}
+
+.footer{
+    position: relative;
+}
+
+.Maintext{
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.fleximagehold{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.innertext{
+    padding: 5%;
+    text-align: justify;
+}
+
+.innertext &gt;h3{
+    text-decoration: underline;
+    text-align: center;
+}
+
+.imagecard{
+    padding: 0px 10px;
+}
+
+.texthold{
+    padding: 20px;
+    color: white;
+    text-align: center;
+    font-size: large;
+    width: 40%;
+}
+
+.textleft{
+    width: 70%;
+    margin-left: 15%;
+    text-align: center;
+}
+
+.buttonhold{
+    width: 60%;
+    margin-left: 20%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.btn-light {
+    margin-right: 20px;
+}
+
+
+
+.aboutme{
+    display: flex;
+    width:100%;
+    margin-left: 7.5px;
+    padding: 0px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.aboutmetext{
+    padding: 20px;
+    color: black;
+    text-align: justify;
+    font-size: large;
+    width: 60%;
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="center">      <div class="middle">      <div if="template" *ngIf="magnifierEnabled" class="google-map-placeholder">        <img src="https://i.ibb.co/zFqtxC0/googlemapsimage.png"/>      </div>    <iframe *ngIf="!magnifierEnabled"     id="google-map-iframe"            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3433.4701616185407!2d-96.34631932431823!3d30.620704591038137!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86468395ffd5c00b%3A0x220eae6c7a342bb9!2sBonAppeTea!5e0!3m2!1sen!2sus!4v1701626355278!5m2!1sen!2sus"            width="100%"             height="250px"             style="border:0;"             allowfullscreen=""             loading="lazy"             referrerpolicy="no-referrer-when-downgrade">    </iframe>      <div class="intoholder">        <img class="inroimage"src="https://static.wixstatic.com/media/3100fb_d4d546250e3d43a0b63972cf61d5a34b~mv2.png/v1/crop/x_110,y_8,w_901,h_743/fill/w_901,h_738,al_c,q_90,enc_auto/Bon%20App%2004-04-20%20(1%20of%2057).png"/>        <div class="texthold">          <h1>​Bubble Tea,            Milk Teas,            and Banh Mi</h1>            <p class="textleft">Checkout our amazing recipes and learn about the people behind the drinks</p>            <div class="buttonhold">              <button class="btn btn-light" routerLink="more-info">Learn More</button>              <button class="btn btn-light" routerLink="Menu">Order Now</button>              <button class="btn btn-light" routerLink="contact">Contact Us</button>            </div>        </div>      </div>    </div>    <div class="fleximagehold">      <div class="imagecard">                <div class="innertext">          <h3>Milk Tea\'s</h3>          <p>Indulge in the creamy bliss of our milk teas, where traditional flavors meet modern sophistication. Each sip promises a luxurious blend of rich, aromatic tea leaves and velvety milk, creating a perfect symphony for your taste buds.</p>        </div>        <img class=\'menuimage\' src="https://i.ibb.co/YWpSR9v/drinks.png" alt="drinks" border="0"/>      </div>      <div class="imagecard">        <img class=\'menuimage\' src="https://i.ibb.co/nw2FPcx/oreo.png" alt="oreo" border="0"/>        <div class="innertext">          <h3>Smoothies</h3>          <p>Energize your day with our vibrant smoothie selection, bursting with fresh, hand-picked fruits and natural ingredients. These refreshing delights offer a healthful escape, blending sweet, tangy, and exotic flavors into a deliciously invigorating experience</p>        </div>      </div>      <div class="imagecard">        <div class="innertext">          <h3>Boba Tea\'s</h3>          <p>Experience the playful joy of our boba teas, a delightful fusion of classic tea infused with chewy, sweet tapioca pearls. A true adventure in every glass, our boba teas are an irresistible treat that tantalize the senses and bring a smile with every sip.</p>        </div>        <img class=\'menuimage\' src="https://i.ibb.co/YhycTfg/smoothie.png" alt="smoothie" border="0"/>      </div>    </div>    <div class="footer">      <app-weather (weatherLoaded)="handleWeatherLoaded($event)"></app-weather>      <div class="weather-container">        <div *ngIf="weatherData" class="background-image">          <img class="Bi" src =          {{getWeatherImage(weatherData.main.humidity)}}/>        </div>                <div *ngIf="weatherData" class="weather-data-container">          <div class="weather-data">            <p class="weather-info-box location">Location: College Station</p>            <div class="weather-info-box temperature">              <span>Temperature: {{ convertToFahrenheit(weatherData.main.temp) }}°F</span>              <img src="{{ getWeatherIcon(weatherData.weather[0].icon) }}" alt="Weather Icon">            </div>            <p class="weather-info-box humidity">Humidity: {{ weatherData.main.humidity }}%</p>          </div>        </div>      </div>    </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthenticationButtonComponent', 'selector': 'app-authentication-button'},{'name': 'CartModalComponent', 'selector': 'app-cart-modal'},{'name': 'CashierViewComponent', 'selector': 'app-cashier-view'},{'name': 'CheckoutPopupComponent', 'selector': 'app-checkout-popup'},{'name': 'ConfirmationPopupComponent', 'selector': 'app-confirmation-popup'},{'name': 'ContactUsComponent', 'selector': 'app-contact-us'},{'name': 'CustomerViewComponent', 'selector': 'app-customer-view'},{'name': 'EditItemPopupComponent', 'selector': 'app-edit-item-popup'},{'name': 'EmployeeCreationsMenuComponent', 'selector': 'app-employee-creations-menu'},{'name': 'GetRoleComponent', 'selector': 'app-get-role'},{'name': 'LearnMoreComponent', 'selector': 'app-learn-more'},{'name': 'LoginButtonComponent', 'selector': 'app-login-button'},{'name': 'LogoutButtonComponent', 'selector': 'app-logout-button'},{'name': 'ManagerPopupComponent', 'selector': 'app-manager-popup'},{'name': 'ManagerViewComponent', 'selector': 'app-manager-view'},{'name': 'MenuItemComponent', 'selector': 'app-menu-item'},{'name': 'MenuViewComponent', 'selector': 'app-menu-view'},{'name': 'MilkTeaMenuComponent', 'selector': 'app-milk-tea-menu'},{'name': 'NavMenuComponent', 'selector': 'app-nav-menu'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'QuickAddPopupComponent', 'selector': 'app-quick-add-popup'},{'name': 'RestockReportPopupComponent', 'selector': 'app-restock-report-popup'},{'name': 'SeasonalItemPopupComponent', 'selector': 'app-seasonal-item-popup'},{'name': 'ShoppingCartComponent', 'selector': 'app-shopping-cart'},{'name': 'SignatureMilkTeaMenuComponent', 'selector': 'app-signature-milk-tea-menu'},{'name': 'SignupButtonComponent', 'selector': 'app-signup-button'},{'name': 'SlushMenuComponent', 'selector': 'app-slush-menu'},{'name': 'SmoothieMenuComponent', 'selector': 'app-smoothie-menu'},{'name': 'WeatherComponent', 'selector': 'app-weather'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'CustomerViewComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'CustomerViewComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

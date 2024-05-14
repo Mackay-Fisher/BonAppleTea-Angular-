@@ -1,0 +1,74 @@
+<div class="center">
+    <div class="middle">
+      <div class="header">
+      <div class="Weather-api">
+      <app-weather (weatherLoaded)="handleWeatherLoaded($event)"></app-weather>
+        <div *ngIf="weatherData" class="weather-data-container">
+            <h1>{{ convertToFahrenheit(weatherData.main.temp) }}°F</h1>
+            <img class ="widget-image" src="{{geticonImage(weatherData.weather[0].description)}}" alt="WACG Compliant"/>
+            <h2 class="location">College Station</h2>
+            <p>Humidity: {{ weatherData.main.humidity }}%</p>
+        </div>
+      </div>
+        <img *ngIf="magnifierEnabled" class="google-map-placeholder" src="https://i.ibb.co/Q6xTCsH/Screenshot-2023-12-06-at-12-54-07-AM.png" 
+        width="75%" 
+        height="350px" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade" 
+        alt="WACG Compliant"/>
+    <iframe *ngIf="!magnifierEnabled" 
+    id="google-map-iframe"
+    title="Example location map"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3433.4701616185407!2d-96.34631932431823!3d30.620704591038137!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86468395ffd5c00b%3A0x220eae6c7a342bb9!2sBonAppeTea!5e0!3m2!1sen!2sus!4v1701626355278!5m2!1sen!2sus"
+            width="75%" 
+            height="350px" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+</div>
+      <div class="intoholder">
+        <img alt="WACG Compliant" class="inroimage"src="https://static.wixstatic.com/media/3100fb_d4d546250e3d43a0b63972cf61d5a34b~mv2.png/v1/crop/x_110,y_8,w_901,h_743/fill/w_901,h_738,al_c,q_90,enc_auto/Bon%20App%2004-04-20%20(1%20of%2057).png"/>
+        <div class="texthold">
+          <h1>​Bubble Tea,
+            Milk Teas,
+            and Banh Mi</h1>
+            <p class="textleft">Checkout our amazing recipes and learn about the people behind the drinks</p>
+            <div class="buttonhold">
+              <button class="btn btn-light" routerLink="more-info">Learn More</button>
+              <button class="btn btn-light" routerLink="Menu">Order Now</button>
+              <button class="btn btn-light" routerLink="contact">Contact Us</button>
+            </div>
+        </div>
+      </div>
+ 
+    <div class="fleximagehold">
+      <div class="imagecard">
+        
+        <div class="innertext">
+          <p>Milk Tea's</p>
+          <p>Indulge in the creamy bliss of our milk teas, where traditional flavors meet modern sophistication. Each sip promises a luxurious blend of rich, aromatic tea leaves and velvety milk, creating a perfect symphony for your taste buds.</p>
+        </div>
+        <img alt="WACG Compliant" class='menuimage' src="https://i.ibb.co/YWpSR9v/drinks.png" alt="drinks" border="0"/>
+      </div>
+
+      <div class="imagecard">
+        <img alt="WACG Compliant"class='menuimage' src="https://i.ibb.co/nw2FPcx/oreo.png" alt="oreo" border="0"/>
+        <div class="innertext">
+          <p>Smoothies</p>
+          <p>Energize your day with our vibrant smoothie selection, bursting with fresh, hand-picked fruits and natural ingredients. These refreshing delights offer a healthful escape, blending sweet, tangy, and exotic flavors into a deliciously invigorating experience</p>
+        </div>
+      </div>
+      <div class="imagecard">
+        <div class="innertext">
+          <p>Boba Tea's</p>
+          <p>Experience the playful joy of our boba teas, a delightful fusion of classic tea infused with chewy, sweet tapioca pearls. A true adventure in every glass, our boba teas are an irresistible treat that tantalize the senses and bring a smile with every sip.</p>
+        </div>
+        <img class='menuimage' src="https://i.ibb.co/YhycTfg/smoothie.png" alt="smoothie" border="0"/>
+      </div>
+    </div>
+</div>
+

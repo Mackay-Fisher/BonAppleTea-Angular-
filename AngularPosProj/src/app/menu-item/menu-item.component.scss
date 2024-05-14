@@ -1,0 +1,102 @@
+.flexhold{
+    display: flex;
+    flex-direction: row;
+    background: linear-gradient(to right, white 50%, #fbf9f3 50%);
+    padding: 5%;
+    padding-top: 6%;
+}
+
+
+
+.menu-item-image{
+    display: flex;
+    padding: 5%;
+    justify-content: center;
+    width: 50%;
+    overflow: hidden;
+    height: 80vh;
+}
+
+.menu-item-info{
+    padding: 5%;
+    width: 50%;
+}
+
+.main{
+    width: 100%;
+}
+
+.product-name{
+    font-size: 2.6em;
+    margin-bottom: 0;
+}
+
+.toppings {
+    margin-top: 20px;
+}
+
+.toppings-list {
+    max-height: 200px; /* Adjust as needed */
+    overflow-y: auto; /* Enables scrolling for long lists */
+    margin-bottom: 15px; /* Spacing before the Add to Cart button */
+}
+
+.topping-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Spacing between each topping item */
+}
+
+.topping-item input[type="checkbox"] {
+    margin-right: 10px; /* Spacing between checkbox and label */
+}
+
+.add-to-cart-btn {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    background-color: #4CAF50; /* Example color */
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+    &:active {
+        background-color: rgb(92, 184, 92);
+    }
+}
+
+.backButton {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    background-color: #aaabaa; /* Example color */
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    border-radius: 8px;
+    height: 50px;
+    margin-top: 50px;
+    cursor: pointer;
+}
+
+  
+
+.TradNav{
+    width: 100vw;
+    background-color: aqua;
+    position: fixed;
+    left: 0;
+    margin-top: 55px;
+}

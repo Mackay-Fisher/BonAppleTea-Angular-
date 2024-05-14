@@ -1,0 +1,146 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1050;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // padding-top: 10vh;
+}
+  
+.popup {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1051;
+    max-height: 80vh;
+    overflow-y: auto; /* Makes content scrollable */
+    width: 80%;
+    position: relative;
+}
+
+.buttons {
+    display: flex;
+    justify-content: right;
+    gap: 5px;
+    padding-bottom: 5px;
+}
+
+.add {
+    border-color: rgb(100, 255, 100, 0.75);
+    background-color: white;
+}
+
+.add:hover {
+    background-color: rgb(100, 255, 100, 0.75);
+}
+
+.cancel {
+    border-color: rgb(255, 100, 100, 0.75);
+    background-color: white;
+}
+
+.cancel:hover {
+    background-color: rgb(255, 100, 100, 0.75);
+}
+
+input[type="radio"], input[type="checkbox"] {
+    display: none;
+}
+
+label {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 2px solid #d0d0d0;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="radio"]:checked + label, input[type="checkbox"]:checked + label {
+    background-color: lightgreen;
+    border: 2px solid black;
+}
+
+input[type="radio"]:hover + label, input[type="checkbox"]:hover + label {
+    background-color: lightgreen;
+    cursor: pointer;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+
+.menu-left, .menu-right {
+    flex: 1;
+}
+
+.menu-types, .menu-ingredients {
+    display: flex;
+    flex-wrap: wrap;
+}
+  
+.menu-types > div {
+    flex: 1 0 50%;
+    box-sizing: border-box;
+    text-align: center;
+    max-width: calc(50% - 10px);
+}
+
+.menu-ingredients > div {
+    flex: 1 0 33%;
+    box-sizing: border-box;
+    text-align: center;
+    max-width: calc(33% - 10px);
+}
+  
+.menu-types label, .menu-ingredients label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+.menu p {
+    text-align: left;
+}
+
+.menu-text input[type="text"] {
+    flex-grow: 1;
+    margin-left: 10px;
+    margin-right: 25px;
+    padding: 4px 8px; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.menu-text p {
+    display: flex;
+    align-items: center; 
+    margin: 5px 0;
+}
+
+.ing-header {
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 60px;
+}
+
+.ing-header input[type="text"] {
+    flex-grow: 1;
+    padding: 4px 8px; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}

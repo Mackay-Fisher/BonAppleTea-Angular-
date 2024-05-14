@@ -1,0 +1,111 @@
+<div class="menu-item-nav">
+  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 TradNav">
+    <div class="container">
+      <div class="navbar-collapse collapse d-sm-inline-flex justify-content-center">
+        <ul class="navbar-nav flex-grow">
+          <li class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+            <a class="nav-link text-dark" [routerLink]="['/Menu']">Flavored Tea & Coffee</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/Menu/Milk-Tea']">Milk-Tea</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/Menu/Signature-Milk-Tea']">Signature Milk Tea</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/Menu/Slush']">Slush</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/Menu/Smoothies']">Smoothies</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/Menu/Employee-Creations']">Employee Creations</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/ShoppingCart']">Cart</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+<div class="main">
+  <div *ngFor="let menuItem of menuItems">
+    <div class="menu-item">
+      <div class="flexhold">
+        <button class="backButton" (click)="goBack()">Back</button>
+        <div class="menu-item-image">
+          <img alt="WACG Compliant" class="innerimage" src="{{menuItem.image}}" alt="" referrerpolicy="no-referrer">
+        </div>
+              <div class="menu-item-info">
+                  <h1 class="product-name">{{menuItem.menu_item_name | replaceUnderscores | titlecase}}</h1>
+                  <p class="description">
+                      {{ menuItem.description }}
+                  </p>
+                  <div class="menu-item-ingredients">
+                      <h4>Ingredients:</h4>
+                      <ul>
+                        <li *ngFor="let ingredient of menuItem.ingredients">{{ ingredient | formatCamelCase}}</li>
+                      </ul>
+                  </div>
+                  <div class="toppings">
+                      <h4>Toppings:</h4>
+                      <div class="toppings-list">
+                          <div *ngFor="let topping of ToppingItems" class="topping-item">
+                              <input type="checkbox" 
+                                    [id]="topping.menu_item_id"
+                                    [checked]="isToppingSelected(topping.menu_item_name)"
+                                    (change)="onToppingCheckboxChange($event, topping.menu_item_id,menuItem)">
+                              <label [for]="topping.menu_item_id">
+                                  {{ topping.menu_item_name | replaceUnderscores | titlecase }}
+                                  - ${{ topping.menu_item_price }}
+                              </label>
+                          </div>
+                      </div>
+                      <h4>Ice Level</h4>
+                      <form [formGroup]="formIce">
+                        <div class="toppings-list" formGroupName="ice">
+                          <div *ngFor="let level of ice; let i = index" class="topping-item">
+                            <input type="radio"
+                                   [id]="'ice' + i"
+                                   [value]="level.value"
+                                   [checked]="isIceSelected(level.value)"
+                                   (change)="onIceCheckboxChange($event, level.value, menuItem)"
+                                   name="iceLevel"
+                                   formControlName="selectedLevel">
+                            <label [for]="'ice' + i">{{level.label}}</label>
+                          </div>
+                        </div>
+                      </form>
+                      
+                      <!-- Sugar Level -->
+                      <h4>Sugar Level</h4>
+                      <form [formGroup]="formSugar">
+                        <div class="toppings-list" formGroupName="sugar">
+                          <div *ngFor="let level of sugar; let i = index" class="topping-item">
+                            <input type="radio"
+                                   [id]="'sugar' + i"
+                                   [value]="level.value"
+                                   [checked]="isSugarSelected(level.value)"
+                                   (change)="onSugarCheckboxChange($event, level.value, menuItem)"
+                                   name="sugarLevel"
+                                   formControlName="selectedLevel">
+                            <label [for]="'sugar' + i">{{level.label}}</label>
+                          </div>
+                        </div>
+                      </form>
+                      <h4>Optional</h4>
+                      <div>
+                        <input type="text" value="{{isadditionalSelected()}}" (change)="onAdditionalInfoChange($event, menuItem)"> <br>
+                        <label>Anything we should know?</label>
+                      </div>
+                      
+          </div>
+          <button class="add-to-cart-btn" (click)="isEditing ? onUpdate(menuItem) : onAdd(menuItem)">
+            {{ isEditing ? 'Update Cart' : 'Add to Cart' }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

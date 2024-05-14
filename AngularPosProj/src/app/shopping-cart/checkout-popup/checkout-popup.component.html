@@ -1,0 +1,27 @@
+<div class="backdrop" *ngIf="closePopup">
+    <!-- <span class="close" (click)="closePopup()">&times;</span> -->
+    <div class="headerButtons">
+      <button class="exit" (click)="closePopup()"><strong>Exit</strong></button>
+    </div>
+    <div class="popup">
+        <div class="popup-content">
+            <div *ngIf="total != '0'">
+              <div class="popupHeader">
+                <p>Order Confirmed</p>
+              </div>
+              <div class="price">
+                <p>Order Total: {{ total | currency:'USD':'symbol':'1.2-2' }}</p>
+              </div>
+            </div>
+            <div *ngIf="total == '0'">
+              <div class="popupHeader">
+                <p>Cart Empty</p>
+              </div>
+            </div>
+            <div>
+              
+            </div>
+        </div>
+    </div>
+  </div>
+  

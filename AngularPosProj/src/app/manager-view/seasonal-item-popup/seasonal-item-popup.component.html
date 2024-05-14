@@ -1,0 +1,44 @@
+<div class="backdrop" *ngIf="closePopup">
+    <div class="buttons">
+        <button class="add" (click)="addItem()"><strong>Add</strong></button>
+        <button class="cancel" (click)="closePopup()"><strong>Cancel</strong></button>
+    </div>
+    <div class="popup">
+        <div class="popup-content">
+            <div class="popupHeader">
+                <h2><strong>Add Seasonal Item</strong></h2>
+            </div>
+            <div class="menu">
+                <div class="menu-left">
+                    <div class="menu-text">
+                      <p>Name: <input type="text" [(ngModel)]="addedMenuItemName" placeholder="New Name"></p>
+                      <p>Price: $<input type="text" [(ngModel)]="addedMenuItemPrice" placeholder="New Price"></p>
+                    </div>
+        
+                    <p>Type: </p>
+                    <div class="menu-types">
+                      <div *ngFor="let type of itemTypes">
+                        <input type="radio" id="type_{{type}}" [value]="type" [(ngModel)]="selectedType" name="menuItemType" hidden>
+                        <label for="type_{{type}}">{{ type }}</label>
+                      </div>
+                    </div>
+                </div>
+                  
+                <div class="menu-right">
+                    <p>Ingredients: </p>
+                    <div class="ing-header">
+                        <input type="text" [(ngModel)]="newIngredient" placeholder="Enter new ingredient">
+                        <button (click)="addNewIngredient()">Add</button>
+                    </div>
+                    <div class="menu-ingredients">
+                        <div *ngFor="let ingredient of ingredientNames">
+                            <input type="checkbox" id="ingredient_{{ingredient}}" [(ngModel)]="selectedIngredients[ingredient]" hidden>
+                            <label for="ingredient_{{ingredient}}">{{ ingredient }}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  

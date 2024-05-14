@@ -1,0 +1,4277 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>my-new-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">my-new-app documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  ManagerViewComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/manager-view/manager-view.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p><code>ManagerViewComponent</code> serves as the main interface for the manager&#39;s dashboard.
+It handles operations related to menu management, ingredients, inventory, and order history,
+providing functionalities to refresh and manipulate these data sets.</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-manager-view</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./manager-view.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./manager-view.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#currentAction" >currentAction</a>
+                            </li>
+                            <li>
+                                <a href="#editType" >editType</a>
+                            </li>
+                            <li>
+                                <a href="#end" >end</a>
+                            </li>
+                            <li>
+                                <a href="#excessReport" >excessReport</a>
+                            </li>
+                            <li>
+                                <a href="#ingredients" >ingredients</a>
+                            </li>
+                            <li>
+                                <a href="#ingredientsTableConfig" >ingredientsTableConfig</a>
+                            </li>
+                            <li>
+                                <a href="#inventory" >inventory</a>
+                            </li>
+                            <li>
+                                <a href="#inventoryTableConfig" >inventoryTableConfig</a>
+                            </li>
+                            <li>
+                                <a href="#lowIngredItems" >lowIngredItems</a>
+                            </li>
+                            <li>
+                                <a href="#lowInventItems" >lowInventItems</a>
+                            </li>
+                            <li>
+                                <a href="#menu" >menu</a>
+                            </li>
+                            <li>
+                                <a href="#menuTableConfig" >menuTableConfig</a>
+                            </li>
+                            <li>
+                                <a href="#orderHistory" >orderHistory</a>
+                            </li>
+                            <li>
+                                <a href="#popupContent" >popupContent</a>
+                            </li>
+                            <li>
+                                <a href="#popupTitle" >popupTitle</a>
+                            </li>
+                            <li>
+                                <a href="#restockReport" >restockReport</a>
+                            </li>
+                            <li>
+                                <a href="#salesReport" >salesReport</a>
+                            </li>
+                            <li>
+                                <a href="#selectedItem" >selectedItem</a>
+                            </li>
+                            <li>
+                                <a href="#showConfirmationPopup" >showConfirmationPopup</a>
+                            </li>
+                            <li>
+                                <a href="#showEditPopup" >showEditPopup</a>
+                            </li>
+                            <li>
+                                <a href="#showPopup" >showPopup</a>
+                            </li>
+                            <li>
+                                <a href="#showQuickAddPopup" >showQuickAddPopup</a>
+                            </li>
+                            <li>
+                                <a href="#showRestockReportPopup" >showRestockReportPopup</a>
+                            </li>
+                            <li>
+                                <a href="#showSeasonalItemPopup" >showSeasonalItemPopup</a>
+                            </li>
+                            <li>
+                                <a href="#start" >start</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Optional</span>
+                                <a href="#tableConfig" >tableConfig</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#clickExcessReport" >clickExcessReport</a>
+                            </li>
+                            <li>
+                                <a href="#clickIPReport" >clickIPReport</a>
+                            </li>
+                            <li>
+                                <a href="#clickPPReport" >clickPPReport</a>
+                            </li>
+                            <li>
+                                <a href="#clickRestockReport" >clickRestockReport</a>
+                            </li>
+                            <li>
+                                <a href="#clickSalesReport" >clickSalesReport</a>
+                            </li>
+                            <li>
+                                <a href="#deleteRow" >deleteRow</a>
+                            </li>
+                            <li>
+                                <a href="#editRow" >editRow</a>
+                            </li>
+                            <li>
+                                <a href="#formatCamelCase" >formatCamelCase</a>
+                            </li>
+                            <li>
+                                <a href="#formatCamelCaseArray" >formatCamelCaseArray</a>
+                            </li>
+                            <li>
+                                <a href="#formatOrderItems" >formatOrderItems</a>
+                            </li>
+                            <li>
+                                <a href="#formatSingleUnderscore" >formatSingleUnderscore</a>
+                            </li>
+                            <li>
+                                <a href="#getExcess" >getExcess</a>
+                            </li>
+                            <li>
+                                <a href="#getLowStock" >getLowStock</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onEditCancel" >onEditCancel</a>
+                            </li>
+                            <li>
+                                <a href="#onItemAdd" >onItemAdd</a>
+                            </li>
+                            <li>
+                                <a href="#onItemConfirm" >onItemConfirm</a>
+                            </li>
+                            <li>
+                                <a href="#onItemDecline" >onItemDecline</a>
+                            </li>
+                            <li>
+                                <a href="#onItemSave" >onItemSave</a>
+                            </li>
+                            <li>
+                                <a href="#onQuickAddCancel" >onQuickAddCancel</a>
+                            </li>
+                            <li>
+                                <a href="#onSeasonalItemCancel" >onSeasonalItemCancel</a>
+                            </li>
+                            <li>
+                                <a href="#openPopup" >openPopup</a>
+                            </li>
+                            <li>
+                                <a href="#quickAdd" >quickAdd</a>
+                            </li>
+                            <li>
+                                <a href="#refreshIngredients" >refreshIngredients</a>
+                            </li>
+                            <li>
+                                <a href="#refreshInventory" >refreshInventory</a>
+                            </li>
+                            <li>
+                                <a href="#refreshMenu" >refreshMenu</a>
+                            </li>
+                            <li>
+                                <a href="#refreshSales" >refreshSales</a>
+                            </li>
+                            <li>
+                                <a href="#reportPopup" >reportPopup</a>
+                            </li>
+                            <li>
+                                <a href="#seasonalItem" >seasonalItem</a>
+                            </li>
+                            <li>
+                                <a href="#seasonalItemAdd" >seasonalItemAdd</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(MenuService: <a href="../injectables/MenuService.html" target="_self">MenuService</a>, IngredientsService: <a href="../injectables/IngredientsService.html" target="_self">IngredientsService</a>, InventoryService: <a href="../injectables/InventoryService.html" target="_self">InventoryService</a>, OrderHistoryService: <a href="../injectables/OrderHistoryService.html" target="_self">OrderHistoryService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="143" class="link-to-prism">src/app/manager-view/manager-view.component.ts:143</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor for <code>ManagerViewComponent</code>.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>MenuService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/MenuService.html" target="_self" >MenuService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Service to manage menu items.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>IngredientsService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/IngredientsService.html" target="_self" >IngredientsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Service to manage ingredients.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>InventoryService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/InventoryService.html" target="_self" >InventoryService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Service to manage inventory.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>OrderHistoryService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/OrderHistoryService.html" target="_self" >OrderHistoryService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Service to manage order history.</p>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clickExcessReport"></a>
+                    <span class="name">
+                        <span ><b>clickExcessReport</b></span>
+                        <a href="#clickExcessReport"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>clickExcessReport()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="808"
+                                    class="link-to-prism">src/app/manager-view/manager-view.component.ts:808</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p> This function is called when the user clicks on the &quot;Add&quot; button</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clickIPReport"></a>
+                    <span class="name">
+                        <span ><b>clickIPReport</b></span>
+                        <a href="#clickIPReport"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>clickIPReport()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="829"
+                                    class="link-to-prism">src/app/manager-view/manager-view.component.ts:829</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p> This function is called when the user clicks on the &quot;Add&quot; button</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clickPPReport"></a>
+                    <span class="name">
+                        <span ><b>clickPPReport</b></span>
+                        <a href="#clickPPReport"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>clickPPReport()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="822"
+                                    class="link-to-prism">src/app/manager-view/manager-view.component.ts:822</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p> This function is called when the user clicks on the &quot;Add&quot; button</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clickRestockReport"></a>
+                    <span class="name">
+                        <span ><b>clickRestockReport</b></span>
+                        <a href="#clickRestockReport"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>clickRestockReport()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="815"
+                                    class="link-to-prism">src/app/manager-view/manager-view.component.ts:815</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p> This function is called when the user clicks on the &quot;Add&quot; button</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clickSalesReport"></a>
+                    <span class="name">
+                        <span ><b>clickSalesReport</b></span>
+                        <a href="#clickSalesReport"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>clickSalesReport()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="801"
+                                    class="link-to-prism">src/app/manager-view/manager-view.component.ts:801</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>This function is called when the user clicks on the &quot;Add&quot; button</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteRow"></a>
+                    <span class="name">
+                        <span ><b>deleteRow</b></span>
+                        <a href="#deleteRow"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deleteRow(item: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="549"
+                                    class="link-to-prism">src/app/manager-view/manager-view.component.ts:549</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>This function is called when the user clicks on the &quot;Add&quot; button</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>item</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="editRow"></a>
+                    <span class="name">
+                        <span ><b>editRow</b></span>
+                        <a href="#editRow"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>editRow(item: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="524"
+                                    class="link-to-prism">src/app/manager-view/manager-view.component.ts:524</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>This function is called when the user clicks on the &quot;Add&quot; button</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>item</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formatCamelCase"></a>
+                    <span class="name">
+                        <span ><b>formatCamelCase</b></span>
+                        <a href="#formatCamelCase"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>formatCamelCase(name: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="403"
+                                    class="link-to-prism">src/app/manager-view/manager-view.component.ts:403</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Takes a string of items formatted with camelCase and fixes them</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>name</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>formatted string</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formatCamelCaseArray"></a>
+                    <span class="name">
+                        <span ><b>formatCamelCaseArray</b></span>
+                        <a href="#formatCamelCaseArray"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>formatCamelCaseArray(names: string[])</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="412"
+                                    class="link-to-prism">src/app/manager-view/manager-view.component.ts:412</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Takes a string of items formatted with camelCase and fixes them</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>names</td>
+                                            <td>
+                                                        <code>string[]</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>string[]</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>formatted string</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formatOrderItems"></a>
+                    <span class="name">
+                        <span ><b>formatOrderItems</b></span>
+                        <a href="#formatOrderItems"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>formatOrderItems(ordItems: string[])</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="369"
+                                    class="link-to-prism">src/app/manager-view/manager-view.component.ts:369</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Takes a string of items formatted with _ for a space and fixes them</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>ordItems</td>
+                                            <td>
+                                                        <code>string[]</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>formatted string</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formatSingleUnderscore"></a>
+                    <span class="name">
+                        <span ><b>formatSingleUnderscore</b></span>
+                        <a href="#formatSingleUnderscore"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>formatSingleUnderscore(ordItem: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="388"
+                                    class="link-to-prism">src/app/manager-view/manager-view.component.ts:388</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Takes a string of items formatted with _ for a space and fixes them</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>ordItem</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>formatted string</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getExcess"></a>
+                    <span class="name">
+                        <span ><b>getExcess</b></span>
+                        <a href="#getExcess"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getExcess(start: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, end: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="273"
+                                    class="link-to-prism">src/app/manager-view/manager-view.component.ts:273</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>gets the sales from that time period</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>start</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>end</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getLowStock"></a>
+                    <span class="name">
+                        <span ><b>getLowStock</b></span>
+                        <a href="#getLowStock"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getLowStock()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="205"
+                                    class="link-to-prism">src/app/manager-view/manager-view.component.ts:205</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Get all of the elements that have only sold 10 percent of their stock</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="163"
+                                    class="link-to-prism">src/app/manager-view/manager-view.component.ts:163</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>OnInit lifecycle hook for initial component setup.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onEditCancel"></a>
+                    <span class="name">
+                        <span ><b>onEditCancel</b></span>
+                        <a href="#onEditCancel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onEditCancel()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="568"
+                                    class="link-to-prism">src/app/manager-view/manager-view.component.ts:568</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>This function is called when the user clicks on the &quot;Add&quot; button</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onItemAdd"></a>
+                    <span class="name">
+                        <span ><b>onItemAdd</b></span>
+                        <a href="#onItemAdd"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onItemAdd(newItem: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="713"
+                                    class="link-to-prism">src/app/manager-view/manager-view.component.ts:713</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>This function is called when the user clicks on the &quot;Add&quot; button</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>newItem</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onItemConfirm"></a>
+                    <span class="name">
+                        <span ><b>onItemConfirm</b></span>
+                        <a href="#onItemConfirm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onItemConfirm(item: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="604"
+                                    class="link-to-prism">src/app/manager-view/manager-view.component.ts:604</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>This function is called when the user clicks on the &quot;Add&quot; button</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>item</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onItemDecline"></a>
+                    <span class="name">
+                        <span ><b>onItemDecline</b></span>
+                        <a href="#onItemDecline"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onItemDecline()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="665"
+                                    class="link-to-prism">src/app/manager-view/manager-view.component.ts:665</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>This function is called when the user clicks on the &quot;Add&quot; button</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onItemSave"></a>
+                    <span class="name">
+                        <span ><b>onItemSave</b></span>
+                        <a href="#onItemSave"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onItemSave(editedItem: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="577"
+                                    class="link-to-prism">src/app/manager-view/manager-view.component.ts:577</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>This function is called when the user clicks on the &quot;Add&quot; button</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>editedItem</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onQuickAddCancel"></a>
+                    <span class="name">
+                        <span ><b>onQuickAddCancel</b></span>
+                        <a href="#onQuickAddCancel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onQuickAddCancel()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="705"
+                                    class="link-to-prism">src/app/manager-view/manager-view.component.ts:705</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>This function is called when the user clicks on the &quot;Add&quot; button</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSeasonalItemCancel"></a>
+                    <span class="name">
+                        <span ><b>onSeasonalItemCancel</b></span>
+                        <a href="#onSeasonalItemCancel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onSeasonalItemCancel()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="746"
+                                    class="link-to-prism">src/app/manager-view/manager-view.component.ts:746</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>This function is called when the user clicks on the &quot;Add&quot; button</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openPopup"></a>
+                    <span class="name">
+                        <span ><b>openPopup</b></span>
+                        <a href="#openPopup"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openPopup(type: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="486"
+                                    class="link-to-prism">src/app/manager-view/manager-view.component.ts:486</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>This hold all of the possible table configs for the value</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>type</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="quickAdd"></a>
+                    <span class="name">
+                        <span ><b>quickAdd</b></span>
+                        <a href="#quickAdd"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>quickAdd(type: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="689"
+                                    class="link-to-prism">src/app/manager-view/manager-view.component.ts:689</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p> This function is called when the user clicks on the &quot;Add&quot; button</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>type</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="refreshIngredients"></a>
+                    <span class="name">
+                        <span ><b>refreshIngredients</b></span>
+                        <a href="#refreshIngredients"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>refreshIngredients()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="179"
+                                    class="link-to-prism">src/app/manager-view/manager-view.component.ts:179</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Refreshes the ingredients by fetching the latest data from the <code>IngredientsService</code>.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="refreshInventory"></a>
+                    <span class="name">
+                        <span ><b>refreshInventory</b></span>
+                        <a href="#refreshInventory"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>refreshInventory()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="188"
+                                    class="link-to-prism">src/app/manager-view/manager-view.component.ts:188</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Refreshes the inventory by fetching the latest data from the <code>InventoryService</code>.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="refreshMenu"></a>
+                    <span class="name">
+                        <span ><b>refreshMenu</b></span>
+                        <a href="#refreshMenu"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>refreshMenu()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="170"
+                                    class="link-to-prism">src/app/manager-view/manager-view.component.ts:170</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Refreshes the menu items by fetching the latest data from the <code>MenuService</code>.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="refreshSales"></a>
+                    <span class="name">
+                        <span ><b>refreshSales</b></span>
+                        <a href="#refreshSales"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>refreshSales(start: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, end: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="240"
+                                    class="link-to-prism">src/app/manager-view/manager-view.component.ts:240</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>gets the sales from that time period</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>start</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>end</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="reportPopup"></a>
+                    <span class="name">
+                        <span ><b>reportPopup</b></span>
+                        <a href="#reportPopup"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>reportPopup(type: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, start?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, end?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="765"
+                                    class="link-to-prism">src/app/manager-view/manager-view.component.ts:765</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>This function is called when the user clicks on the &quot;Add&quot; button</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>type</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>start</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>end</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="seasonalItem"></a>
+                    <span class="name">
+                        <span ><b>seasonalItem</b></span>
+                        <a href="#seasonalItem"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>seasonalItem(type: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="737"
+                                    class="link-to-prism">src/app/manager-view/manager-view.component.ts:737</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>This function is called when the user clicks on the &quot;Add&quot; button</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>type</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="seasonalItemAdd"></a>
+                    <span class="name">
+                        <span ><b>seasonalItemAdd</b></span>
+                        <a href="#seasonalItemAdd"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>seasonalItemAdd(newItem: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="753"
+                                    class="link-to-prism">src/app/manager-view/manager-view.component.ts:753</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>This function is called when the user clicks on the &quot;Add&quot; button</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>newItem</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentAction"></a>
+                    <span class="name">
+                        <span ><b>currentAction</b></span>
+                        <a href="#currentAction"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>&quot;edit&quot; | &quot;delete&quot; | &quot;add&quot; | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="519" class="link-to-prism">src/app/manager-view/manager-view.component.ts:519</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>This function is called when the user clicks on the &quot;Add&quot; button</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="editType"></a>
+                    <span class="name">
+                        <span ><b>editType</b></span>
+                        <a href="#editType"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>&quot;menu&quot; | &quot;ingredients&quot; | &quot;inventory&quot; | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="599" class="link-to-prism">src/app/manager-view/manager-view.component.ts:599</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>This function is called when the user clicks on the &quot;Add&quot; button</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="end"></a>
+                    <span class="name">
+                        <span ><b>end</b></span>
+                        <a href="#end"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="123" class="link-to-prism">src/app/manager-view/manager-view.component.ts:123</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Boolean to track if the current user is a cashier.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="excessReport"></a>
+                    <span class="name">
+                        <span ><b>excessReport</b></span>
+                        <a href="#excessReport"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/TableConfig.html" target="_self" >TableConfig</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    columns: [
+      { key: &#x27;excessIngredients&#x27;,  header: &#x27;Excess Item&#x27; }
+    ]
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="477" class="link-to-prism">src/app/manager-view/manager-view.component.ts:477</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>This hold all of the possible table configs for the value</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ingredients"></a>
+                    <span class="name">
+                        <span ><b>ingredients</b></span>
+                        <a href="#ingredients"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="135" class="link-to-prism">src/app/manager-view/manager-view.component.ts:135</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Boolean to track if the current user is a cashier.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ingredientsTableConfig"></a>
+                    <span class="name">
+                        <span ><b>ingredientsTableConfig</b></span>
+                        <a href="#ingredientsTableConfig"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/TableConfig.html" target="_self" >TableConfig</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    columns: [
+      { key: &#x27;ingredient_id&#x27;, header: &#x27;ID&#x27; },
+      { key: &#x27;ingredient_name&#x27;, header: &#x27;Name&#x27; },
+      { key: &#x27;ingredient_quantity&#x27;, header: &#x27;Quantity&#x27; }
+    ]
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="437" class="link-to-prism">src/app/manager-view/manager-view.component.ts:437</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>This hold all of the possible table configs for the value</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="inventory"></a>
+                    <span class="name">
+                        <span ><b>inventory</b></span>
+                        <a href="#inventory"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="139" class="link-to-prism">src/app/manager-view/manager-view.component.ts:139</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Boolean to track if the current user is a cashier.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="inventoryTableConfig"></a>
+                    <span class="name">
+                        <span ><b>inventoryTableConfig</b></span>
+                        <a href="#inventoryTableConfig"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/TableConfig.html" target="_self" >TableConfig</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    columns: [
+      { key: &#x27;item_id&#x27;, header: &#x27;ID&#x27; },
+      { key: &#x27;item_name&#x27;, header: &#x27;Name&#x27; },
+      { key: &#x27;item_quantity&#x27;, header: &#x27;Quantity&#x27; }
+    ]
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="447" class="link-to-prism">src/app/manager-view/manager-view.component.ts:447</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>This hold all of the possible table configs for the value</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="lowIngredItems"></a>
+                    <span class="name">
+                        <span ><b>lowIngredItems</b></span>
+                        <a href="#lowIngredItems"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="201" class="link-to-prism">src/app/manager-view/manager-view.component.ts:201</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Get all of the elements that have only sold 10 percent of their stock</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="lowInventItems"></a>
+                    <span class="name">
+                        <span ><b>lowInventItems</b></span>
+                        <a href="#lowInventItems"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="197" class="link-to-prism">src/app/manager-view/manager-view.component.ts:197</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Refreshes the order history by fetching the latest data from the <code>OrderHistoryService</code>.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="menu"></a>
+                    <span class="name">
+                        <span ><b>menu</b></span>
+                        <a href="#menu"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="131" class="link-to-prism">src/app/manager-view/manager-view.component.ts:131</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Boolean to track if the current user is a cashier.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="menuTableConfig"></a>
+                    <span class="name">
+                        <span ><b>menuTableConfig</b></span>
+                        <a href="#menuTableConfig"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/TableConfig.html" target="_self" >TableConfig</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    columns: [
+      { key: &#x27;menu_item_id&#x27;, header: &#x27;ID&#x27; },
+      { key: &#x27;menu_item_name&#x27;, header: &#x27;Name&#x27; },
+      { key: &#x27;menu_item_type&#x27;, header: &#x27;Type&#x27; },
+      { key: &#x27;menu_item_price&#x27;, header: &#x27;Price&#x27; },
+      { key: &#x27;ingredients&#x27;, header: &#x27;Ingredients&#x27; }
+    ]
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="425" class="link-to-prism">src/app/manager-view/manager-view.component.ts:425</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>This hold all of the possible table configs for the value</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="orderHistory"></a>
+                    <span class="name">
+                        <span ><b>orderHistory</b></span>
+                        <a href="#orderHistory"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="143" class="link-to-prism">src/app/manager-view/manager-view.component.ts:143</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Boolean to track if the current user is a cashier.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="popupContent"></a>
+                    <span class="name">
+                        <span ><b>popupContent</b></span>
+                        <a href="#popupContent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">src/app/manager-view/manager-view.component.ts:127</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Boolean to track if the current user is a cashier.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="popupTitle"></a>
+                    <span class="name">
+                        <span ><b>popupTitle</b></span>
+                        <a href="#popupTitle"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">src/app/manager-view/manager-view.component.ts:115</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Boolean to track if the current user is a cashier.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="restockReport"></a>
+                    <span class="name">
+                        <span ><b>restockReport</b></span>
+                        <a href="#restockReport"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/TableConfig.html" target="_self" >TableConfig</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    columns: [
+      { key: &#x27;item_name&#x27;, header: &#x27;Name&#x27; },
+      { key: &#x27;item_quantity&#x27;, header: &#x27;Current Quantity&#x27; },
+      { key: &#x27;item_quantity_to_order&#x27;, header: &#x27;Amount to Order&#x27; }
+    ]
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="457" class="link-to-prism">src/app/manager-view/manager-view.component.ts:457</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>This hold all of the possible table configs for the value</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="salesReport"></a>
+                    <span class="name">
+                        <span ><b>salesReport</b></span>
+                        <a href="#salesReport"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/TableConfig.html" target="_self" >TableConfig</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    columns: [
+      { key: &#x27;order_timestamp&#x27;, header: &#x27;Date&#x27; },
+      { key: &#x27;order_total&#x27;, header: &#x27;Price&#x27; },
+      { key: &#x27;order_items&#x27;, header: &#x27;Items Ordered&#x27; }
+    ]
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="467" class="link-to-prism">src/app/manager-view/manager-view.component.ts:467</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>This hold all of the possible table configs for the value</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedItem"></a>
+                    <span class="name">
+                        <span ><b>selectedItem</b></span>
+                        <a href="#selectedItem"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="515" class="link-to-prism">src/app/manager-view/manager-view.component.ts:515</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>This function is called when the user clicks on the &quot;Add&quot; button</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showConfirmationPopup"></a>
+                    <span class="name">
+                        <span ><b>showConfirmationPopup</b></span>
+                        <a href="#showConfirmationPopup"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="595" class="link-to-prism">src/app/manager-view/manager-view.component.ts:595</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>This function is called when the user clicks on the &quot;Add&quot; button</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showEditPopup"></a>
+                    <span class="name">
+                        <span ><b>showEditPopup</b></span>
+                        <a href="#showEditPopup"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="511" class="link-to-prism">src/app/manager-view/manager-view.component.ts:511</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>This function is called when the user clicks on the &quot;Add&quot; button</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showPopup"></a>
+                    <span class="name">
+                        <span ><b>showPopup</b></span>
+                        <a href="#showPopup"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">src/app/manager-view/manager-view.component.ts:107</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Boolean to track if the current user is a manager.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showQuickAddPopup"></a>
+                    <span class="name">
+                        <span ><b>showQuickAddPopup</b></span>
+                        <a href="#showQuickAddPopup"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="684" class="link-to-prism">src/app/manager-view/manager-view.component.ts:684</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>This function is called when the user clicks on the &quot;Add&quot; button</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showRestockReportPopup"></a>
+                    <span class="name">
+                        <span ><b>showRestockReportPopup</b></span>
+                        <a href="#showRestockReportPopup"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">src/app/manager-view/manager-view.component.ts:111</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Boolean to track if the current user is a cashier.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showSeasonalItemPopup"></a>
+                    <span class="name">
+                        <span ><b>showSeasonalItemPopup</b></span>
+                        <a href="#showSeasonalItemPopup"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="732" class="link-to-prism">src/app/manager-view/manager-view.component.ts:732</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>This function is called when the user clicks on the &quot;Add&quot; button</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="start"></a>
+                    <span class="name">
+                        <span ><b>start</b></span>
+                        <a href="#start"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">src/app/manager-view/manager-view.component.ts:119</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Boolean to track if the current user is a cashier.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tableConfig"></a>
+                    <span class="name">
+                            <span class="modifier">Optional</span>
+                        <span ><b>tableConfig</b></span>
+                        <a href="#tableConfig"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/TableConfig.html" target="_self" >TableConfig</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="421" class="link-to-prism">src/app/manager-view/manager-view.component.ts:421</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>This function is called when the user clicks on the &quot;View Inventory&quot; button</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { MenuService } from &#x27;../services/menu.service&#x27;;
+import { IngredientsService } from &#x27;../services/ingredients.service&#x27;;
+import { InventoryService } from &#x27;../services/inventory.service&#x27;;
+import { OrderHistoryService } from &#x27;../services/order-history.service&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+import { forkJoin } from &#x27;rxjs&#x27;;
+/**
+ * This is the model for the table configuration.
+ */
+interface TableConfig {
+  /**
+   * The table&#x27;s title
+   */
+  columns: TableColumn[];
+}
+/**
+ *  This is the model for the table column.
+ */
+interface TableColumn {
+  // The column&#x27;s key
+  /**
+   * The column&#x27;s key
+   */
+  key: string;
+  /**
+   * The column&#x27;s header
+   */
+  // The column&#x27;s header
+  header: string;
+}
+/**
+ * This is the model for the table row.
+ */
+interface InventoryMap {
+  // The row&#x27;s key
+  /**
+   * The row&#x27;s key
+   */
+  [key: string]: number;
+}
+/**
+ * This is the model for the inventory item.
+ */
+interface InventoryItem {
+  // The item&#x27;s id
+  /**
+   * The item&#x27;s id
+   */
+  item_id: number;
+  /**
+   * The item&#x27;s name
+   */
+  // The item&#x27;s name
+  item_name: string;
+  /**
+   * The item&#x27;s quantity
+   */
+  // The item&#x27;s quantity
+  item_quantity: number;
+}
+/**
+ * This is the model for the sales summary.
+ */
+interface SalesSummary {
+  // The row&#x27;s key
+  /**
+   * The row&#x27;s key
+   */
+  [key: string]: number; // Adjust the key type if necessary
+}
+
+// Define an interface for the order item
+/**
+ * This is the model for the order item.
+ */
+interface OrderItem {
+  /**
+   * The item&#x27;s id
+   */
+  // The item&#x27;s id
+  item_name: string;
+  /**
+   * The item&#x27;s quantity
+   */
+   // or item_id if it&#x27;s a number
+  quantity: number;
+}
+
+/**
+ * &#x60;ManagerViewComponent&#x60; serves as the main interface for the manager&#x27;s dashboard.
+ * It handles operations related to menu management, ingredients, inventory, and order history,
+ * providing functionalities to refresh and manipulate these data sets.
+ *
+ * @Component Decorator that marks the class as an Angular component and provides metadata about the component.
+ */
+ @Component({
+  selector: &#x27;app-manager-view&#x27;,
+  templateUrl: &#x27;./manager-view.component.html&#x27;,
+  styleUrls: [&#x27;./manager-view.component.scss&#x27;]
+})
+export class ManagerViewComponent implements OnInit {
+  // Component properties
+  /**
+   * Boolean to track if the current user is a manager.
+   */
+  showPopup: boolean &#x3D; false;
+  /**
+   * Boolean to track if the current user is a cashier.
+   */
+  showRestockReportPopup: boolean &#x3D; false;
+  /**
+   * Boolean to track if the current user is a cashier.
+   */
+  popupTitle: string &#x3D; &#x27;&#x27;;
+  /**
+   * Boolean to track if the current user is a cashier.
+   */
+  start: string &#x3D; &#x27;&#x27;;
+  /**
+   * Boolean to track if the current user is a cashier.
+   */
+  end: string &#x3D; &#x27;&#x27;;
+  /**
+   * Boolean to track if the current user is a cashier.
+   */
+  popupContent: any;
+  /**
+   * Boolean to track if the current user is a cashier.
+   */
+  menu: any[] &#x3D; [];
+  /**
+   * Boolean to track if the current user is a cashier.
+   */
+  ingredients: any[] &#x3D; [];
+  /**
+   * Boolean to track if the current user is a cashier.
+   */
+  inventory: any[] &#x3D; [];
+  /**
+   * Boolean to track if the current user is a cashier.
+   */
+  orderHistory: any[] &#x3D; [];
+
+  /**
+   * Constructor for &#x60;ManagerViewComponent&#x60;.
+   * 
+   * @param MenuService Service to manage menu items.
+   * @param IngredientsService Service to manage ingredients.
+   * @param InventoryService Service to manage inventory.
+   * @param OrderHistoryService Service to manage order history.
+   */
+  constructor(
+    private MenuService: MenuService, 
+    private IngredientsService: IngredientsService, 
+    private InventoryService: InventoryService, 
+    private OrderHistoryService: OrderHistoryService
+  ) {}
+
+  /**
+   * OnInit lifecycle hook for initial component setup.
+   */
+  ngOnInit(): void {
+    // Initialization logic can go here
+  }
+
+  /**
+   * Refreshes the menu items by fetching the latest data from the &#x60;MenuService&#x60;.
+   */
+  refreshMenu(): void {
+    this.MenuService.getMenu().subscribe(items &#x3D;&gt; {
+      // Refresh menu logic
+    });
+  }
+  
+  /**
+   * Refreshes the ingredients by fetching the latest data from the &#x60;IngredientsService&#x60;.
+   */
+  refreshIngredients(): void {
+    this.IngredientsService.getIngredients().subscribe(ingredients &#x3D;&gt; {
+      // Refresh ingredients logic
+    });
+  }
+  
+  /**
+   * Refreshes the inventory by fetching the latest data from the &#x60;InventoryService&#x60;.
+   */
+  refreshInventory(): void {
+    this.InventoryService.getInventory().subscribe(invItems &#x3D;&gt; {
+      // Refresh inventory logic
+    });
+  }
+
+  /**
+   * Refreshes the order history by fetching the latest data from the &#x60;OrderHistoryService&#x60;.
+   */
+  lowInventItems: any[] &#x3D; [];
+  /**
+   * Get all of the elements that have only sold 10 percent of their stock
+   */
+  lowIngredItems: any[] &#x3D; [];
+  /**
+   * Get all of the elements that have only sold 10 percent of their stock
+   */
+  getLowStock(): void {
+    this.InventoryService.getInventory().subscribe(invItems &#x3D;&gt; {
+      this.inventory &#x3D; invItems;
+
+      this.lowInventItems &#x3D; this.inventory.filter(item &#x3D;&gt; item.item_quantity &lt; 500);
+
+      this.lowInventItems.forEach(item &#x3D;&gt; {
+        item.item_quantity_to_order &#x3D; 1500 - item.item_quantity;
+      });
+    });
+
+    this.IngredientsService.getIngredients().subscribe(ingredients &#x3D;&gt; {
+      this.ingredients &#x3D; ingredients;
+      
+      this.lowIngredItems &#x3D; this.ingredients.filter(item &#x3D;&gt; item.ingredient_quantity &lt; 500);
+
+      this.lowIngredItems.forEach(item &#x3D;&gt; {
+        item.item_quantity_to_order &#x3D; 1500 - item.ingredient_quantity;
+        item.item_name &#x3D; item.ingredient_name;
+        item.item_quantity &#x3D; item.ingredient_quantity;
+      });
+      const temp &#x3D; [...this.lowInventItems, ...this.lowIngredItems];
+
+      temp.forEach(item &#x3D;&gt; {
+        item.item_name &#x3D; this.formatCamelCase(item.item_name);
+      });
+      this.popupContent &#x3D; temp
+    });
+  }  
+
+  /**
+   * gets the sales from that time period
+   * @param start 
+   * @param end 
+   */
+  refreshSales(start: string, end: string): void {
+    this.OrderHistoryService.getOrderHistory().subscribe(ordItems &#x3D;&gt; {
+      this.orderHistory &#x3D; ordItems;
+
+      const startDate &#x3D; new Date(start);
+      startDate.setUTCHours(0, 0, 0, 0);
+
+      const endDate &#x3D; new Date(end);
+      endDate.setUTCHours(23, 59, 59, 999);
+
+      // console.log(ordItems);
+      // console.log(startDate);
+      // console.log(endDate);
+
+      const ItemsInRange &#x3D; this.orderHistory.filter(order &#x3D;&gt; {
+        const orderDate &#x3D; new Date(order.order_timestamp);
+        return orderDate &gt; startDate &amp;&amp; orderDate &lt; endDate;
+      });
+
+      ItemsInRange.forEach(item &#x3D;&gt; {
+        item.order_items &#x3D; this.formatOrderItems(item.order_items);
+      });
+
+      console.log(ItemsInRange)
+
+      this.popupContent &#x3D; ItemsInRange;
+    });
+  }
+  /**
+   * gets the sales from that time period
+   * @param start 
+   * @param end 
+   */
+  getExcess(start: string, end: string): void {
+    let inventory_ingrident_map &#x3D; new Map&lt;string, string[]&gt;();
+    // const additionalItems &#x3D; [&#x27;napkins&#x27;, &#x27;plastic_seals&#x27;, &#x27;cups&#x27;, &#x27;straws&#x27;];
+    this.OrderHistoryService.getIngridents().subscribe(
+      data &#x3D;&gt; {
+        data.forEach((item: { menu_item_name: string; ingredients: string[]; }) &#x3D;&gt; {
+          let itemIngredients &#x3D; item.ingredients.slice(); // Create a copy of the ingredients array
+
+          // // Check if the item has more than one ingredient and add additional items if so
+          // if (itemIngredients.length &gt; 1) {
+          //   itemIngredients &#x3D; itemIngredients.concat(additionalItems);
+          // }
+
+          inventory_ingrident_map.set(item.menu_item_name, itemIngredients);
+        });
+        console.log(inventory_ingrident_map); // This will log the map with the data
+      },
+      error &#x3D;&gt; {
+        console.error(&#x27;Error:&#x27;, error); // This will log any error that occurs during the request
+      }
+    );
+
+    let ogIngrdientmap &#x3D; new Map&lt;string, number&gt;();
+      this.OrderHistoryService.getIng().subscribe(
+        data &#x3D;&gt; {
+          data.forEach((item: { ingredient_name: string;  ingredient_quantity : number; }) &#x3D;&gt; {
+            ogIngrdientmap.set(item.ingredient_name, item.ingredient_quantity);
+        });
+        console.log(ogIngrdientmap)
+      },
+        error &#x3D;&gt; {
+          console.error(&#x27;Error:&#x27;, error); // This will log any error that occurs during the request
+        }
+      );
+    this.OrderHistoryService.getOrderHistory().subscribe(ordItems &#x3D;&gt; {
+      this.orderHistory &#x3D; ordItems;
+
+      // Initialize initialInventory
+      const initialInventory: InventoryMap &#x3D; {};
+      this.InventoryService.getInventory().subscribe((inventoryItems: InventoryItem[]) &#x3D;&gt; {
+        inventoryItems.forEach((item: InventoryItem) &#x3D;&gt; {
+          initialInventory[item.item_name] &#x3D; item.item_quantity;
+        });
+
+        console.log(initialInventory); // Log the map of item counts
+      });
+
+      const startDate &#x3D; new Date(start);
+      startDate.setUTCHours(0, 0, 0, 0);
+  
+      const endDate &#x3D; new Date(end);
+      endDate.setUTCHours(23, 59, 59, 999);
+  
+      const itemsInRange &#x3D; this.orderHistory.filter(order &#x3D;&gt; {
+        const orderDate &#x3D; new Date(order.order_timestamp);
+        return orderDate &gt;&#x3D; startDate &amp;&amp; orderDate &lt;&#x3D; endDate;
+      });
+
+      console.log(itemsInRange)
+
+      // Initialize salesSummary with the correct type
+      const salesSummary: SalesSummary &#x3D; {};
+      let ingredientCountMap &#x3D; new Map&lt;string, number&gt;();
+      itemsInRange.forEach(order &#x3D;&gt; {
+      order.order_items.forEach((item: OrderItem) &#x3D;&gt; {
+        //@ts-ignore
+        const ingredients &#x3D; inventory_ingrident_map.get(item) || [];
+        ingredients.forEach(ingredient &#x3D;&gt; {
+          const currentCount &#x3D; ingredientCountMap.get(ingredient) || 0;
+          ingredientCountMap.set(ingredient, currentCount + 1);
+        });
+      });
+    });
+
+    console.log(&quot;Ingredient Usage Count:&quot;, ingredientCountMap);
+      // console.log(&quot;passed sales&quot;)
+      let excessIngredients: { excessIngredients: string }[] &#x3D; [];
+      ingredientCountMap.forEach((count, ingredient) &#x3D;&gt; {
+        //@ts-ignore
+        if(count &lt; (ogIngrdientmap.get(ingredient)/10)){
+
+            excessIngredients.push({ excessIngredients:this.formatCamelCase(ingredient) });
+        }
+      });
+      console.log(excessIngredients);
+      this.popupContent &#x3D; excessIngredients;
+    });
+  }
+
+  // FUNCTIONS FOR FORMATTING OUTPUT
+  //Takes a string of items formatted with _ for a space and fixes them
+  /**
+   * Takes a string of items formatted with _ for a space and fixes them
+   * @param ordItems 
+   * @returns  formatted string
+   */
+  formatOrderItems(ordItems: string[]): string {
+    const formatted &#x3D; ordItems.map(item &#x3D;&gt; {
+      let formattedItem &#x3D; item.replace(/_/g, &#x27; &#x27;);
+  
+      formattedItem &#x3D; formattedItem.replace(/\w\S*/g, (word) &#x3D;&gt; {
+        return word.charAt(0).toUpperCase() + word.substr(1).toLowerCase();
+      });
+  
+      return formattedItem;
+    });
+  
+    return formatted.join(&#x27;, &#x27;);
+  }
+  /**
+   * Takes a string of items formatted with _ for a space and fixes them
+   * @param ordItem 
+   * @returns formatted string
+   */
+  //Same as above but for only one string
+  formatSingleUnderscore(ordItem: string): string {
+    let formattedItem &#x3D; ordItem.replace(/_/g, &#x27; &#x27;);
+  
+    formattedItem &#x3D; formattedItem.replace(/\w\S*/g, (word) &#x3D;&gt; {
+      return word.charAt(0).toUpperCase() + word.substr(1).toLowerCase();
+    });
+  
+    return formattedItem;
+  }
+  /**
+   * Takes a string of items formatted with camelCase and fixes them
+   * @param name 
+   * @returns formatted string
+   */
+  // Fixes camelCase words (one string)
+  formatCamelCase(name: string): string {
+    return name.replace(/([A-Z])/g, &#x27; $1&#x27;).replace(/^./, function(str){ return str.toUpperCase(); });
+  }
+  /**
+   * Takes a string of items formatted with camelCase and fixes them
+   * @param names 
+   * @returns formatted string
+   */
+  // Same as above but for array of strings
+  formatCamelCaseArray(names: string[]): string[] {
+    return names.map(name &#x3D;&gt; {
+      return name.replace(/([A-Z])/g, &#x27; $1&#x27;).replace(/^./, function(str){ return str.toUpperCase(); }).split(&#x27;,&#x27;).join(&#x27;, &#x27;);
+    });
+  }
+  
+  /**
+   * This function is called when the user clicks on the &quot;View Inventory&quot; button
+   */
+  tableConfig?: TableConfig;
+/**
+ * This hold all of the possible table configs for the value
+ */
+  menuTableConfig: TableConfig &#x3D; {
+    columns: [
+      { key: &#x27;menu_item_id&#x27;, header: &#x27;ID&#x27; },
+      { key: &#x27;menu_item_name&#x27;, header: &#x27;Name&#x27; },
+      { key: &#x27;menu_item_type&#x27;, header: &#x27;Type&#x27; },
+      { key: &#x27;menu_item_price&#x27;, header: &#x27;Price&#x27; },
+      { key: &#x27;ingredients&#x27;, header: &#x27;Ingredients&#x27; }
+    ]
+  };
+  /**
+   * This hold all of the possible table configs for the value
+   */
+  ingredientsTableConfig: TableConfig &#x3D; {
+    columns: [
+      { key: &#x27;ingredient_id&#x27;, header: &#x27;ID&#x27; },
+      { key: &#x27;ingredient_name&#x27;, header: &#x27;Name&#x27; },
+      { key: &#x27;ingredient_quantity&#x27;, header: &#x27;Quantity&#x27; }
+    ]
+  };
+/**
+ * This hold all of the possible table configs for the value
+ */
+  inventoryTableConfig: TableConfig &#x3D; {
+    columns: [
+      { key: &#x27;item_id&#x27;, header: &#x27;ID&#x27; },
+      { key: &#x27;item_name&#x27;, header: &#x27;Name&#x27; },
+      { key: &#x27;item_quantity&#x27;, header: &#x27;Quantity&#x27; }
+    ]
+  };
+/**
+ * This hold all of the possible table configs for the value
+ */
+  restockReport: TableConfig &#x3D; {
+    columns: [
+      { key: &#x27;item_name&#x27;, header: &#x27;Name&#x27; },
+      { key: &#x27;item_quantity&#x27;, header: &#x27;Current Quantity&#x27; },
+      { key: &#x27;item_quantity_to_order&#x27;, header: &#x27;Amount to Order&#x27; }
+    ]
+  };
+/**
+ * This hold all of the possible table configs for the value
+ */
+  salesReport: TableConfig &#x3D; {
+    columns: [
+      { key: &#x27;order_timestamp&#x27;, header: &#x27;Date&#x27; },
+      { key: &#x27;order_total&#x27;, header: &#x27;Price&#x27; },
+      { key: &#x27;order_items&#x27;, header: &#x27;Items Ordered&#x27; }
+    ]
+  };
+/**
+ * This hold all of the possible table configs for the value
+ */
+  excessReport: TableConfig &#x3D; {
+    columns: [
+      { key: &#x27;excessIngredients&#x27;,  header: &#x27;Excess Item&#x27; }
+    ]
+  };
+  /**
+   * This hold all of the possible table configs for the value
+   * @param type 
+   */
+  openPopup(type: string) {
+    this.showPopup &#x3D; true;
+    switch (type) {
+      case &#x27;menu&#x27;:
+        this.popupTitle &#x3D; &#x27;Edit Menu&#x27;;
+        this.tableConfig &#x3D; this.menuTableConfig;
+        this.refreshMenu();
+        break;
+      case &#x27;ingredients&#x27;:
+        this.popupTitle &#x3D; &#x27;Edit Ingredients&#x27;;
+        this.tableConfig &#x3D; this.ingredientsTableConfig;
+        this.refreshIngredients();
+        break;
+      case &#x27;inventory&#x27;:
+        this.popupTitle &#x3D; &#x27;Edit Inventory&#x27;;
+        this.tableConfig &#x3D; this.inventoryTableConfig;
+        this.refreshInventory();
+        break;
+      }
+  }
+
+  // ACTION BUTTONS
+  /**
+   * This function is called when the user clicks on the &quot;Add&quot; button
+   */
+  showEditPopup: boolean &#x3D; false;
+  /**
+   * This function is called when the user clicks on the &quot;Add&quot; button
+   */
+  selectedItem: any &#x3D; null;
+  /**
+   * This function is called when the user clicks on the &quot;Add&quot; button
+   */
+  currentAction: &#x27;edit&#x27; | &#x27;delete&#x27; | &#x27;add&#x27; | null &#x3D; null;
+  /**
+   * This function is called when the user clicks on the &quot;Add&quot; button
+   * @param item 
+   */
+  editRow(item: any): void {
+    console.log(&#x27;Editing item, opening edit popup&#x27;, item);
+    this.currentAction &#x3D; &#x27;edit&#x27;;
+    this.selectedItem &#x3D; item;
+    if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Edit Menu&#x27;) {
+      this.editType &#x3D; &#x27;menu&#x27;;
+    } else if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Edit Ingredients&#x27;) {
+      this.editType &#x3D; &#x27;ingredients&#x27;;
+    } else if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Edit Inventory&#x27;) {
+      this.editType &#x3D; &#x27;inventory&#x27;;
+    }
+    if (this.editType &#x3D;&#x3D;&#x3D; &#x27;menu&#x27;) {
+      this.popupTitle &#x3D; &#x27;Edit Menu&#x27;;
+    } else if (this.editType &#x3D;&#x3D;&#x3D; &#x27;ingredients&#x27;) {
+      this.popupTitle &#x3D; &#x27;Edit Ingredients&#x27;;
+    } else if (this.editType &#x3D;&#x3D;&#x3D; &#x27;inventory&#x27;) {
+      this.popupTitle &#x3D; &#x27;Edit Inventory&#x27;;
+    }
+    this.showPopup &#x3D; false;
+    this.showEditPopup &#x3D; true;
+  }  
+  /**
+   * This function is called when the user clicks on the &quot;Add&quot; button
+   * @param item 
+   */
+  deleteRow(item: any): void {
+    console.log(&#x27;Deleting item:&#x27;, item);
+    if (this.editType &#x3D;&#x3D;&#x3D; &#x27;menu&#x27;) {
+      this.popupTitle &#x3D; &#x27;Edit Menu&#x27;;
+    } else if (this.editType &#x3D;&#x3D;&#x3D; &#x27;ingredients&#x27;) {
+      this.popupTitle &#x3D; &#x27;Edit Ingredients&#x27;;
+    } else if (this.editType &#x3D;&#x3D;&#x3D; &#x27;inventory&#x27;) {
+      this.popupTitle &#x3D; &#x27;Edit Inventory&#x27;;
+    }
+    this.currentAction &#x3D; &#x27;delete&#x27;;
+    this.selectedItem &#x3D; item;
+    this.showConfirmationPopup &#x3D; true;
+    this.showPopup &#x3D; false;
+  }
+
+  // EDIT CONFIRMATIONS
+  /**
+   * This function is called when the user clicks on the &quot;Add&quot; button
+   */
+  onEditCancel(): void {
+    this.selectedItem &#x3D; null;
+    this.showEditPopup &#x3D; false;
+    this.showPopup &#x3D; true; // Reopen the main popup if needed
+  }
+  /**
+   * This function is called when the user clicks on the &quot;Add&quot; button
+   * @param editedItem 
+   */
+  onItemSave(editedItem: any): void {
+    // Process the edited item
+    if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Edit Menu&#x27;) {
+      this.refreshMenu();
+    } else if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Edit Ingredients&#x27;) {
+      this.refreshIngredients();
+    } else if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Edit Inventory&#x27;) {
+      this.refreshInventory();
+    }
+    this.selectedItem &#x3D; editedItem;
+    this.showEditPopup &#x3D; false;
+    this.showConfirmationPopup &#x3D; true;
+  }  
+
+  // CONFIRMATION POPUP
+  /**
+   * This function is called when the user clicks on the &quot;Add&quot; button
+   */
+  showConfirmationPopup: boolean &#x3D; false;
+  /**
+   * This function is called when the user clicks on the &quot;Add&quot; button
+   */
+  editType: &#x27;menu&#x27; | &#x27;ingredients&#x27; | &#x27;inventory&#x27; | null &#x3D; null;
+  /**
+   * This function is called when the user clicks on the &quot;Add&quot; button
+   * @param item 
+   */
+  onItemConfirm(item: any): void {
+    this.selectedItem &#x3D; item;
+    this.showConfirmationPopup &#x3D; false;
+    if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Edit Menu&#x27;) {
+      if (this.currentAction &#x3D;&#x3D;&#x3D; &#x27;edit&#x27;) {
+        this.MenuService.editMenuItem(item.menu_item_id, item).subscribe(() &#x3D;&gt; {
+          this.refreshMenu();
+        });
+      } else if (this.currentAction &#x3D;&#x3D;&#x3D; &#x27;delete&#x27;) {
+        console.log(&#x27;Deleting menu item&#x27;, item);
+        this.MenuService.deleteMenuItem(item.menu_item_id).subscribe(() &#x3D;&gt; {
+          this.refreshMenu();
+        });
+      }
+    } else if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Edit Ingredients&#x27;) {
+      if (this.currentAction &#x3D;&#x3D;&#x3D; &#x27;edit&#x27;) {
+        this.IngredientsService.editIngredient(item.ingredient_id, item).subscribe(() &#x3D;&gt; {
+          this.refreshIngredients();
+        });
+      } else if (this.currentAction &#x3D;&#x3D;&#x3D; &#x27;delete&#x27;) {
+        this.IngredientsService.deleteIngredient(item.ingredient_id).subscribe(() &#x3D;&gt; {
+          this.refreshIngredients();
+        });
+      }
+    } else if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Edit Inventory&#x27;) {
+      if (this.currentAction &#x3D;&#x3D;&#x3D; &#x27;edit&#x27;) {
+        this.InventoryService.editInventoryItem(item.item_id, item).subscribe(() &#x3D;&gt; {
+          this.refreshInventory();
+        });
+      } else if (this.currentAction &#x3D;&#x3D;&#x3D; &#x27;delete&#x27;) {
+        this.InventoryService.deleteInventoryItem(item.item_id).subscribe(() &#x3D;&gt; {
+          this.refreshInventory();
+        });
+      }
+    } else if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Quick Add&#x27;) {
+      if (this.editType &#x3D;&#x3D;&#x3D; &#x27;menu&#x27;) {
+        this.MenuService.addMenuItem(item).subscribe(() &#x3D;&gt; {
+          this.refreshMenu();
+        });
+        console.log(&#x27;Adding menu item&#x27;, item.menu_item_name);
+      } else if (this.editType &#x3D;&#x3D;&#x3D; &#x27;ingredients&#x27;) {
+        this.IngredientsService.addIngredient(item).subscribe(() &#x3D;&gt; {
+          this.refreshIngredients();
+        });
+      } else if (this.editType &#x3D;&#x3D;&#x3D; &#x27;inventory&#x27;) {
+        this.InventoryService.addInventoryItem(item).subscribe(() &#x3D;&gt; {
+          this.refreshInventory();
+        });
+      }
+    }
+    this.showPopup &#x3D; true;
+    if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Add Seasonal Item&#x27;) {
+      this.MenuService.addMenuItem(item).subscribe(() &#x3D;&gt; {
+        this.refreshMenu();
+      });
+      this.showPopup &#x3D; false;
+    }
+  }
+/**
+ * This function is called when the user clicks on the &quot;Add&quot; button
+ */
+  onItemDecline(): void {
+    this.showConfirmationPopup &#x3D; false;
+    if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Edit Menu&#x27;) {
+      this.showPopup &#x3D; true;
+    } else if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Edit Ingredients&#x27;) {
+      this.showPopup &#x3D; true;
+    } else if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Edit Inventory&#x27;) {
+      this.showPopup &#x3D; true;
+    } else if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Quick Add&#x27;) {
+      this.showQuickAddPopup &#x3D; true;
+    } else if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Add Seasonal Item&#x27;) {
+      this.showSeasonalItemPopup &#x3D; true;
+    }
+  }
+
+  // QUICK ADD POPUP
+  /**
+   * This function is called when the user clicks on the &quot;Add&quot; button
+   */
+  showQuickAddPopup: boolean &#x3D; false;
+/**
+ *  This function is called when the user clicks on the &quot;Add&quot; button
+ * @param type 
+ */
+  quickAdd(type: string): void {
+    if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Edit Menu&#x27;) {
+      this.editType &#x3D; &#x27;menu&#x27;;
+    } else if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Edit Ingredients&#x27;) {
+      this.editType &#x3D; &#x27;ingredients&#x27;;
+    } else if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Edit Inventory&#x27;) {
+      this.editType &#x3D; &#x27;inventory&#x27;;
+    }
+    this.popupTitle &#x3D; &#x27;Quick Add&#x27;;
+    console.log(&#x27;Quick add&#x27;);
+    this.showPopup &#x3D; false;
+    this.showQuickAddPopup &#x3D; true;
+  }
+  /**
+   * This function is called when the user clicks on the &quot;Add&quot; button
+   */
+  onQuickAddCancel(): void {
+    this.showQuickAddPopup &#x3D; false;
+    this.showPopup &#x3D; true;
+  }
+  /**
+   * This function is called when the user clicks on the &quot;Add&quot; button
+   * @param newItem 
+   */
+  onItemAdd(newItem: any): void {
+    // Process the new item
+    this.currentAction &#x3D; &#x27;add&#x27;;
+    if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Edit Menu&#x27;) {
+      this.refreshMenu();
+    } else if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Edit Ingredients&#x27;) {
+      this.refreshIngredients();
+    } else if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Edit Inventory&#x27;) {
+      this.refreshInventory();
+    }
+    this.selectedItem &#x3D; newItem;
+    this.showQuickAddPopup &#x3D; false;
+    this.showConfirmationPopup &#x3D; true;
+  }
+
+  // SEAOSONAL ITEM POPUP
+  /**
+   * This function is called when the user clicks on the &quot;Add&quot; button
+   */
+  showSeasonalItemPopup: boolean &#x3D; false;
+/**
+ * This function is called when the user clicks on the &quot;Add&quot; button
+ * @param type 
+ */
+  seasonalItem(type: string): void {
+    this.popupTitle &#x3D; &#x27;Add Seasonal Item&#x27;;
+    this.currentAction &#x3D; &#x27;add&#x27;;
+    console.log(&#x27;Seasonal item&#x27;);
+    this.showSeasonalItemPopup &#x3D; true;
+  }
+/**
+ * This function is called when the user clicks on the &quot;Add&quot; button
+ */
+  onSeasonalItemCancel(): void {
+    this.showSeasonalItemPopup &#x3D; false;
+  }
+/**
+ * This function is called when the user clicks on the &quot;Add&quot; button
+ * @param newItem 
+ */
+  seasonalItemAdd(newItem: any): void {
+    this.selectedItem &#x3D; newItem;
+    this.showSeasonalItemPopup &#x3D; false;
+    this.showConfirmationPopup &#x3D; true;
+  }
+  /**
+   * This function is called when the user clicks on the &quot;Add&quot; button
+   * @param type 
+   * @param start 
+   * @param end 
+   */
+  // OTHER
+  reportPopup(type: string, start?: string, end?: string) {
+    this.showRestockReportPopup &#x3D; true;
+    switch (type) {
+      case &#x27;restock&#x27;: 
+        this.popupTitle &#x3D; &#x27;Restock Report&#x27;;
+        this.tableConfig &#x3D; this.restockReport;
+        this.getLowStock();
+        break;
+      case &#x27;sales&#x27;: 
+        if (!start) {
+          start &#x3D; &quot;2023-01-01&quot;;
+        }
+        if (!end) {
+          end &#x3D; &quot;2023-03-01&quot;;
+        }
+        this.popupTitle &#x3D; &#x27;Sales Report&#x27;;
+        this.tableConfig &#x3D; this.salesReport;
+        this.refreshSales(start, end);
+        break;
+      case &#x27;excess&#x27;:
+        this.popupTitle &#x3D; &#x27;Excess Report&#x27;;
+        this.tableConfig &#x3D; this.excessReport;
+        if (!start) {
+          start &#x3D; &quot;2023-01-01&quot;;
+        }
+        if (!end) {
+          end &#x3D; &quot;2023-03-01&quot;;
+        }
+        this.getExcess(start, end);
+        break;
+      }
+  }
+
+  /**
+   * This function is called when the user clicks on the &quot;Add&quot; button
+   */
+  clickSalesReport() {
+    // Do something cool
+    console.log(&#x27;clickSalesReport()&#x27;);
+  }
+  /**
+   *  This function is called when the user clicks on the &quot;Add&quot; button
+   */
+  clickExcessReport() {
+    // Do something cool
+    console.log(&#x27;clickExcessReport()&#x27;);
+  }
+  /**
+   *  This function is called when the user clicks on the &quot;Add&quot; button
+   */
+  clickRestockReport() {
+    // Do something cool
+    console.log(&#x27;clickStockReport()&#x27;);
+  }
+  /**
+   *  This function is called when the user clicks on the &quot;Add&quot; button
+   */
+  clickPPReport() {
+    // Do something cool
+    console.log(&#x27;clickPPReport()&#x27;);
+  }
+  /**
+   *  This function is called when the user clicks on the &quot;Add&quot; button
+   */
+  clickIPReport() {
+    // Do something cool
+    console.log(&#x27;clickIPReport()&#x27;);
+  }
+}
+
+
+
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;center&quot;&gt;
+    &lt;p&gt;&lt;strong&gt;Manager View&lt;/strong&gt;&lt;/p&gt;
+    &lt;app-manager-popup *ngIf&#x3D;&quot;showPopup&quot; (edit)&#x3D;&quot;editRow($event)&quot; (delete)&#x3D;&quot;deleteRow($event)&quot; (quick)&#x3D;&quot;quickAdd(&#x27;Quick Add&#x27;)&quot; [title]&#x3D;&quot;popupTitle&quot; [content]&#x3D;&quot;popupContent&quot; [tableConfig]&#x3D;&quot;tableConfig&quot; (close)&#x3D;&quot;showPopup &#x3D; false&quot;&gt;&lt;/app-manager-popup&gt;
+    &lt;app-edit-item-popup *ngIf&#x3D;&quot;showEditPopup&quot; [item]&#x3D;&quot;selectedItem&quot; [editType]&#x3D;&quot;editType&quot; (save)&#x3D;&quot;onItemSave($event)&quot; (close)&#x3D;&quot;onEditCancel()&quot;&gt;&lt;/app-edit-item-popup&gt;
+    &lt;app-confirmation-popup *ngIf&#x3D;&quot;showConfirmationPopup&quot; [currentAction]&#x3D;&quot;currentAction&quot; [item]&#x3D;&quot;selectedItem&quot; (confirm)&#x3D;&quot;onItemConfirm($event)&quot; (decline)&#x3D;&quot;onItemDecline()&quot;&gt;&lt;/app-confirmation-popup&gt;
+    &lt;app-quick-add-popup *ngIf&#x3D;&quot;showQuickAddPopup&quot; [editType]&#x3D;&quot;editType&quot; (add)&#x3D;&quot;onItemAdd($event)&quot; (cancel)&#x3D;&quot;onQuickAddCancel()&quot;&gt;&lt;/app-quick-add-popup&gt;
+    &lt;app-seasonal-item-popup *ngIf&#x3D;&quot;showSeasonalItemPopup&quot; (add)&#x3D;&quot;seasonalItemAdd($event)&quot; (cancel)&#x3D;&quot;onSeasonalItemCancel()&quot;&gt;&lt;/app-seasonal-item-popup&gt;
+    &lt;app-restock-report-popup *ngIf&#x3D;&quot;showRestockReportPopup&quot; [title]&#x3D;&quot;popupTitle&quot; [content]&#x3D;&quot;popupContent&quot; [tableConfig]&#x3D;&quot;tableConfig&quot; (close)&#x3D;&quot;showRestockReportPopup &#x3D; false&quot;&gt;&lt;/app-restock-report-popup&gt;
+&lt;/div&gt;
+
+&lt;!-- make buttons pos like buttons (large and easy to click) --&gt;
+&lt;div class&#x3D;&quot;buttons&quot;&gt;
+    &lt;div class&#x3D;&quot;buttonHeader&quot;&gt;
+        &lt;p&gt;General Management&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;tableButtons&quot;&gt; 
+        &lt;button class&#x3D;&quot;editTables&quot; (click)&#x3D;&quot;openPopup(&#x27;menu&#x27;)&quot;&gt;Edit Menu&lt;/button&gt;
+        &lt;button class&#x3D;&quot;editTables&quot; (click)&#x3D;&quot;openPopup(&#x27;ingredients&#x27;)&quot;&gt;Edit Ingredients&lt;/button&gt;
+        &lt;button class&#x3D;&quot;editTables&quot; (click)&#x3D;&quot;openPopup(&#x27;inventory&#x27;)&quot;&gt;Edit Inventory&lt;/button&gt;
+        &lt;button class&#x3D;&quot;editTables&quot; (click)&#x3D;&quot;seasonalItem(&#x27;Add Seasonal Item&#x27;)&quot;&gt;Add Seasonal Item&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;buttonHeader&quot;&gt;
+        &lt;p&gt;Reports&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;datePickers&quot;&gt;
+        &lt;p&gt;Date Range for Sales and Excess Reports&lt;/p&gt;
+        &lt;label for&#x3D;&quot;startDate&quot;&gt;Start Date: &lt;/label&gt;
+        &lt;input type&#x3D;&quot;date&quot; id&#x3D;&quot;startDate&quot; [(ngModel)]&#x3D;&quot;start&quot;&gt;
+
+        &lt;label for&#x3D;&quot;endDate&quot;&gt;End Date: &lt;/label&gt;
+        &lt;input type&#x3D;&quot;date&quot; id&#x3D;&quot;endDate&quot; [(ngModel)]&#x3D;&quot;end&quot;&gt;
+    &lt;/div&gt;
+    &lt;br&gt;
+    &lt;div class&#x3D;&quot;reportButtons&quot;&gt;
+        &lt;button class&#x3D;&quot;showReport&quot; (click)&#x3D;&quot;reportPopup(&#x27;sales&#x27;, start, end)&quot;&gt;Sales Report&lt;/button&gt;
+        &lt;button class&#x3D;&quot;showReport&quot; (click)&#x3D;&quot;reportPopup(&#x27;excess&#x27;, start, end)&quot;&gt;Excess Report&lt;/button&gt;
+        &lt;button class&#x3D;&quot;showReport&quot; (click)&#x3D;&quot;reportPopup(&#x27;restock&#x27;)&quot;&gt;Restock Report&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./manager-view.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.center {
+    width: 100%;
+    text-align: center;
+    padding-top: 90px;
+    font-size: 30px;
+}
+
+.buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 20px;
+    // gap: 5px;
+}
+
+.buttonHeader{
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 20px;
+}
+
+.tableButtons, .reportButtons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; // Enable wrapping
+    justify-content: flex-start;
+    text-align: center;
+    gap: 10px;
+    padding-bottom: 10px;
+}
+
+.editTables, .showReport {
+    width: 150px; // Fixed width for square shape
+    height: 150px; // Fixed height for square shape
+    background-color: lightgray;
+    border: 2px solid black;
+    transition: background-color 0.3s;
+    text-align: center; // Center the text
+    padding: 0; // Remove padding
+    margin: 0; // Remove margin
+    display: flex; // Use flexbox for centering text
+    align-items: center; // Vertically center text
+    justify-content: center; // Horizontally center text
+    overflow: hidden; // Prevent text from overflowing
+    word-wrap: break-word; // Ensure long words do not overflow
+}
+
+.editTables:active, .showReport:active {
+    cursor: pointer;
+    filter: brightness(0.9);
+}
+
+
+.editTables:hover, .showReport:hover {
+    background-color: lightgreen;
+    cursor: pointer;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="center">    <p><strong>Manager View</strong></p>    <app-manager-popup *ngIf="showPopup" (edit)="editRow($event)" (delete)="deleteRow($event)" (quick)="quickAdd(\'Quick Add\')" [title]="popupTitle" [content]="popupContent" [tableConfig]="tableConfig" (close)="showPopup = false"></app-manager-popup>    <app-edit-item-popup *ngIf="showEditPopup" [item]="selectedItem" [editType]="editType" (save)="onItemSave($event)" (close)="onEditCancel()"></app-edit-item-popup>    <app-confirmation-popup *ngIf="showConfirmationPopup" [currentAction]="currentAction" [item]="selectedItem" (confirm)="onItemConfirm($event)" (decline)="onItemDecline()"></app-confirmation-popup>    <app-quick-add-popup *ngIf="showQuickAddPopup" [editType]="editType" (add)="onItemAdd($event)" (cancel)="onQuickAddCancel()"></app-quick-add-popup>    <app-seasonal-item-popup *ngIf="showSeasonalItemPopup" (add)="seasonalItemAdd($event)" (cancel)="onSeasonalItemCancel()"></app-seasonal-item-popup>    <app-restock-report-popup *ngIf="showRestockReportPopup" [title]="popupTitle" [content]="popupContent" [tableConfig]="tableConfig" (close)="showRestockReportPopup = false"></app-restock-report-popup></div><!-- make buttons pos like buttons (large and easy to click) --><div class="buttons">    <div class="buttonHeader">        <p>General Management</p>    </div>    <div class="tableButtons">         <button class="editTables" (click)="openPopup(\'menu\')">Edit Menu</button>        <button class="editTables" (click)="openPopup(\'ingredients\')">Edit Ingredients</button>        <button class="editTables" (click)="openPopup(\'inventory\')">Edit Inventory</button>        <button class="editTables" (click)="seasonalItem(\'Add Seasonal Item\')">Add Seasonal Item</button>    </div>    <div class="buttonHeader">        <p>Reports</p>    </div>    <div class="datePickers">        <p>Date Range for Sales and Excess Reports</p>        <label for="startDate">Start Date: </label>        <input type="date" id="startDate" [(ngModel)]="start">        <label for="endDate">End Date: </label>        <input type="date" id="endDate" [(ngModel)]="end">    </div>    <br>    <div class="reportButtons">        <button class="showReport" (click)="reportPopup(\'sales\', start, end)">Sales Report</button>        <button class="showReport" (click)="reportPopup(\'excess\', start, end)">Excess Report</button>        <button class="showReport" (click)="reportPopup(\'restock\')">Restock Report</button>    </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthenticationButtonComponent', 'selector': 'app-authentication-button'},{'name': 'CartModalComponent', 'selector': 'app-cart-modal'},{'name': 'CashierViewComponent', 'selector': 'app-cashier-view'},{'name': 'CheckoutPopupComponent', 'selector': 'app-checkout-popup'},{'name': 'ConfirmationPopupComponent', 'selector': 'app-confirmation-popup'},{'name': 'ContactUsComponent', 'selector': 'app-contact-us'},{'name': 'CustomerViewComponent', 'selector': 'app-customer-view'},{'name': 'EditItemPopupComponent', 'selector': 'app-edit-item-popup'},{'name': 'EmployeeCreationsMenuComponent', 'selector': 'app-employee-creations-menu'},{'name': 'GetRoleComponent', 'selector': 'app-get-role'},{'name': 'LearnMoreComponent', 'selector': 'app-learn-more'},{'name': 'LoginButtonComponent', 'selector': 'app-login-button'},{'name': 'LogoutButtonComponent', 'selector': 'app-logout-button'},{'name': 'ManagerPopupComponent', 'selector': 'app-manager-popup'},{'name': 'ManagerViewComponent', 'selector': 'app-manager-view'},{'name': 'MenuItemComponent', 'selector': 'app-menu-item'},{'name': 'MenuViewComponent', 'selector': 'app-menu-view'},{'name': 'MilkTeaMenuComponent', 'selector': 'app-milk-tea-menu'},{'name': 'NavMenuComponent', 'selector': 'app-nav-menu'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'QuickAddPopupComponent', 'selector': 'app-quick-add-popup'},{'name': 'RestockReportPopupComponent', 'selector': 'app-restock-report-popup'},{'name': 'SeasonalItemPopupComponent', 'selector': 'app-seasonal-item-popup'},{'name': 'ShoppingCartComponent', 'selector': 'app-shopping-cart'},{'name': 'SignatureMilkTeaMenuComponent', 'selector': 'app-signature-milk-tea-menu'},{'name': 'SignupButtonComponent', 'selector': 'app-signup-button'},{'name': 'SlushMenuComponent', 'selector': 'app-slush-menu'},{'name': 'SmoothieMenuComponent', 'selector': 'app-smoothie-menu'},{'name': 'WeatherComponent', 'selector': 'app-weather'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'ManagerViewComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ManagerViewComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

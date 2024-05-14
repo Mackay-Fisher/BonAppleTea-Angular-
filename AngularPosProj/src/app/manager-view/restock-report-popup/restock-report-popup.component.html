@@ -1,0 +1,33 @@
+<div class="backdrop" *ngIf="closeRestockPopup">
+    <!-- <span class="close" (click)="closePopup()">&times;</span> -->
+    <div class="headerButtons">
+      <button class="exit" (click)="closeRestockPopup()"><strong>Exit</strong></button>
+    </div>
+    <div class="popup">
+        <div class="popup-content">
+            <div class="popupHeader">
+              <p>{{ title }}</p>
+            </div>
+            <div *ngIf="tableConfig && content && content.length">
+                <table>
+                  <thead>
+                    <tr>
+                      <th *ngFor="let col of tableConfig?.columns">{{ col.header }}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let row of content; let i = index">
+                      <td *ngFor="let col of tableConfig?.columns">
+                        {{ row[col.key] }}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+            <div *ngIf="!content || !content.length">
+              No data to display.
+            </div>
+        </div>
+    </div>
+  </div>
+  

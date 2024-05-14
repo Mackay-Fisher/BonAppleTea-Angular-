@@ -1,0 +1,348 @@
+<app-checkout-popup *ngIf="showPopup" [title]="popupTitle" [content]="popupContent" [total]="cartTotal"
+    [tableConfig]="tableConfig" (close)="showPopup = false"></app-checkout-popup>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<app-cart-modal [menuItems]="menuItems" (continueClicked)="onContinue()" (cancelClicked)="onCancel()"></app-cart-modal>
+<div class="cart-room">
+    <H3>Flavored Tea & Coffee</H3>
+    <div class="menu-container">
+        <div *ngFor="let menuItem of flavoredTeaItems">
+                <div class="menu-item">
+                    <div class="outOfStock" *ngIf="!itemInStock(menuItem.menu_item_name)">
+                      <h3>Out of Stock</h3>
+                    </div>
+                <h3><a>{{
+                        menuItem.menu_item_name | replaceUnderscores | titlecase }}</a></h3>
+                <p class="menu-item-price">Price: ${{ menuItem.menu_item_price }}</p>
+                <ul class="ingredient" *ngIf="menuItem.ingredients && menuItem.ingredients.length">Ingredients:
+                    <li *ngFor="let ingredient of menuItem.ingredients">{{ ingredient | formatCamelCase }}</li>
+                </ul>
+                <br />
+                <div>Toppings:
+                    <div *ngFor="let topping of toppingItems" class="topping-item">
+                        <input type="checkbox" [id]="topping.menu_item_id"
+                            (change)="onToppingCheckboxChange($event, menuItem, topping)">
+                        <label [for]="topping.menu_item_id">
+                            {{ topping.menu_item_name | replaceUnderscores | titlecase }}
+                            - ${{ topping.menu_item_price }}
+                        </label>
+                    </div>
+                </div>
+                <form [formGroup]="formSugar">
+                    <div class="toppings-list" formGroupName="sugar">Sugar Level:
+                        <div *ngFor="let level of sugar; let i = index" class="topping-item">
+                            <input (change)="onSugarCheckboxChange($event, level.value, menuItem)" type="radio"
+                                [value]="level.value" formControlName="selectedLevel">
+                            <label style="margin-left: 6px"> {{level.label}}</label>
+                        </div>
+                    </div>
+                </form>
+                <form [formGroup]="formIce">
+                    <div class="toppings-list" formGroupName="ice">Ice Level:
+                        <div *ngFor="let level of ice; let i = index" class="topping-item">
+                            <input (change)="onIceCheckboxChange($event, level.value, menuItem)" type="radio">
+                            <label style="margin-left: 6px"> {{level.label}}</label>
+                        </div>
+                    </div>
+                </form>
+                <button class="add" 
+                    (click)="onAdd(menuItem)"
+                    [class.disabled]="!itemInStock(menuItem.menu_item_name)">
+                    Add
+                </button>
+            </div>
+        </div>
+    </div>
+    <H3>Milk-Tea</H3>
+    <div class="menu-container">
+        <div *ngFor="let menuItem of milkTeaItems">
+            <div class="menu-item">
+                <div class="outOfStock" *ngIf="!itemInStock(menuItem.menu_item_name)">
+                    <h3>Out of Stock</h3>
+                  </div>
+                <h3><a>{{
+                        menuItem.menu_item_name | replaceUnderscores | titlecase }}</a></h3>
+                <p class="menu-item-price">Price: ${{ menuItem.menu_item_price }}</p>
+                <ul class="ingredient" *ngIf="menuItem.ingredients && menuItem.ingredients.length">Ingredients:
+                    <li *ngFor="let ingredient of menuItem.ingredients">{{ ingredient | formatCamelCase }}</li>
+                </ul>
+                <br />
+                <div>Toppings:
+                    <div *ngFor="let topping of toppingItems" class="topping-item">
+                        <input type="checkbox" [id]="topping.menu_item_id"
+                            (change)="onToppingCheckboxChange($event, menuItem, topping)">
+                        <label [for]="topping.menu_item_id">
+                            {{ topping.menu_item_name | replaceUnderscores | titlecase }}
+                            - ${{ topping.menu_item_price }}
+                        </label>
+                    </div>
+                </div>
+                <form [formGroup]="formSugar">
+                    <div class="toppings-list" formGroupName="sugar">Sugar Level:
+                        <div *ngFor="let level of sugar; let i = index" class="topping-item">
+                            <input (change)="onSugarCheckboxChange($event, level.value, menuItem)" type="radio">
+                            <label style="margin-left: 6px">{{level.label}}</label>
+                        </div>
+                    </div>
+                </form>
+                <form [formGroup]="formIce">
+                    <div class="toppings-list" formGroupName="ice">Ice Level:
+                        <div *ngFor="let level of ice; let i = index" class="topping-item">
+                            <input (change)="onIceCheckboxChange($event, level.value, menuItem)" type="radio">
+                            <label style="margin-left: 6px">{{level.label}}</label>
+                        </div>
+                    </div>
+                </form>
+                <button class="add" 
+                    (click)="onAdd(menuItem)"
+                    [class.disabled]="!itemInStock(menuItem.menu_item_name)">
+                    Add
+                </button>            
+            </div>
+        </div>
+    </div>
+    <H3>Signature Milk-Tea</H3>
+    <div class="menu-container">
+        <div *ngFor="let menuItem of signatureMilkTeaItems">
+            <div class="menu-item">
+                <div class="outOfStock" *ngIf="!itemInStock(menuItem.menu_item_name)">
+                    <h3>Out of Stock</h3>
+                  </div>
+                <h3><a>{{menuItem.menu_item_name | replaceUnderscores | titlecase }}</a></h3>
+                <p class="menu-item-price">Price: ${{ menuItem.menu_item_price }}</p>
+                <ul class="ingredient" *ngIf="menuItem.ingredients && menuItem.ingredients.length">Ingredients:
+                    <li *ngFor="let ingredient of menuItem.ingredients">{{ ingredient | formatCamelCase }}</li>
+                </ul>
+                <br />
+                <div>Toppings:
+                    <div *ngFor="let topping of toppingItems" class="topping-item">
+                        <input type="checkbox" [id]="topping.menu_item_id"
+                            (change)="onToppingCheckboxChange($event, menuItem, topping)">
+                        <label [for]="topping.menu_item_id">
+                            {{ topping.menu_item_name | replaceUnderscores | titlecase }}
+                            - ${{ topping.menu_item_price }}
+                        </label>
+                    </div>
+                </div>
+                <form [formGroup]="formSugar">
+                    <div class="toppings-list" formGroupName="sugar">Sugar Level:
+                        <div *ngFor="let level of sugar; let i = index" class="topping-item">
+                            <input (change)="onSugarCheckboxChange($event, level.value, menuItem)" type="radio">
+                            <label style="margin-left: 6px">{{level.label}}</label>
+                        </div>
+                    </div>
+                </form>
+                <form [formGroup]="formIce">
+                    <div class="toppings-list" formGroupName="ice">
+                        Ice Level:
+                        <div *ngFor="let level of ice; let i = index" class="topping-item">
+                            <input (change)="onIceCheckboxChange($event, level.value, menuItem)" type="radio">
+                            <label style="margin-left: 6px">{{level.label}}</label>
+                        </div>
+                    </div>
+                </form>
+                <button class="add" 
+                    (click)="onAdd(menuItem)"
+                    [class.disabled]="!itemInStock(menuItem.menu_item_name)">
+                    Add
+                </button>            
+            </div>
+        </div>
+    </div>
+    <H3>Slush</H3>
+    <div class="menu-container">
+        <div *ngFor="let menuItem of slushItems">
+            <div class="menu-item">
+                <div class="outOfStock" *ngIf="!itemInStock(menuItem.menu_item_name)">
+                    <h3>Out of Stock</h3>
+                  </div>
+                <h3><a>{{ menuItem.menu_item_name | replaceUnderscores | titlecase }}</a></h3>
+                <p class="menu-item-price">Price: ${{ menuItem.menu_item_price }}</p>
+                <ul class="ingredient" *ngIf="menuItem.ingredients && menuItem.ingredients.length">Ingredients:
+                    <li *ngFor="let ingredient of menuItem.ingredients">{{ ingredient | formatCamelCase }}</li>
+                </ul>
+                <br />
+                <div>Toppings:
+                    <div *ngFor="let topping of toppingItems" class="topping-item">
+                        <input type="checkbox" [id]="topping.menu_item_id"
+                            (change)="onToppingCheckboxChange($event, menuItem, topping)">
+                        <label [for]="topping.menu_item_id">
+                            {{ topping.menu_item_name | replaceUnderscores | titlecase }}
+                            - ${{ topping.menu_item_price }}
+                        </label>
+                    </div>
+                </div>
+                <form [formGroup]="formSugar">
+                    <div class="toppings-list" formGroupName="sugar">Sugar Level:
+                        <div *ngFor="let level of sugar; let i = index" class="topping-item">
+                            <input (change)="onSugarCheckboxChange($event, level.value, menuItem)" type="radio">
+                            <label style="margin-left: 6px">{{level.label}}</label>
+                        </div>
+                    </div>
+                </form>
+                <form [formGroup]="formIce">
+                    <div class="toppings-list" formGroupName="ice">Ice Level:
+                        <div *ngFor="let level of ice; let i = index" class="topping-item">
+                            <input (change)="onIceCheckboxChange($event, level.value, menuItem)" type="radio">
+                            <label style="margin-left: 6px">{{level.label}}</label>
+                        </div>
+                    </div>
+                </form>
+                <button class="add" 
+                    (click)="onAdd(menuItem)"
+                    [class.disabled]="!itemInStock(menuItem.menu_item_name)">
+                    Add
+                </button>            
+            </div>
+        </div>
+    </div>
+    <H3>Coffee</H3>
+    <div class="menu-container">
+        <div *ngFor="let menuItem of coffeeItems">
+            <div class="menu-item">
+                <div class="outOfStock" *ngIf="!itemInStock(menuItem.menu_item_name)">
+                    <h3>Out of Stock</h3>
+                  </div>
+                <h3><a>{{
+                        menuItem.menu_item_name | replaceUnderscores | titlecase }}</a></h3>
+                <p class="menu-item-price">Price: ${{ menuItem.menu_item_price }}</p>
+                <ul class="ingredient" *ngIf="menuItem.ingredients && menuItem.ingredients.length">Ingredients:
+                    <li *ngFor="let ingredient of menuItem.ingredients">{{ ingredient | formatCamelCase }}</li>
+                </ul>
+                <br />
+                <div>Toppings:
+                    <div *ngFor="let topping of toppingItems" class="topping-item">
+                        <input type="checkbox" [id]="topping.menu_item_id"
+                            (change)="onToppingCheckboxChange($event, menuItem, topping)">
+                        <label [for]="topping.menu_item_id">
+                            {{ topping.menu_item_name | replaceUnderscores | titlecase }}
+                            - ${{ topping.menu_item_price }}
+                        </label>
+                    </div>
+                </div>
+                <form [formGroup]="formSugar">
+                    <div class="toppings-list" formGroupName="sugar">Sugar Level:
+                        <div *ngFor="let level of sugar; let i = index" class="topping-item">
+                            <input (change)="onSugarCheckboxChange($event, level.value, menuItem)" type="radio">
+                            <label style="margin-left: 6px">{{level.label}}</label>
+                        </div>
+                    </div>
+                </form>
+                <form [formGroup]="formIce">
+                    <div class="toppings-list" formGroupName="ice">Ice Level:
+                        <div *ngFor="let level of ice; let i = index" class="topping-item">
+                            <input (change)="onIceCheckboxChange($event, level.value, menuItem)" type="radio">
+                            <label style="margin-left: 6px">{{level.label}}</label>
+                        </div>
+                    </div>
+                </form>
+                <button class="add" 
+                    (click)="onAdd(menuItem)"
+                    [class.disabled]="!itemInStock(menuItem.menu_item_name)">
+                    Add
+                </button>            
+            </div>
+        </div>
+    </div>
+    <H3>Smoothies</H3>
+    <div class="menu-container">
+        <div *ngFor="let menuItem of smoothiesItems">
+            <div class="menu-item">
+                <div class="outOfStock" *ngIf="!itemInStock(menuItem.menu_item_name)">
+                    <h3>Out of Stock</h3>
+                  </div>
+                <h3><a>{{
+                        menuItem.menu_item_name | replaceUnderscores | titlecase }}</a></h3>
+                <p class="menu-item-price">Price: ${{ menuItem.menu_item_price }}</p>
+                <ul class="ingredient" *ngIf="menuItem.ingredients && menuItem.ingredients.length">Ingredients:
+                    <li *ngFor="let ingredient of menuItem.ingredients">{{ ingredient | formatCamelCase }}</li>
+                </ul>
+                <br />
+                <div>Toppings:
+                    <div *ngFor="let topping of toppingItems" class="topping-item">
+                        <input type="checkbox" [id]="topping.menu_item_id"
+                            (change)="onToppingCheckboxChange($event, menuItem, topping)">
+                        <label [for]="topping.menu_item_id">
+                            {{ topping.menu_item_name | replaceUnderscores | titlecase }}
+                            - ${{ topping.menu_item_price }}
+                        </label>
+                    </div>
+                </div>
+                <form [formGroup]="formSugar">
+                    <div class="toppings-list" formGroupName="sugar">Sugar Level:
+                        <div *ngFor="let level of sugar; let i = index" class="topping-item">
+                            <input (change)="onSugarCheckboxChange($event, level.value, menuItem)" type="radio">
+                            <label style="margin-left: 6px">{{level.label}}</label>
+                        </div>
+                    </div>
+                </form>
+                <form [formGroup]="formIce">
+                    <div class="toppings-list" formGroupName="ice">Ice Level:
+                        <div *ngFor="let level of ice; let i = index" class="topping-item">
+                            <input (change)="onIceCheckboxChange($event, level.value, menuItem)" type="radio">
+                            <label style="margin-left: 6px">{{level.label}}</label>
+                        </div>
+                    </div>
+                </form>
+                <button class="add" 
+                    (click)="onAdd(menuItem)"
+                    [class.disabled]="!itemInStock(menuItem.menu_item_name)">
+                    Add
+                </button>            
+            </div>
+        </div>
+    </div>
+    <H3>Employee Creations</H3>
+    <div class="menu-container">
+        <div *ngFor="let menuItem of employeeCreationsItems">
+            <div class="menu-item">
+                <div class="outOfStock" *ngIf="!itemInStock(menuItem.menu_item_name)">
+                    <h3>Out of Stock</h3>
+                  </div>
+                <h3><a>{{
+                        menuItem.menu_item_name | replaceUnderscores | titlecase }}</a></h3>
+                <p class="menu-item-price">Price: ${{ menuItem.menu_item_price }}</p>
+                <ul class="ingredient" *ngIf="menuItem.ingredients && menuItem.ingredients.length">Ingredients:
+                    <li *ngFor="let ingredient of menuItem.ingredients">{{ ingredient | formatCamelCase }}</li>
+                </ul>
+                <br />
+                <div>Toppings:
+                    <div *ngFor="let topping of toppingItems" class="topping-item">
+                        <input type="checkbox" [id]="topping.menu_item_id"
+                            (change)="onToppingCheckboxChange($event, menuItem, topping)">
+                        <label [for]="topping.menu_item_id">
+                            {{ topping.menu_item_name | replaceUnderscores | titlecase }}
+                            - ${{ topping.menu_item_price }}
+                        </label>
+                    </div>
+                </div>
+                <form [formGroup]="formSugar">
+                    <div class="toppings-list" formGroupName="sugar">Sugar Level:
+                        <div *ngFor="let level of sugar; let i = index" class="topping-item">
+                            <input (change)="onSugarCheckboxChange($event, level.value, menuItem)" type="radio">
+                            <label style="margin-left: 6px">{{level.label}}</label>
+                        </div>
+                    </div>
+                </form>
+                <form [formGroup]="formIce">
+                    <div class="toppings-list" formGroupName="ice">Ice Level:
+                        <div *ngFor="let level of ice; let i = index" class="topping-item">
+                            <input (change)="onIceCheckboxChange($event, level.value, menuItem)" type="radio">
+                            <label style="margin-left: 6px">{{level.label}}</label>
+                        </div>
+                    </div>
+                </form>
+                <button class="add" 
+                    (click)="onAdd(menuItem)"
+                    [class.disabled]="!itemInStock(menuItem.menu_item_name)">
+                    Add
+                </button>            
+            </div>
+        </div>
+
+    </div>
+</div>

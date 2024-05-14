@@ -1,0 +1,71 @@
+<div class="center ">
+  <nav
+  class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 TradNav"
+>
+  <div class="container">
+    <div
+      class="navbar-collapse collapse d-sm-inline-flex justify-content-center"
+    >
+      <ul class="navbar-nav flex-grow">
+        <li
+          class="nav-item"
+          [routerLinkActive]="['link-active']"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <a class="nav-link text-dark" [routerLink]="['/Menu']">Flavored Tea & Coffee</a>
+        </li>
+        <li class="nav-item" [routerLinkActive]="['link-active']">
+          <a class="nav-link text-dark" [routerLink]="['/Menu/Milk-Tea']"
+            >Milk-Tea</a
+          >
+        </li>
+        <li class="nav-item" [routerLinkActive]="['link-active']">
+          <a class="nav-link text-dark" [routerLink]="['/Menu/Signature-Milk-Tea']"
+            >Signature Milk Tea</a
+          >
+        </li>
+        <li class="nav-item" [routerLinkActive]="['link-active']">
+          <a class="nav-link text-dark" [routerLink]="['/Menu/Slush']"
+            >Slush</a
+          >
+        </li>
+        <li class="nav-item" [routerLinkActive]="['link-active']">
+          <a class="nav-link text-dark" [routerLink]="['/Menu/Smoothies']"
+            >Smoothies</a
+          >
+        </li>
+        <li class="nav-item" [routerLinkActive]="['link-active']">
+          <a class="nav-link text-dark" [routerLink]="['/Menu/Employee-Creations']"
+            >Employee Creations</a
+          >
+        </li>
+        <li class="nav-item" [routerLinkActive]="['link-active']">
+          <a class="nav-link text-dark" [routerLink]="['/ShoppingCart']"
+            >Cart</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<br>
+<br>
+<br>
+<br>
+<br>
+<H3>Milk-Tea</H3>
+<div class="menu-container">
+    <div *ngFor="let menuItem of menuItems">
+      <div class="menu-item">
+        <div class="outOfStock" *ngIf="!itemInStock(menuItem.menu_item_name)">
+          <h3>Out of Stock</h3>
+        </div>
+        <img alt="WACG Compliant" src="{{ menuItem.image }}" alt="{{ menuItem.menu_item_name }}" class="menu-item-image" referrerpolicy="no-referrer">
+        <h3><a class="router-menu" 
+          [routerLink]="['/Menu',  menuItem.menu_item_type, menuItem.menu_item_name, false]"
+          [class.disabled]="!itemInStock(menuItem.menu_item_name)">{{ menuItem.menu_item_name | replaceUnderscores | titlecase }}</a></h3>
+        <p class="menu-item-price">Price: ${{ menuItem.menu_item_price }}</p>
+      </div>
+    </div>
+  </div>
+</div>

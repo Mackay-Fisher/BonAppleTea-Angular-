@@ -1,0 +1,89 @@
+<app-checkout-popup *ngIf="showPopup" [title]="popupTitle" [content]="popupContent" [total]="cartTotal" [tableConfig]="tableConfig" (close)="showPopup = false"></app-checkout-popup>
+
+<div class=center>
+    <nav
+        class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 TradNav">
+        <div class="container">
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-center">
+                <ul class="navbar-nav flex-grow">
+                    <li class="nav-item" [routerLinkActive]="['link-active']"
+                        [routerLinkActiveOptions]="{ exact: true }">
+                        <a class="nav-link text-dark" [routerLink]="['/Menu']">Flavored Tea & Coffee</a>
+                    </li>
+                    <li class="nav-item" [routerLinkActive]="['link-active']">
+                        <a class="nav-link text-dark" [routerLink]="['/Menu/Milk-Tea']">Milk-Tea</a>
+                    </li>
+                    <li class="nav-item" [routerLinkActive]="['link-active']">
+                        <a class="nav-link text-dark" [routerLink]="['/Menu/Signature-Milk-Tea']">Signature Milk Tea</a>
+                    </li>
+                    <li class="nav-item" [routerLinkActive]="['link-active']">
+                        <a class="nav-link text-dark" [routerLink]="['/Menu/Slush']">Slush</a>
+                    </li>
+                    <li class="nav-item" [routerLinkActive]="['link-active']">
+                        <a class="nav-link text-dark" [routerLink]="['/Menu/Smoothies']">Smoothies</a>
+                    </li>
+                    <li class="nav-item" [routerLinkActive]="['link-active']">
+                        <a class="nav-link text-dark" [routerLink]="['/Menu/Employee-Creations']">Employee Creations</a>
+                    </li>
+                    <li class="nav-item" [routerLinkActive]="['link-active']">
+                        <a class="nav-link text-dark" [routerLink]="['/ShoppingCart']">Cart</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <H3>Checkout Cart</H3>
+
+    <div class="menu-container">
+        <table>
+            <thead>
+                <br>
+                <tr>
+                    <th>Menu Item</th>
+                    <th>Price</th>
+                    <th>Added Toppings</th>
+                    <th>Sugar</th>
+                    <th>Ice</th>
+                    <th>Add. Info</th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container>
+                    <tr class=menu-items *ngFor="let item of menuItems; index as i">
+                        <td
+                            [routerLink]="['/Menu', item.menu_item_type, item.menu_item_name, i]">
+                            <div class="flextableimage">
+                                <img alt="WACG Compliant" class="itemclass" src="{{item.image}}" referrerpolicy="no-referrer"/>
+                                {{item.menu_item_name | replaceUnderscores | titlecase}}
+                            </div>
+                            </td>
+                        <td>{{item.menu_item_price | currency:'USD':'symbol':'1.2-2' }}</td>
+                        <td>
+                            <div *ngFor="let topping of item.added_toppings">
+                                <p class="toppings">{{ topping | capitalizeAndReplace }}</p>
+                            </div>
+                        </td>
+                        <td>{{ item.sugar_level | sugarLevelFormat }}</td>
+                        <td>{{ item.ice_level | iceLevelReformat }}</td>
+                        <td>{{ item.additional_info }}</td>
+                        <td style="vertical-align: center;"><button type="button" class="small"
+                                (click)="removeItem(i)">Remove</button></td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </div>
+    <div class="footerbuttons">
+        <div class="total">
+            <p>Total: {{ calculateTotal() | currency:'USD':'symbol':'1.2-2' }}</p>
+        </div>
+        <button class="continue" (click)="onContinueClick()">Checkout</button>
+        <button class="cancel" (click)="onCancelClick()">Cancel Order</button>
+    </div>
+</div>

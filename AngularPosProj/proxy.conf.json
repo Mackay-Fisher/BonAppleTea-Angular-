@@ -1,0 +1,9 @@
+{
+    "/api/*": {
+      "target": "https://bonappetea.onrender.com/",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true
+    }
+  }
+  

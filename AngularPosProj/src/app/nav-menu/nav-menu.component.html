@@ -1,0 +1,58 @@
+<header>
+  <nav
+    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 fixed"
+  >
+    <div class="container">
+      <a class="navbar-brand" [routerLink]="['/']">BonAppeTea</a>
+      <img
+      width="40"
+      height="40"
+      alt="BonAppeTea Logo"
+      src="favicon.ico"/>
+    <div id="google_translate_element"></div> 
+    <div class="inputholder">
+    <div class="magnifierhold">
+      <div style="cursor: pointer;" (click)="toggleMagnifier()">🔍</div>
+    </div>
+    <input class="magslide" type="range" min="100" max="300" value="150" (change)="onLensSizeChange($event.target)" placeholder="Lens Size">
+  </div>
+    <button (click) ="increaseSize()">Text Size +</button>
+    <button (click) ="decreaseSize()">Text Size -</button>
+    <div class="audio" (click)="speakMessage()">🔊</div>
+    <!-- Add this div for the magnifier lens -->
+      <div
+        class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
+      >
+        <ul class="navbar-nav flex-grow">
+          <li class="nav-item">
+            <app-profile *ngIf="auth.isAuthenticated$ | async"></app-profile>
+          </li>
+          <li
+            class="nav-item"
+            [routerLinkActive]="['link-active']"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <a class="nav-link text-dark" [routerLink]="['/']">Customer</a>
+          </li>
+          <!-- <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="(auth.isAuthenticated$ | async) && dataService.currentUserIsCashier"> -->
+            <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/Cashier']">Cashier</a>
+          </li>
+          <!-- *ngIf="(auth.isAuthenticated$ | async) && dataService.currentUserIsManager" --> 
+          <!-- <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="(auth.isAuthenticated$ | async) && dataService.currentUserIsManager"> -->
+            <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/Manager']">Manager</a>
+          </li>
+          <li  class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/Menu']"
+              >Menu Board</a
+            >
+          </li>       
+          <li class="nav-item">
+            <app-authentication-button></app-authentication-button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

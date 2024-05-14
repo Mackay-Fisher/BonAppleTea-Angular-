@@ -1,0 +1,1082 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>my-new-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">my-new-app documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Interfaces</li>
+  <li class="breadcrumb-item"
+  >
+  SalesSummary</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/manager-view/manager-view.component.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>This is the model for the sales summary.</p>
+
+            </p>
+
+
+
+
+            <section data-compodoc="block-indexables">
+    <h3 id="inputs">Indexable</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <code>[key: string]:        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/app/manager-view/manager-view.component.ts:65</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The row&#39;s key</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { MenuService } from &#x27;../services/menu.service&#x27;;
+import { IngredientsService } from &#x27;../services/ingredients.service&#x27;;
+import { InventoryService } from &#x27;../services/inventory.service&#x27;;
+import { OrderHistoryService } from &#x27;../services/order-history.service&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+import { forkJoin } from &#x27;rxjs&#x27;;
+/**
+ * This is the model for the table configuration.
+ */
+interface TableConfig {
+  /**
+   * The table&#x27;s title
+   */
+  columns: TableColumn[];
+}
+/**
+ *  This is the model for the table column.
+ */
+interface TableColumn {
+  // The column&#x27;s key
+  /**
+   * The column&#x27;s key
+   */
+  key: string;
+  /**
+   * The column&#x27;s header
+   */
+  // The column&#x27;s header
+  header: string;
+}
+/**
+ * This is the model for the table row.
+ */
+interface InventoryMap {
+  // The row&#x27;s key
+  /**
+   * The row&#x27;s key
+   */
+  [key: string]: number;
+}
+/**
+ * This is the model for the inventory item.
+ */
+interface InventoryItem {
+  // The item&#x27;s id
+  /**
+   * The item&#x27;s id
+   */
+  item_id: number;
+  /**
+   * The item&#x27;s name
+   */
+  // The item&#x27;s name
+  item_name: string;
+  /**
+   * The item&#x27;s quantity
+   */
+  // The item&#x27;s quantity
+  item_quantity: number;
+}
+/**
+ * This is the model for the sales summary.
+ */
+interface SalesSummary {
+  // The row&#x27;s key
+  /**
+   * The row&#x27;s key
+   */
+  [key: string]: number; // Adjust the key type if necessary
+}
+
+// Define an interface for the order item
+/**
+ * This is the model for the order item.
+ */
+interface OrderItem {
+  /**
+   * The item&#x27;s id
+   */
+  // The item&#x27;s id
+  item_name: string;
+  /**
+   * The item&#x27;s quantity
+   */
+   // or item_id if it&#x27;s a number
+  quantity: number;
+}
+
+/**
+ * &#x60;ManagerViewComponent&#x60; serves as the main interface for the manager&#x27;s dashboard.
+ * It handles operations related to menu management, ingredients, inventory, and order history,
+ * providing functionalities to refresh and manipulate these data sets.
+ *
+ * @Component Decorator that marks the class as an Angular component and provides metadata about the component.
+ */
+ @Component({
+  selector: &#x27;app-manager-view&#x27;,
+  templateUrl: &#x27;./manager-view.component.html&#x27;,
+  styleUrls: [&#x27;./manager-view.component.scss&#x27;]
+})
+export class ManagerViewComponent implements OnInit {
+  // Component properties
+  /**
+   * Boolean to track if the current user is a manager.
+   */
+  showPopup: boolean &#x3D; false;
+  /**
+   * Boolean to track if the current user is a cashier.
+   */
+  showRestockReportPopup: boolean &#x3D; false;
+  /**
+   * Boolean to track if the current user is a cashier.
+   */
+  popupTitle: string &#x3D; &#x27;&#x27;;
+  /**
+   * Boolean to track if the current user is a cashier.
+   */
+  start: string &#x3D; &#x27;&#x27;;
+  /**
+   * Boolean to track if the current user is a cashier.
+   */
+  end: string &#x3D; &#x27;&#x27;;
+  /**
+   * Boolean to track if the current user is a cashier.
+   */
+  popupContent: any;
+  /**
+   * Boolean to track if the current user is a cashier.
+   */
+  menu: any[] &#x3D; [];
+  /**
+   * Boolean to track if the current user is a cashier.
+   */
+  ingredients: any[] &#x3D; [];
+  /**
+   * Boolean to track if the current user is a cashier.
+   */
+  inventory: any[] &#x3D; [];
+  /**
+   * Boolean to track if the current user is a cashier.
+   */
+  orderHistory: any[] &#x3D; [];
+
+  /**
+   * Constructor for &#x60;ManagerViewComponent&#x60;.
+   * 
+   * @param MenuService Service to manage menu items.
+   * @param IngredientsService Service to manage ingredients.
+   * @param InventoryService Service to manage inventory.
+   * @param OrderHistoryService Service to manage order history.
+   */
+  constructor(
+    private MenuService: MenuService, 
+    private IngredientsService: IngredientsService, 
+    private InventoryService: InventoryService, 
+    private OrderHistoryService: OrderHistoryService
+  ) {}
+
+  /**
+   * OnInit lifecycle hook for initial component setup.
+   */
+  ngOnInit(): void {
+    // Initialization logic can go here
+  }
+
+  /**
+   * Refreshes the menu items by fetching the latest data from the &#x60;MenuService&#x60;.
+   */
+  refreshMenu(): void {
+    this.MenuService.getMenu().subscribe(items &#x3D;&gt; {
+      // Refresh menu logic
+    });
+  }
+  
+  /**
+   * Refreshes the ingredients by fetching the latest data from the &#x60;IngredientsService&#x60;.
+   */
+  refreshIngredients(): void {
+    this.IngredientsService.getIngredients().subscribe(ingredients &#x3D;&gt; {
+      // Refresh ingredients logic
+    });
+  }
+  
+  /**
+   * Refreshes the inventory by fetching the latest data from the &#x60;InventoryService&#x60;.
+   */
+  refreshInventory(): void {
+    this.InventoryService.getInventory().subscribe(invItems &#x3D;&gt; {
+      // Refresh inventory logic
+    });
+  }
+
+  /**
+   * Refreshes the order history by fetching the latest data from the &#x60;OrderHistoryService&#x60;.
+   */
+  lowInventItems: any[] &#x3D; [];
+  /**
+   * Get all of the elements that have only sold 10 percent of their stock
+   */
+  lowIngredItems: any[] &#x3D; [];
+  /**
+   * Get all of the elements that have only sold 10 percent of their stock
+   */
+  getLowStock(): void {
+    this.InventoryService.getInventory().subscribe(invItems &#x3D;&gt; {
+      this.inventory &#x3D; invItems;
+
+      this.lowInventItems &#x3D; this.inventory.filter(item &#x3D;&gt; item.item_quantity &lt; 500);
+
+      this.lowInventItems.forEach(item &#x3D;&gt; {
+        item.item_quantity_to_order &#x3D; 1500 - item.item_quantity;
+      });
+    });
+
+    this.IngredientsService.getIngredients().subscribe(ingredients &#x3D;&gt; {
+      this.ingredients &#x3D; ingredients;
+      
+      this.lowIngredItems &#x3D; this.ingredients.filter(item &#x3D;&gt; item.ingredient_quantity &lt; 500);
+
+      this.lowIngredItems.forEach(item &#x3D;&gt; {
+        item.item_quantity_to_order &#x3D; 1500 - item.ingredient_quantity;
+        item.item_name &#x3D; item.ingredient_name;
+        item.item_quantity &#x3D; item.ingredient_quantity;
+      });
+      const temp &#x3D; [...this.lowInventItems, ...this.lowIngredItems];
+
+      temp.forEach(item &#x3D;&gt; {
+        item.item_name &#x3D; this.formatCamelCase(item.item_name);
+      });
+      this.popupContent &#x3D; temp
+    });
+  }  
+
+  /**
+   * gets the sales from that time period
+   * @param start 
+   * @param end 
+   */
+  refreshSales(start: string, end: string): void {
+    this.OrderHistoryService.getOrderHistory().subscribe(ordItems &#x3D;&gt; {
+      this.orderHistory &#x3D; ordItems;
+
+      const startDate &#x3D; new Date(start);
+      startDate.setUTCHours(0, 0, 0, 0);
+
+      const endDate &#x3D; new Date(end);
+      endDate.setUTCHours(23, 59, 59, 999);
+
+      // console.log(ordItems);
+      // console.log(startDate);
+      // console.log(endDate);
+
+      const ItemsInRange &#x3D; this.orderHistory.filter(order &#x3D;&gt; {
+        const orderDate &#x3D; new Date(order.order_timestamp);
+        return orderDate &gt; startDate &amp;&amp; orderDate &lt; endDate;
+      });
+
+      ItemsInRange.forEach(item &#x3D;&gt; {
+        item.order_items &#x3D; this.formatOrderItems(item.order_items);
+      });
+
+      console.log(ItemsInRange)
+
+      this.popupContent &#x3D; ItemsInRange;
+    });
+  }
+  /**
+   * gets the sales from that time period
+   * @param start 
+   * @param end 
+   */
+  getExcess(start: string, end: string): void {
+    let inventory_ingrident_map &#x3D; new Map&lt;string, string[]&gt;();
+    // const additionalItems &#x3D; [&#x27;napkins&#x27;, &#x27;plastic_seals&#x27;, &#x27;cups&#x27;, &#x27;straws&#x27;];
+    this.OrderHistoryService.getIngridents().subscribe(
+      data &#x3D;&gt; {
+        data.forEach((item: { menu_item_name: string; ingredients: string[]; }) &#x3D;&gt; {
+          let itemIngredients &#x3D; item.ingredients.slice(); // Create a copy of the ingredients array
+
+          // // Check if the item has more than one ingredient and add additional items if so
+          // if (itemIngredients.length &gt; 1) {
+          //   itemIngredients &#x3D; itemIngredients.concat(additionalItems);
+          // }
+
+          inventory_ingrident_map.set(item.menu_item_name, itemIngredients);
+        });
+        console.log(inventory_ingrident_map); // This will log the map with the data
+      },
+      error &#x3D;&gt; {
+        console.error(&#x27;Error:&#x27;, error); // This will log any error that occurs during the request
+      }
+    );
+
+    let ogIngrdientmap &#x3D; new Map&lt;string, number&gt;();
+      this.OrderHistoryService.getIng().subscribe(
+        data &#x3D;&gt; {
+          data.forEach((item: { ingredient_name: string;  ingredient_quantity : number; }) &#x3D;&gt; {
+            ogIngrdientmap.set(item.ingredient_name, item.ingredient_quantity);
+        });
+        console.log(ogIngrdientmap)
+      },
+        error &#x3D;&gt; {
+          console.error(&#x27;Error:&#x27;, error); // This will log any error that occurs during the request
+        }
+      );
+    this.OrderHistoryService.getOrderHistory().subscribe(ordItems &#x3D;&gt; {
+      this.orderHistory &#x3D; ordItems;
+
+      // Initialize initialInventory
+      const initialInventory: InventoryMap &#x3D; {};
+      this.InventoryService.getInventory().subscribe((inventoryItems: InventoryItem[]) &#x3D;&gt; {
+        inventoryItems.forEach((item: InventoryItem) &#x3D;&gt; {
+          initialInventory[item.item_name] &#x3D; item.item_quantity;
+        });
+
+        console.log(initialInventory); // Log the map of item counts
+      });
+
+      const startDate &#x3D; new Date(start);
+      startDate.setUTCHours(0, 0, 0, 0);
+  
+      const endDate &#x3D; new Date(end);
+      endDate.setUTCHours(23, 59, 59, 999);
+  
+      const itemsInRange &#x3D; this.orderHistory.filter(order &#x3D;&gt; {
+        const orderDate &#x3D; new Date(order.order_timestamp);
+        return orderDate &gt;&#x3D; startDate &amp;&amp; orderDate &lt;&#x3D; endDate;
+      });
+
+      console.log(itemsInRange)
+
+      // Initialize salesSummary with the correct type
+      const salesSummary: SalesSummary &#x3D; {};
+      let ingredientCountMap &#x3D; new Map&lt;string, number&gt;();
+      itemsInRange.forEach(order &#x3D;&gt; {
+      order.order_items.forEach((item: OrderItem) &#x3D;&gt; {
+        //@ts-ignore
+        const ingredients &#x3D; inventory_ingrident_map.get(item) || [];
+        ingredients.forEach(ingredient &#x3D;&gt; {
+          const currentCount &#x3D; ingredientCountMap.get(ingredient) || 0;
+          ingredientCountMap.set(ingredient, currentCount + 1);
+        });
+      });
+    });
+
+    console.log(&quot;Ingredient Usage Count:&quot;, ingredientCountMap);
+      // console.log(&quot;passed sales&quot;)
+      let excessIngredients: { excessIngredients: string }[] &#x3D; [];
+      ingredientCountMap.forEach((count, ingredient) &#x3D;&gt; {
+        //@ts-ignore
+        if(count &lt; (ogIngrdientmap.get(ingredient)/10)){
+
+            excessIngredients.push({ excessIngredients:this.formatCamelCase(ingredient) });
+        }
+      });
+      console.log(excessIngredients);
+      this.popupContent &#x3D; excessIngredients;
+    });
+  }
+
+  // FUNCTIONS FOR FORMATTING OUTPUT
+  //Takes a string of items formatted with _ for a space and fixes them
+  /**
+   * Takes a string of items formatted with _ for a space and fixes them
+   * @param ordItems 
+   * @returns  formatted string
+   */
+  formatOrderItems(ordItems: string[]): string {
+    const formatted &#x3D; ordItems.map(item &#x3D;&gt; {
+      let formattedItem &#x3D; item.replace(/_/g, &#x27; &#x27;);
+  
+      formattedItem &#x3D; formattedItem.replace(/\w\S*/g, (word) &#x3D;&gt; {
+        return word.charAt(0).toUpperCase() + word.substr(1).toLowerCase();
+      });
+  
+      return formattedItem;
+    });
+  
+    return formatted.join(&#x27;, &#x27;);
+  }
+  /**
+   * Takes a string of items formatted with _ for a space and fixes them
+   * @param ordItem 
+   * @returns formatted string
+   */
+  //Same as above but for only one string
+  formatSingleUnderscore(ordItem: string): string {
+    let formattedItem &#x3D; ordItem.replace(/_/g, &#x27; &#x27;);
+  
+    formattedItem &#x3D; formattedItem.replace(/\w\S*/g, (word) &#x3D;&gt; {
+      return word.charAt(0).toUpperCase() + word.substr(1).toLowerCase();
+    });
+  
+    return formattedItem;
+  }
+  /**
+   * Takes a string of items formatted with camelCase and fixes them
+   * @param name 
+   * @returns formatted string
+   */
+  // Fixes camelCase words (one string)
+  formatCamelCase(name: string): string {
+    return name.replace(/([A-Z])/g, &#x27; $1&#x27;).replace(/^./, function(str){ return str.toUpperCase(); });
+  }
+  /**
+   * Takes a string of items formatted with camelCase and fixes them
+   * @param names 
+   * @returns formatted string
+   */
+  // Same as above but for array of strings
+  formatCamelCaseArray(names: string[]): string[] {
+    return names.map(name &#x3D;&gt; {
+      return name.replace(/([A-Z])/g, &#x27; $1&#x27;).replace(/^./, function(str){ return str.toUpperCase(); }).split(&#x27;,&#x27;).join(&#x27;, &#x27;);
+    });
+  }
+  
+  /**
+   * This function is called when the user clicks on the &quot;View Inventory&quot; button
+   */
+  tableConfig?: TableConfig;
+/**
+ * This hold all of the possible table configs for the value
+ */
+  menuTableConfig: TableConfig &#x3D; {
+    columns: [
+      { key: &#x27;menu_item_id&#x27;, header: &#x27;ID&#x27; },
+      { key: &#x27;menu_item_name&#x27;, header: &#x27;Name&#x27; },
+      { key: &#x27;menu_item_type&#x27;, header: &#x27;Type&#x27; },
+      { key: &#x27;menu_item_price&#x27;, header: &#x27;Price&#x27; },
+      { key: &#x27;ingredients&#x27;, header: &#x27;Ingredients&#x27; }
+    ]
+  };
+  /**
+   * This hold all of the possible table configs for the value
+   */
+  ingredientsTableConfig: TableConfig &#x3D; {
+    columns: [
+      { key: &#x27;ingredient_id&#x27;, header: &#x27;ID&#x27; },
+      { key: &#x27;ingredient_name&#x27;, header: &#x27;Name&#x27; },
+      { key: &#x27;ingredient_quantity&#x27;, header: &#x27;Quantity&#x27; }
+    ]
+  };
+/**
+ * This hold all of the possible table configs for the value
+ */
+  inventoryTableConfig: TableConfig &#x3D; {
+    columns: [
+      { key: &#x27;item_id&#x27;, header: &#x27;ID&#x27; },
+      { key: &#x27;item_name&#x27;, header: &#x27;Name&#x27; },
+      { key: &#x27;item_quantity&#x27;, header: &#x27;Quantity&#x27; }
+    ]
+  };
+/**
+ * This hold all of the possible table configs for the value
+ */
+  restockReport: TableConfig &#x3D; {
+    columns: [
+      { key: &#x27;item_name&#x27;, header: &#x27;Name&#x27; },
+      { key: &#x27;item_quantity&#x27;, header: &#x27;Current Quantity&#x27; },
+      { key: &#x27;item_quantity_to_order&#x27;, header: &#x27;Amount to Order&#x27; }
+    ]
+  };
+/**
+ * This hold all of the possible table configs for the value
+ */
+  salesReport: TableConfig &#x3D; {
+    columns: [
+      { key: &#x27;order_timestamp&#x27;, header: &#x27;Date&#x27; },
+      { key: &#x27;order_total&#x27;, header: &#x27;Price&#x27; },
+      { key: &#x27;order_items&#x27;, header: &#x27;Items Ordered&#x27; }
+    ]
+  };
+/**
+ * This hold all of the possible table configs for the value
+ */
+  excessReport: TableConfig &#x3D; {
+    columns: [
+      { key: &#x27;excessIngredients&#x27;,  header: &#x27;Excess Item&#x27; }
+    ]
+  };
+  /**
+   * This hold all of the possible table configs for the value
+   * @param type 
+   */
+  openPopup(type: string) {
+    this.showPopup &#x3D; true;
+    switch (type) {
+      case &#x27;menu&#x27;:
+        this.popupTitle &#x3D; &#x27;Edit Menu&#x27;;
+        this.tableConfig &#x3D; this.menuTableConfig;
+        this.refreshMenu();
+        break;
+      case &#x27;ingredients&#x27;:
+        this.popupTitle &#x3D; &#x27;Edit Ingredients&#x27;;
+        this.tableConfig &#x3D; this.ingredientsTableConfig;
+        this.refreshIngredients();
+        break;
+      case &#x27;inventory&#x27;:
+        this.popupTitle &#x3D; &#x27;Edit Inventory&#x27;;
+        this.tableConfig &#x3D; this.inventoryTableConfig;
+        this.refreshInventory();
+        break;
+      }
+  }
+
+  // ACTION BUTTONS
+  /**
+   * This function is called when the user clicks on the &quot;Add&quot; button
+   */
+  showEditPopup: boolean &#x3D; false;
+  /**
+   * This function is called when the user clicks on the &quot;Add&quot; button
+   */
+  selectedItem: any &#x3D; null;
+  /**
+   * This function is called when the user clicks on the &quot;Add&quot; button
+   */
+  currentAction: &#x27;edit&#x27; | &#x27;delete&#x27; | &#x27;add&#x27; | null &#x3D; null;
+  /**
+   * This function is called when the user clicks on the &quot;Add&quot; button
+   * @param item 
+   */
+  editRow(item: any): void {
+    console.log(&#x27;Editing item, opening edit popup&#x27;, item);
+    this.currentAction &#x3D; &#x27;edit&#x27;;
+    this.selectedItem &#x3D; item;
+    if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Edit Menu&#x27;) {
+      this.editType &#x3D; &#x27;menu&#x27;;
+    } else if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Edit Ingredients&#x27;) {
+      this.editType &#x3D; &#x27;ingredients&#x27;;
+    } else if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Edit Inventory&#x27;) {
+      this.editType &#x3D; &#x27;inventory&#x27;;
+    }
+    if (this.editType &#x3D;&#x3D;&#x3D; &#x27;menu&#x27;) {
+      this.popupTitle &#x3D; &#x27;Edit Menu&#x27;;
+    } else if (this.editType &#x3D;&#x3D;&#x3D; &#x27;ingredients&#x27;) {
+      this.popupTitle &#x3D; &#x27;Edit Ingredients&#x27;;
+    } else if (this.editType &#x3D;&#x3D;&#x3D; &#x27;inventory&#x27;) {
+      this.popupTitle &#x3D; &#x27;Edit Inventory&#x27;;
+    }
+    this.showPopup &#x3D; false;
+    this.showEditPopup &#x3D; true;
+  }  
+  /**
+   * This function is called when the user clicks on the &quot;Add&quot; button
+   * @param item 
+   */
+  deleteRow(item: any): void {
+    console.log(&#x27;Deleting item:&#x27;, item);
+    if (this.editType &#x3D;&#x3D;&#x3D; &#x27;menu&#x27;) {
+      this.popupTitle &#x3D; &#x27;Edit Menu&#x27;;
+    } else if (this.editType &#x3D;&#x3D;&#x3D; &#x27;ingredients&#x27;) {
+      this.popupTitle &#x3D; &#x27;Edit Ingredients&#x27;;
+    } else if (this.editType &#x3D;&#x3D;&#x3D; &#x27;inventory&#x27;) {
+      this.popupTitle &#x3D; &#x27;Edit Inventory&#x27;;
+    }
+    this.currentAction &#x3D; &#x27;delete&#x27;;
+    this.selectedItem &#x3D; item;
+    this.showConfirmationPopup &#x3D; true;
+    this.showPopup &#x3D; false;
+  }
+
+  // EDIT CONFIRMATIONS
+  /**
+   * This function is called when the user clicks on the &quot;Add&quot; button
+   */
+  onEditCancel(): void {
+    this.selectedItem &#x3D; null;
+    this.showEditPopup &#x3D; false;
+    this.showPopup &#x3D; true; // Reopen the main popup if needed
+  }
+  /**
+   * This function is called when the user clicks on the &quot;Add&quot; button
+   * @param editedItem 
+   */
+  onItemSave(editedItem: any): void {
+    // Process the edited item
+    if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Edit Menu&#x27;) {
+      this.refreshMenu();
+    } else if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Edit Ingredients&#x27;) {
+      this.refreshIngredients();
+    } else if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Edit Inventory&#x27;) {
+      this.refreshInventory();
+    }
+    this.selectedItem &#x3D; editedItem;
+    this.showEditPopup &#x3D; false;
+    this.showConfirmationPopup &#x3D; true;
+  }  
+
+  // CONFIRMATION POPUP
+  /**
+   * This function is called when the user clicks on the &quot;Add&quot; button
+   */
+  showConfirmationPopup: boolean &#x3D; false;
+  /**
+   * This function is called when the user clicks on the &quot;Add&quot; button
+   */
+  editType: &#x27;menu&#x27; | &#x27;ingredients&#x27; | &#x27;inventory&#x27; | null &#x3D; null;
+  /**
+   * This function is called when the user clicks on the &quot;Add&quot; button
+   * @param item 
+   */
+  onItemConfirm(item: any): void {
+    this.selectedItem &#x3D; item;
+    this.showConfirmationPopup &#x3D; false;
+    if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Edit Menu&#x27;) {
+      if (this.currentAction &#x3D;&#x3D;&#x3D; &#x27;edit&#x27;) {
+        this.MenuService.editMenuItem(item.menu_item_id, item).subscribe(() &#x3D;&gt; {
+          this.refreshMenu();
+        });
+      } else if (this.currentAction &#x3D;&#x3D;&#x3D; &#x27;delete&#x27;) {
+        console.log(&#x27;Deleting menu item&#x27;, item);
+        this.MenuService.deleteMenuItem(item.menu_item_id).subscribe(() &#x3D;&gt; {
+          this.refreshMenu();
+        });
+      }
+    } else if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Edit Ingredients&#x27;) {
+      if (this.currentAction &#x3D;&#x3D;&#x3D; &#x27;edit&#x27;) {
+        this.IngredientsService.editIngredient(item.ingredient_id, item).subscribe(() &#x3D;&gt; {
+          this.refreshIngredients();
+        });
+      } else if (this.currentAction &#x3D;&#x3D;&#x3D; &#x27;delete&#x27;) {
+        this.IngredientsService.deleteIngredient(item.ingredient_id).subscribe(() &#x3D;&gt; {
+          this.refreshIngredients();
+        });
+      }
+    } else if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Edit Inventory&#x27;) {
+      if (this.currentAction &#x3D;&#x3D;&#x3D; &#x27;edit&#x27;) {
+        this.InventoryService.editInventoryItem(item.item_id, item).subscribe(() &#x3D;&gt; {
+          this.refreshInventory();
+        });
+      } else if (this.currentAction &#x3D;&#x3D;&#x3D; &#x27;delete&#x27;) {
+        this.InventoryService.deleteInventoryItem(item.item_id).subscribe(() &#x3D;&gt; {
+          this.refreshInventory();
+        });
+      }
+    } else if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Quick Add&#x27;) {
+      if (this.editType &#x3D;&#x3D;&#x3D; &#x27;menu&#x27;) {
+        this.MenuService.addMenuItem(item).subscribe(() &#x3D;&gt; {
+          this.refreshMenu();
+        });
+        console.log(&#x27;Adding menu item&#x27;, item.menu_item_name);
+      } else if (this.editType &#x3D;&#x3D;&#x3D; &#x27;ingredients&#x27;) {
+        this.IngredientsService.addIngredient(item).subscribe(() &#x3D;&gt; {
+          this.refreshIngredients();
+        });
+      } else if (this.editType &#x3D;&#x3D;&#x3D; &#x27;inventory&#x27;) {
+        this.InventoryService.addInventoryItem(item).subscribe(() &#x3D;&gt; {
+          this.refreshInventory();
+        });
+      }
+    }
+    this.showPopup &#x3D; true;
+    if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Add Seasonal Item&#x27;) {
+      this.MenuService.addMenuItem(item).subscribe(() &#x3D;&gt; {
+        this.refreshMenu();
+      });
+      this.showPopup &#x3D; false;
+    }
+  }
+/**
+ * This function is called when the user clicks on the &quot;Add&quot; button
+ */
+  onItemDecline(): void {
+    this.showConfirmationPopup &#x3D; false;
+    if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Edit Menu&#x27;) {
+      this.showPopup &#x3D; true;
+    } else if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Edit Ingredients&#x27;) {
+      this.showPopup &#x3D; true;
+    } else if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Edit Inventory&#x27;) {
+      this.showPopup &#x3D; true;
+    } else if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Quick Add&#x27;) {
+      this.showQuickAddPopup &#x3D; true;
+    } else if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Add Seasonal Item&#x27;) {
+      this.showSeasonalItemPopup &#x3D; true;
+    }
+  }
+
+  // QUICK ADD POPUP
+  /**
+   * This function is called when the user clicks on the &quot;Add&quot; button
+   */
+  showQuickAddPopup: boolean &#x3D; false;
+/**
+ *  This function is called when the user clicks on the &quot;Add&quot; button
+ * @param type 
+ */
+  quickAdd(type: string): void {
+    if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Edit Menu&#x27;) {
+      this.editType &#x3D; &#x27;menu&#x27;;
+    } else if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Edit Ingredients&#x27;) {
+      this.editType &#x3D; &#x27;ingredients&#x27;;
+    } else if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Edit Inventory&#x27;) {
+      this.editType &#x3D; &#x27;inventory&#x27;;
+    }
+    this.popupTitle &#x3D; &#x27;Quick Add&#x27;;
+    console.log(&#x27;Quick add&#x27;);
+    this.showPopup &#x3D; false;
+    this.showQuickAddPopup &#x3D; true;
+  }
+  /**
+   * This function is called when the user clicks on the &quot;Add&quot; button
+   */
+  onQuickAddCancel(): void {
+    this.showQuickAddPopup &#x3D; false;
+    this.showPopup &#x3D; true;
+  }
+  /**
+   * This function is called when the user clicks on the &quot;Add&quot; button
+   * @param newItem 
+   */
+  onItemAdd(newItem: any): void {
+    // Process the new item
+    this.currentAction &#x3D; &#x27;add&#x27;;
+    if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Edit Menu&#x27;) {
+      this.refreshMenu();
+    } else if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Edit Ingredients&#x27;) {
+      this.refreshIngredients();
+    } else if (this.popupTitle &#x3D;&#x3D;&#x3D; &#x27;Edit Inventory&#x27;) {
+      this.refreshInventory();
+    }
+    this.selectedItem &#x3D; newItem;
+    this.showQuickAddPopup &#x3D; false;
+    this.showConfirmationPopup &#x3D; true;
+  }
+
+  // SEAOSONAL ITEM POPUP
+  /**
+   * This function is called when the user clicks on the &quot;Add&quot; button
+   */
+  showSeasonalItemPopup: boolean &#x3D; false;
+/**
+ * This function is called when the user clicks on the &quot;Add&quot; button
+ * @param type 
+ */
+  seasonalItem(type: string): void {
+    this.popupTitle &#x3D; &#x27;Add Seasonal Item&#x27;;
+    this.currentAction &#x3D; &#x27;add&#x27;;
+    console.log(&#x27;Seasonal item&#x27;);
+    this.showSeasonalItemPopup &#x3D; true;
+  }
+/**
+ * This function is called when the user clicks on the &quot;Add&quot; button
+ */
+  onSeasonalItemCancel(): void {
+    this.showSeasonalItemPopup &#x3D; false;
+  }
+/**
+ * This function is called when the user clicks on the &quot;Add&quot; button
+ * @param newItem 
+ */
+  seasonalItemAdd(newItem: any): void {
+    this.selectedItem &#x3D; newItem;
+    this.showSeasonalItemPopup &#x3D; false;
+    this.showConfirmationPopup &#x3D; true;
+  }
+  /**
+   * This function is called when the user clicks on the &quot;Add&quot; button
+   * @param type 
+   * @param start 
+   * @param end 
+   */
+  // OTHER
+  reportPopup(type: string, start?: string, end?: string) {
+    this.showRestockReportPopup &#x3D; true;
+    switch (type) {
+      case &#x27;restock&#x27;: 
+        this.popupTitle &#x3D; &#x27;Restock Report&#x27;;
+        this.tableConfig &#x3D; this.restockReport;
+        this.getLowStock();
+        break;
+      case &#x27;sales&#x27;: 
+        if (!start) {
+          start &#x3D; &quot;2023-01-01&quot;;
+        }
+        if (!end) {
+          end &#x3D; &quot;2023-03-01&quot;;
+        }
+        this.popupTitle &#x3D; &#x27;Sales Report&#x27;;
+        this.tableConfig &#x3D; this.salesReport;
+        this.refreshSales(start, end);
+        break;
+      case &#x27;excess&#x27;:
+        this.popupTitle &#x3D; &#x27;Excess Report&#x27;;
+        this.tableConfig &#x3D; this.excessReport;
+        if (!start) {
+          start &#x3D; &quot;2023-01-01&quot;;
+        }
+        if (!end) {
+          end &#x3D; &quot;2023-03-01&quot;;
+        }
+        this.getExcess(start, end);
+        break;
+      }
+  }
+
+  /**
+   * This function is called when the user clicks on the &quot;Add&quot; button
+   */
+  clickSalesReport() {
+    // Do something cool
+    console.log(&#x27;clickSalesReport()&#x27;);
+  }
+  /**
+   *  This function is called when the user clicks on the &quot;Add&quot; button
+   */
+  clickExcessReport() {
+    // Do something cool
+    console.log(&#x27;clickExcessReport()&#x27;);
+  }
+  /**
+   *  This function is called when the user clicks on the &quot;Add&quot; button
+   */
+  clickRestockReport() {
+    // Do something cool
+    console.log(&#x27;clickStockReport()&#x27;);
+  }
+  /**
+   *  This function is called when the user clicks on the &quot;Add&quot; button
+   */
+  clickPPReport() {
+    // Do something cool
+    console.log(&#x27;clickPPReport()&#x27;);
+  }
+  /**
+   *  This function is called when the user clicks on the &quot;Add&quot; button
+   */
+  clickIPReport() {
+    // Do something cool
+    console.log(&#x27;clickIPReport()&#x27;);
+  }
+}
+
+
+
+
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'SalesSummary.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

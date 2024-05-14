@@ -1,0 +1,41 @@
+<div class="backdrop" *ngIf="closePopup">
+  <!-- <span class="close" (click)="closePopup()">&times;</span> -->
+  <div class="headerButtons">
+    <button class="quickAdd" (click)="quickAdd()"><strong>Quick Add</strong></button>
+    <button class="exit" (click)="closePopup()"><strong>Exit</strong></button>
+  </div>
+  <div class="popup">
+      <div class="popup-content">
+          <div class="popupHeader">
+            <p><strong>{{ title }}</strong></p>
+          </div>
+          <div class="search-bar">
+            <input type="text" [(ngModel)]="searchText" placeholder="Search..." (input)="filterContent()">
+          </div>
+          <div *ngIf="tableConfig && content && content.length">
+              <table>
+                <thead>
+                  <tr>
+                    <th *ngFor="let col of tableConfig?.columns">{{ col.header }}</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let row of filteredContent; let i = index">
+                    <td *ngFor="let col of tableConfig?.columns">
+                      {{ row[col.key] }}
+                    </td>
+                    <td class="actionButtons">
+                      <button class="edit" (click)="editRow(row)"><strong>Edit</strong></button> 
+                      <button class="delete" (click)="deleteRow(row)"><strong>Delete</strong></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+          <div *ngIf="!content || !content.length">
+            No data to display.
+          </div>
+      </div>
+  </div>
+</div>
